@@ -18,30 +18,35 @@
             "scroll-hint": "Scroll to explore",
             "artists-title": "Featured Artists & Researchers",
             "artist-1-name": "Byungjun Kwon",
-            "artist-1-achievement": "Korea Artist Prize 2023 Winner",
-            "artist-1-education":
-                "BA French Literature, Seoul National University / MA Art Science, Royal Conservatory of The Hague",
-            "artist-1-career":
+            "artist-1-achievement-1":
                 "Hardware Engineer at STEIM (Netherlands Electronic Music Research Institute)",
+            "artist-1-achievement-2":
+                "Solo Exhibition at Théâtre de Liège, Liège, Belgium",
+            "artist-1-achievement-3":
+                '"Layered Medium: We ARE IN Open Circuits", Manarat Al Saadiyat, Abu Dhabi',
+            "artist-1-education":
+                // "BA French Literature, Seoul National University / MA Art Science, Royal Conservatory of The Hague",
+                "",
+            "artist-1-career": "Korea Artist Prize 2023 Winner",
             "artist-1-specialty":
-                "Research on sound-related hardware, developing new musical instruments and stage devices to create dramatic scenes that encompass music, theater, and visual arts through new media performance",
+                "Leading player in multi-channel sound installation using Ambisonic technology and now directing robotic mechanical theater.",
             "work-1-title": "On the Birds' Day (2024)",
             "artist-2-name": "Hyun Parke",
             "artist-2-achievement":
-                "Ars Electronica Museum Permanent Exhibition Artist",
+                "Hyundai Motors ZER01NE creative platform selected artist",
             "artist-2-education":
                 "BFA School of the Art Institute of Chicago, MS MIT",
             "artist-2-career":
-                "Research Associate at Carnegie Mellon University",
+                "Artist/Designer/Research Associate at Carnegie Mellon University",
             "artist-2-specialty":
                 "Interdisciplinary artist exploring pneumatic structures, inflatable objects, and dimensional display systems. Known for innovative work in air-reinforced structures and additive manufacturing technologies",
             "work-2-title": "3D Structural Pneumatic Inflation Study (2020)",
             "artist-3-name": "Young Ah Seong",
             "artist-3-achievement":
-                "ACM UIST/IEEE Robosoft Best Demonstration Award",
+                "Innovative Technology, Interaction 2018/2022 Presentation Award",
             "artist-3-education":
-                "Ph.D in Interdisciplinary Informatics, University of Tokyo",
-            "artist-3-career": "Associate Professor at Hosei University, Tokyo",
+                "Associate Professor, Hosei University, Tokyo, Japan",
+            "artist-3-career": "Affective Design Lab",
             "artist-3-specialty":
                 "Director of Affective Design Lab, specializing in innovative technology and interaction design. Research focus on emotional interfaces and soft robotics for human-computer interaction",
             "work-3-title": "Puff Me Up! (2024)",
@@ -50,8 +55,7 @@
             "artist-4-achievement":
                 "Featured in Vogue, i-D Magazine, 1 Granary, Marie Claire",
             "artist-4-education": "Founder of Pisces Rising, New York",
-            "artist-4-career":
-                "Creative Director at c.Vernoy, Senior Designer at Converse",
+            "artist-4-career": "Fashion for the Zero-Gravity Environment",
             "artist-4-specialty":
                 "NYC-based fashion designer who conjures a tactile dialogue between body, fabric, and space. Specializing in zero-gravity environment fashion design",
             "work-4-title": "Rhododendrons (2024)",
@@ -65,7 +69,7 @@
                 "Professor & Founding Director of RoMeLa at UCLA",
             "artist-5-specialty":
                 'Director of RoMeLa (Robotics & Mechanisms Laboratory). Research focuses on robot locomotion and manipulation, autonomous vehicles and humanoid robots. Called "the Leonardo da Vinci of robots" by Washington Post',
-            "work-5-title": "BALLU: Buoyancy Assisted Lightweight Legged Unit",
+            "work-5-title": "Robots at RoMeLa",
             "view-more": "View More →",
             "hero-badge": "First Ever",
             "corl-badge": "CoRL '25",
@@ -92,7 +96,7 @@
             "footer-press": "Press",
             "footer-sponsors": "Sponsors",
             "info-contact-title": "Contact",
-            "info-contact": "Hyun Park",
+            "info-contact": "Hyun Woo Park",
             "info-contact-email": "hpark3@andrew.cmu.edu",
             "info-contact-subject": "[RoboFashion25]",
         },
@@ -110,9 +114,13 @@
             "scroll-hint": "SCROLL TO EXPLORE",
             "artists-title": "Featured Artists & Researchers",
             "artist-1-name": "Byungjun Kwon",
-            "artist-1-achievement": "Korea Artist Prize 2023 Winner",
-            "artist-1-education":
-                "서울대 불문과 학사/ 헤이그 왕립 음악원 아트 사이언스 석사",
+            "artist-1-achievement-1":
+                "Hardware Engineer at STEIM (Netherlands Electronic Music Research Institute)",
+            "artist-1-achievement-2":
+                "Solo Exhibition at Théâtre de Liège, Liège, Belgium",
+            "artist-1-achievement-3":
+                '"Layered Medium: We ARE IN Open Circuits", Manarat Al Saadiyat, Abu Dhabi',
+
             "artist-1-career":
                 "네덜란드 전자악기 연구개발 기관 STEIM 하드웨어 엔지니어",
             "artist-1-specialty":
@@ -176,7 +184,7 @@
             "footer-press": "Press",
             "footer-sponsors": "Sponsors",
             "info-contact-title": "Contact",
-            "info-contact": "Hyun Park",
+            "info-contact": "Hyunwoo Park",
             "info-contact-email": "hpark3@andrew.cmu.edu",
             "info-contact-subject": "[RoboFashion25]",
         },
@@ -227,6 +235,7 @@
         initHeroVideo();
         initSectionSnapping();
         initArtistAnimations();
+        initImageSliders();
 
         // Apply initial language
         applyLanguage();
@@ -965,8 +974,8 @@
         // Intersection Observer를 사용하여 각 아티스트 섹션이 뷰포트에 들어올 때 애니메이션 트리거
         const observerOptions = {
             root: null,
-            rootMargin: "-10% 0px -10% 0px", // 뷰포트의 상하 10%를 제외한 영역에서 트리거
-            threshold: 0.3, // 요소의 30%가 보일 때 트리거
+            rootMargin: "0px", // 마진 제거로 성능 향상
+            threshold: 0.1, // 요소의 10%만 보여도 트리거 (더 빨리 시작)
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -974,32 +983,11 @@
                 const section = entry.target;
 
                 if (entry.isIntersecting) {
-                    // 섹션이 뷰포트에 들어올 때 - 애니메이션 활성화
+                    // 섹션이 뷰포트에 들어올 때 - 애니메이션 활성화 (단순하게)
                     section.classList.add("in-view");
-
-                    // 추가적인 샤랴라라~ 효과를 위한 순차 애니메이션
-                    const elements = section.querySelectorAll(
-                        ".profile-image, .artist-name, .artist-career, .work-image, .artist-description p"
-                    );
-
-                    elements.forEach((element, index) => {
-                        setTimeout(() => {
-                            element.style.animationDelay = `${index * 0.1}s`;
-                            element.classList.add("animate-in");
-                        }, index * 100); // 100ms씩 순차 애니메이션
-                    });
                 } else {
                     // 섹션이 뷰포트를 벗어날 때 - 애니메이션 리셋해서 다시 들어올 때 반복되도록!
                     section.classList.remove("in-view");
-
-                    // 개별 요소들도 애니메이션 클래스 제거
-                    const elements = section.querySelectorAll(
-                        ".profile-image, .artist-name, .artist-career, .work-image, .artist-description p"
-                    );
-                    elements.forEach((element) => {
-                        element.classList.remove("animate-in");
-                        element.style.animationDelay = "";
-                    });
                 }
             });
         }, observerOptions);
@@ -1026,8 +1014,8 @@
                 },
                 {
                     root: null,
-                    rootMargin: "-20% 0px -20% 0px",
-                    threshold: 0.5,
+                    rootMargin: "0px",
+                    threshold: 0.1,
                 }
             );
 
@@ -1035,8 +1023,167 @@
         }
     }
 
+    // 이미지 슬라이더 기능 초기화
+    function initImageSliders() {
+        const sliders = document.querySelectorAll(".work-images-slider");
+
+        sliders.forEach((slider, sliderIndex) => {
+            const images = slider.querySelectorAll(".work-image");
+            const indicators =
+                slider.parentElement.querySelectorAll(".image-indicator");
+            const prevBtn = slider.parentElement.querySelector(
+                ".image-nav-btn.prev"
+            );
+            const nextBtn = slider.parentElement.querySelector(
+                ".image-nav-btn.next"
+            );
+
+            let currentImageIndex = 0;
+
+            // 이미지가 1개면 네비게이션 숨기기
+            if (images.length <= 1) {
+                if (prevBtn) prevBtn.style.display = "none";
+                if (nextBtn) nextBtn.style.display = "none";
+                return;
+            }
+
+            // 슬라이더 업데이트 함수
+            function updateSlider() {
+                const translateX = -currentImageIndex * 100;
+                slider.style.transform = `translateX(${translateX}%)`;
+
+                // 인디케이터 업데이트
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle(
+                        "active",
+                        index === currentImageIndex
+                    );
+                });
+
+                // 현재 이미지 인덱스 저장
+                slider.setAttribute("data-current-image", currentImageIndex);
+            }
+
+            // 다음 이미지
+            function nextImage() {
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                updateSlider();
+            }
+
+            // 이전 이미지
+            function prevImage() {
+                currentImageIndex =
+                    currentImageIndex === 0
+                        ? images.length - 1
+                        : currentImageIndex - 1;
+                updateSlider();
+            }
+
+            // 특정 이미지로 이동
+            function goToImage(index) {
+                currentImageIndex = index;
+                updateSlider();
+            }
+
+            // 이벤트 리스너 등록
+            if (prevBtn) {
+                prevBtn.addEventListener("click", prevImage);
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener("click", nextImage);
+            }
+
+            // 인디케이터 클릭 이벤트
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener("click", () => goToImage(index));
+            });
+
+            // 터치 지원 (모바일)
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            slider.addEventListener(
+                "touchstart",
+                (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                },
+                { passive: true }
+            );
+
+            slider.addEventListener(
+                "touchend",
+                (e) => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    const touchDiff = touchStartX - touchEndX;
+                    const minSwipeDistance = 50;
+
+                    if (Math.abs(touchDiff) > minSwipeDistance) {
+                        if (touchDiff > 0) {
+                            nextImage(); // 왼쪽으로 스와이프 - 다음 이미지
+                        } else {
+                            prevImage(); // 오른쪽으로 스와이프 - 이전 이미지
+                        }
+                    }
+                },
+                { passive: true }
+            );
+
+            // 키보드 지원
+            slider.addEventListener("keydown", (e) => {
+                if (e.key === "ArrowLeft") {
+                    e.preventDefault();
+                    prevImage();
+                } else if (e.key === "ArrowRight") {
+                    e.preventDefault();
+                    nextImage();
+                }
+            });
+
+            // 슬라이더에 포커스 가능하도록 설정
+            slider.setAttribute("tabindex", "0");
+
+            // 자동 슬라이드 (선택사항 - 3장 이상일 때만)
+            if (images.length > 2) {
+                let autoSlideInterval;
+
+                function startAutoSlide() {
+                    autoSlideInterval = setInterval(nextImage, 5000); // 5초마다
+                }
+
+                function stopAutoSlide() {
+                    clearInterval(autoSlideInterval);
+                }
+
+                // 마우스 호버 시 자동 슬라이드 정지
+                slider.parentElement.addEventListener(
+                    "mouseenter",
+                    stopAutoSlide
+                );
+                slider.parentElement.addEventListener(
+                    "mouseleave",
+                    startAutoSlide
+                );
+
+                // 초기 자동 슬라이드 시작
+                startAutoSlide();
+            }
+
+            // 초기 상태 설정
+            updateSlider();
+        });
+    }
+
     // Initialize the application
     init();
+
+    // DOM이 로드된 후 이미지 슬라이더 초기화
+    document.addEventListener("DOMContentLoaded", initImageSliders);
+
+    // 이미 로드된 경우에도 실행
+    if (document.readyState !== "loading") {
+        initImageSliders();
+    }
 
     // Export functions for potential external use
     window.RobotFashionShow = {
@@ -1044,5 +1191,6 @@
         goToSlide,
         pauseAutoSlide,
         resumeAutoSlide,
+        initImageSliders,
     };
 })();
