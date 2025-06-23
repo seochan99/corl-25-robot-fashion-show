@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- 메인 페이지 -->
+  <url>
+    <loc>https://corl25-fashion-show.netlify.app/</loc>
+    <lastmod>2025-01-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://corl25-fashion-show.netlify.app/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://corl25-fashion-show.netlify.app/?lang=ko"/>
+  </url>
+
+  <!-- 섹션별 앵커 링크들 -->
+  <url>
+    <loc>https://corl25-fashion-show.netlify.app/#landing</loc>
+    <lastmod>2025-01-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://corl25-fashion-show.netlify.app/#artists</loc>
+    <lastmod>2025-01-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://corl25-fashion-show.netlify.app/#info</loc>
+    <lastmod>2025-01-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset> 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-lang="en">
+<html lang="en" data-lang="en" prefix="og: https://ogp.me/ns#">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,10 +11,45 @@
             data-i18n="description"
             content="Discover emerging cross-species fashion concepts at Robot Fashion Show 2025, staged during CoRL '25 & Humanoids '25 in Seoul."
         />
+        <meta
+            name="keywords"
+            content="Robot Fashion Show, CoRL 2025, Humanoids 2025, Cross-species fashion, Haute couture, Robotics, Fashion technology, Seoul conference, AI fashion, Wearable robotics"
+        />
+        <meta name="author" content="CoRL 2025 & Humanoids 2025" />
+        <meta
+            name="robots"
+            content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+        />
+        <meta name="googlebot" content="index, follow" />
+        <meta name="google-site-verification" content="" />
+        <link rel="canonical" href="https://corl25-fashion-show.netlify.app/" />
+        <link
+            rel="alternate"
+            hreflang="en"
+            href="https://corl25-fashion-show.netlify.app/?lang=en"
+        />
+        <link
+            rel="alternate"
+            hreflang="ko"
+            href="https://corl25-fashion-show.netlify.app/?lang=ko"
+        />
+        <link
+            rel="alternate"
+            hreflang="x-default"
+            href="https://corl25-fashion-show.netlify.app/"
+        />
+        <meta name="geo.region" content="KR-11" />
+        <meta name="geo.placename" content="Seoul" />
+        <meta name="geo.position" content="37.5665;126.9780" />
+        <meta name="ICBM" content="37.5665, 126.9780" />
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="" />
+        <meta
+            property="og:url"
+            content="https://corl25-fashion-show.netlify.app/"
+        />
+        <meta property="og:site_name" content="Robot Fashion Show 2025" />
         <meta
             property="og:title"
             data-i18n="title"
@@ -25,11 +60,22 @@
             data-i18n="description"
             content="Discover emerging cross-species fashion concepts at Robot Fashion Show 2025, staged during CoRL '25 & Humanoids '25 in Seoul."
         />
-        <meta property="og:image" content="" />
+        <meta
+            property="og:image"
+            content="https://corl25-fashion-show.netlify.app/assets/logo.png"
+        />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:locale:alternate" content="ko_KR" />
 
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="" />
+        <meta
+            property="twitter:url"
+            content="https://corl25-fashion-show.netlify.app/"
+        />
+        <meta property="twitter:site" content="@CoRL2025" />
         <meta
             property="twitter:title"
             data-i18n="title"
@@ -40,7 +86,10 @@
             data-i18n="description"
             content="Discover emerging cross-species fashion concepts at Robot Fashion Show 2025, staged during CoRL '25 & Humanoids '25 in Seoul."
         />
-        <meta property="twitter:image" content="" />
+        <meta
+            property="twitter:image"
+            content="https://corl25-fashion-show.netlify.app/assets/logo.png"
+        />
 
         <link rel="stylesheet" href="styles/style.css" />
         <link
@@ -119,6 +168,112 @@
             content="assets/favicon/ms-icon-144x144.png"
         />
         <meta name="theme-color" content="#ffffff" />
+
+        <!-- 구조화된 데이터 (Schema.org JSON-LD) -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "Event",
+                "name": "Robot Fashion Show 2025",
+                "alternateName": "로봇 패션쇼 2025",
+                "description": "A cross-species haute couture experience bridging robotics and fashion at CoRL '25 & Humanoids '25 in Seoul",
+                "startDate": "2025-09-30T10:00:00+09:00",
+                "endDate": "2025-09-30T18:00:00+09:00",
+                "eventStatus": "https://schema.org/EventScheduled",
+                "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+                "location": {
+                    "@type": "Place",
+                    "name": "COEX Convention & Exhibition Center",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "streetAddress": "513 Yeongdong-daero",
+                        "addressLocality": "Gangnam District",
+                        "addressRegion": "Seoul",
+                        "addressCountry": "KR"
+                    },
+                    "geo": {
+                        "@type": "GeoCoordinates",
+                        "latitude": "37.5116",
+                        "longitude": "127.0594"
+                    }
+                },
+                "organizer": [
+                    {
+                        "@type": "Organization",
+                        "name": "CoRL 2025",
+                        "url": "https://www.corl.org/"
+                    },
+                    {
+                        "@type": "Organization",
+                        "name": "Humanoids 2025"
+                    }
+                ],
+                "performer": [
+                    {
+                        "@type": "Person",
+                        "name": "권병준",
+                        "alternateName": "Byungjun Kwon",
+                        "nationality": "KR"
+                    },
+                    {
+                        "@type": "Person",
+                        "name": "Hyun Parke",
+                        "nationality": ["KR", "US"]
+                    },
+                    {
+                        "@type": "Person",
+                        "name": "Young Ah Seong",
+                        "nationality": "JP"
+                    },
+                    {
+                        "@type": "Person",
+                        "name": "Deborah Won",
+                        "nationality": "US"
+                    },
+                    {
+                        "@type": "Person",
+                        "name": "Dennis Hong",
+                        "nationality": "US"
+                    }
+                ],
+                "url": "https://corl25-fashion-show.netlify.app/",
+                "image": "https://corl25-fashion-show.netlify.app/assets/logo.png",
+                "offers": {
+                    "@type": "Offer",
+                    "availability": "https://schema.org/InStock",
+                    "price": "0",
+                    "priceCurrency": "USD",
+                    "validFrom": "2025-01-01"
+                },
+                "inLanguage": ["en", "ko"],
+                "keywords": "robot fashion, robotics, haute couture, cross-species fashion, AI fashion, wearable technology"
+            }
+        </script>
+
+        <!-- 웹사이트 구조화된 데이터 -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": "Robot Fashion Show 2025",
+                "alternateName": "로봇 패션쇼 2025",
+                "url": "https://corl25-fashion-show.netlify.app/",
+                "description": "Cross-species haute couture experience bridging robotics and fashion",
+                "inLanguage": ["en", "ko"],
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "CoRL 2025 & Humanoids 2025"
+                },
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": {
+                        "@type": "EntryPoint",
+                        "urlTemplate": "https://corl25-fashion-show.netlify.app/?q={search_term_string}"
+                    },
+                    "query-input": "required name=search_term_string"
+                }
+            }
+        </script>
     </head>
     <body>
         <!-- Navigation -->

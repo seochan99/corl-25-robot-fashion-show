@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://corl25-fashion-show.netlify.app/sitemap.xml
+
+# setting
+Crawl-delay: 1
+
+# etc 
+Disallow: /scripts/
+Disallow: /*.js$
+Disallow: /*.css$ 
