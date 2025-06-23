@@ -960,7 +960,7 @@
         );
     }
 
-    // 아티스트 섹션 애니메이션 초기화
+    // 아티스트 섹션 애니메이션 초기화 - 스크롤할 때마다 반복!
     function initArtistAnimations() {
         // Intersection Observer를 사용하여 각 아티스트 섹션이 뷰포트에 들어올 때 애니메이션 트리거
         const observerOptions = {
@@ -989,9 +989,17 @@
                         }, index * 100); // 100ms씩 순차 애니메이션
                     });
                 } else {
-                    // 섹션이 뷰포트를 벗어날 때 - 애니메이션 리셋 (선택사항)
-                    // section.classList.remove('in-view');
-                    // 한번 나타난 애니메이션은 유지하고 싶다면 위 줄을 주석 처리
+                    // 섹션이 뷰포트를 벗어날 때 - 애니메이션 리셋해서 다시 들어올 때 반복되도록!
+                    section.classList.remove("in-view");
+
+                    // 개별 요소들도 애니메이션 클래스 제거
+                    const elements = section.querySelectorAll(
+                        ".profile-image, .artist-name, .artist-career, .work-image, .artist-description p"
+                    );
+                    elements.forEach((element) => {
+                        element.classList.remove("animate-in");
+                        element.style.animationDelay = "";
+                    });
                 }
             });
         }, observerOptions);
@@ -1002,7 +1010,7 @@
             observer.observe(section);
         });
 
-        // 아티스트 인트로 섹션도 관찰
+        // 아티스트 인트로 섹션도 관찰 - 이것도 반복되도록!
         const introSection = document.querySelector(".artists-intro");
         if (introSection) {
             const introObserver = new IntersectionObserver(
@@ -1010,6 +1018,9 @@
                     entries.forEach((entry) => {
                         if (entry.isIntersecting) {
                             entry.target.classList.add("animate-intro");
+                        } else {
+                            // 인트로도 다시 들어올 때 반복되도록
+                            entry.target.classList.remove("animate-intro");
                         }
                     });
                 },
