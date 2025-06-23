@@ -32,7 +32,7 @@
             "artist-2-education":
                 "BFA School of the Art Institute of Chicago, MS MIT",
             "artist-2-career":
-                "Research Associate at Carnegie Mellon University (2024~)",
+                "Research Associate at Carnegie Mellon University",
             "artist-2-specialty":
                 "Interdisciplinary artist exploring pneumatic structures, inflatable objects, and dimensional display systems. Known for innovative work in air-reinforced structures and additive manufacturing technologies",
             "work-2-title": "3D Structural Pneumatic Inflation Study (2020)",
@@ -120,7 +120,7 @@
             "artist-2-name": "Hyun Parke",
             "artist-2-achievement": "아르스 일렉트로니카 뮤지엄 상설전시 작가",
             "artist-2-education": "시카고 아트 인스티튜트 BFA, MIT MS",
-            "artist-2-career": "카네기 멜론 대학교 연구원 (2024~)",
+            "artist-2-career": "카네기 멜론 대학교 연구원",
             "artist-2-specialty":
                 "공압 구조물, 팽창 가능한 오브젝트, 차원적 디스플레이 시스템을 탐구하는 학제간 아티스트. 공기 강화 구조물과 적층 제조 기술 분야의 혁신적 작업으로 유명",
             "work-2-title": "3차원 구조적 공압 팽창 연구 (2020)",

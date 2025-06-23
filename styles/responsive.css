@@ -57,22 +57,65 @@
     }
 
     .artist-images {
-        flex-direction: row;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
         gap: 15px;
-        margin-bottom: 15px;
-        flex-wrap: wrap;
+        margin-bottom: 20px;
     }
 
     .artist-portrait {
         flex: none;
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
     }
 
     .artist-work {
-        width: 120px;
-        height: 120px;
+        width: 100%;
+        max-width: 250px;
+        height: 140px;
+        margin: 0 auto;
+    }
+
+    .artist-header {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        text-align: center;
+        padding-bottom: 15px;
+    }
+
+    .artist-name {
+        font-size: 1.3rem;
+    }
+
+    .artist-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .artist-link {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+        border-radius: 20px;
+        background: rgba(69, 51, 74, 0.15);
+        border: 1px solid rgba(69, 51, 74, 0.3);
+    }
+
+    .artist-bio {
+        text-align: center;
+        gap: 15px;
+    }
+
+    .artist-bio p {
+        font-size: 0.85rem;
+        line-height: 1.6;
+        margin-bottom: 15px;
+        padding: 15px;
+        background: rgba(42, 42, 42, 0.2);
+        border-radius: 8px;
+        border-left: 3px solid #45334a;
     }
 
     .work-caption {
@@ -173,27 +216,32 @@
 
     .artist-card {
         flex: 0 0 280px;
-        min-height: 450px;
+        min-height: 500px;
     }
 
     .artist-layout {
-        padding: 15px;
-        gap: 15px;
+        padding: 20px;
+        gap: 20px;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
     }
 
     .artist-images {
         flex-direction: column;
-        gap: 8px;
-        margin-bottom: 12px;
-    }
-
-    .artist-portrait {
-        width: 80px;
-        height: 80px;
+        gap: 0;
+        margin-bottom: 20px;
     }
 
     .artist-work {
-        height: 80px;
+        width: 100%;
+        height: 180px;
+        margin-bottom: 15px;
+        order: 1;
+    }
+
+    .artist-portrait {
+        display: none; /* 모바일에서는 헤더에서 보여줄 예정 */
     }
 
     .mockup-work {
@@ -201,49 +249,94 @@
     }
 
     .artist-header {
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         gap: 12px;
-        text-align: center;
+        text-align: left;
+        border-bottom: 1px solid #333;
+        padding-bottom: 15px;
+        justify-content: flex-start;
+    }
+
+    /* 모바일 프로필 이미지 - 실제 img 태그로 추가할 예정 */
+    .mobile-profile-img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #45334a;
+        flex-shrink: 0;
+        display: block;
+    }
+
+    .artist-name-wrapper {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .artist-name {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         line-height: 1.3;
+        margin-bottom: 2px;
+        margin: 0;
     }
 
-    .artist-name-en {
+    .artist-country {
+        font-size: 0.8rem;
+        opacity: 0.7;
+        margin-left: 0;
+        margin-top: 2px;
         display: block;
-        margin-top: 4px;
-        font-size: 0.85rem;
-        opacity: 0.8;
     }
 
     .artist-links {
         width: 100%;
-        justify-content: center;
-        flex-direction: column;
+        justify-content: flex-start;
+        flex-wrap: wrap;
         gap: 8px;
+        margin-top: 8px;
+        order: 2;
     }
 
     .artist-link {
-        width: 100%;
+        flex: 0 0 auto;
+        min-width: 120px;
         text-align: center;
-        padding: 10px 16px;
+        padding: 8px 12px;
         font-size: 0.75rem;
+        border-radius: 20px;
+        background: rgba(69, 51, 74, 0.2);
+        border: 1px solid rgba(69, 51, 74, 0.4);
     }
 
     .artist-bio {
-        text-align: center;
+        text-align: left;
+        gap: 12px;
+        margin-top: 20px;
     }
 
     .artist-bio p {
         font-size: 0.8rem;
         line-height: 1.5;
         margin-bottom: 12px;
-        padding: 10px;
+        padding: 12px;
         background: rgba(42, 42, 42, 0.3);
-        border-radius: 6px;
+        border-radius: 8px;
+        border-left: 3px solid #45334a;
+    }
+
+    /* Artist name and country adjustments */
+    .artist-name span {
+        display: block;
+        text-align: center;
+    }
+
+    .artist-country {
+        margin-top: 5px;
+        font-size: 0.75rem;
+        color: #8c6c9c;
     }
 
     .artist-achievement {
