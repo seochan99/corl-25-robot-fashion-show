@@ -12,6 +12,7 @@
 /* === LAYOUT MODULES === */
 @import url("./hero.css"); /* Hero Section with Effects */
 @import url("./carousel.css"); /* Artists Carousel */
+@import url("./artist-showcase.css"); /* New Fullscreen Artist Showcase */
 @import url("./info.css"); /* Event Information Section */
 @import url("./footer.css"); /* Footer */
 
@@ -37,3 +38,83 @@
  * ✅ Logical separation of concerns
  * ✅ Easier to add new features
  */
+
+/* Enhanced smooth scrolling configuration */
+html {
+    scroll-snap-type: y proximity; /* proximity로 변경하여 더 부드럽게 */
+    scroll-behavior: smooth;
+    scroll-padding-top: 0px;
+    /* Webkit-specific smooth scrolling enhancement */
+    -webkit-overflow-scrolling: touch;
+    /* 더 부드러운 스크롤을 위한 추가 설정 */
+    scroll-padding: 0;
+    scroll-margin: 0;
+}
+
+body {
+    font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    line-height: 1.6;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    /* Enhanced scrolling performance */
+    will-change: scroll-position;
+    /* 더 부드러운 스크롤을 위한 설정 */
+    scroll-padding-top: 0;
+    overscroll-behavior: none;
+}
+
+/* Natural smooth scrolling for all sections */
+section {
+    transition: opacity 0.3s ease-in-out;
+    scroll-snap-align: start;
+    /* scroll-snap-stop: always; - 제거하여 자연스러운 스크롤 허용 */
+    /* Smooth section transitions */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Info 섹션은 스크롤 스냅 제외하여 자유롭게 스크롤 가능하도록 */
+.info-section {
+    scroll-snap-align: none;
+}
+
+/* Smooth scroll snap with natural feel */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-snap-type: y proximity; /* proximity로 변경하여 더 부드럽게 */
+    }
+
+    section {
+        scroll-snap-align: start;
+        /* scroll-snap-stop 제거 */
+    }
+
+    /* Info 섹션은 스크롤 스냅 제외 */
+    .info-section {
+        scroll-snap-align: none;
+    }
+}
+
+/* Respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-snap-type: none;
+        scroll-behavior: auto;
+    }
+
+    section {
+        scroll-snap-align: none;
+    }
+
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

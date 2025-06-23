@@ -81,7 +81,7 @@
             "info-organizer": "CoRL '25 & Humanoids '25",
             "info-chairs-title": "Contact",
             "info-chairs": "Jean Oh (CMU)",
-            "info-chairs-detail": "jeanoh@cmu.edu",
+            "info-chairs-detail": "hpark3@andrew.cmu.edu",
             "info-cta-title": "Call for Participation",
             "info-cta-button": "Submit Proposal",
             "info-cta-deadline": "Deadline: July 15, 2025",
@@ -92,24 +92,25 @@
             "footer-press": "Press",
             "footer-sponsors": "Sponsors",
             "info-contact-title": "Contact",
-            "info-contact": "Jean Oh (CMU)",
-            "info-contact-email": "jeanoh@cmu.edu",
+            "info-contact": "Hyun Park",
+            "info-contact-email": "hpark3@andrew.cmu.edu",
             "info-contact-subject": "[RoboFashion25]",
         },
         ko: {
-            title: "로봇 패션쇼 2025 - 종간 오뜨 꾸뛰르",
+            title: "Robot Fashion Show 2025 - Cross-Species Haute Couture",
             description:
                 "CoRL '25 & Humanoids '25 서울에서 개최되는 로봇 패션쇼 2025에서 새로운 종간 패션 개념을 발견해보세요.",
-            "nav-home": "홈",
-            "nav-artists": "아티스트",
-            "nav-info": "정보",
-            "lang-toggle": "언어",
-            "hero-title": "로봇 패션쇼 2025",
-            "hero-tagline": "로봇공학과 패션을 연결하는 종간 패션 쇼",
+            "nav-home": "Home",
+            "nav-artists": "Artists",
+            "nav-info": "Info",
+            "lang-toggle": "Language",
+            "hero-title": "Robot Fashion Show 2025",
+            "hero-tagline":
+                "A cross-species haute couture experience bridging robotics and fashion",
             "scroll-hint": "SCROLL TO EXPLORE",
-            "artists-title": "주요 아티스트 & 연구자",
+            "artists-title": "Featured Artists & Researchers",
             "artist-1-name": "Byungjun Kwon",
-            "artist-1-achievement": "올해의 작가상 2023 수상",
+            "artist-1-achievement": "Korea Artist Prize 2023 Winner",
             "artist-1-education":
                 "서울대 불문과 학사/ 헤이그 왕립 음악원 아트 사이언스 석사",
             "artist-1-career":
@@ -165,7 +166,7 @@
             "info-organizer": "CoRL '25 & Humanoids '25",
             "info-chairs-title": "연락처",
             "info-chairs": "Jean Oh (CMU)",
-            "info-chairs-detail": "jeanoh@cmu.edu",
+            "info-chairs-detail": "hpark3@andrew.cmu.edu",
             "info-cta-title": "참가 신청",
             "info-cta-button": "제안서 제출",
             "info-cta-deadline": "마감일: 2025년 7월 15일",
@@ -175,8 +176,8 @@
             "footer-press": "Press",
             "footer-sponsors": "Sponsors",
             "info-contact-title": "Contact",
-            "info-contact": "Jean Oh (CMU)",
-            "info-contact-email": "jeanoh@cmu.edu",
+            "info-contact": "Hyun Park",
+            "info-contact-email": "hpark3@andrew.cmu.edu",
             "info-contact-subject": "[RoboFashion25]",
         },
     };
@@ -186,6 +187,11 @@
     let currentSlide = 0;
     let autoSlideInterval;
     let isAutoSliding = true;
+    let lastScrollY = 0;
+    let navbarHidden = false;
+    let currentSection = 0;
+    let isScrolling = false;
+    let scrollTimeout;
 
     // DOM elements
     let carousel, carouselTrack, indicators, prevBtn, nextBtn, langToggle;
@@ -216,6 +222,11 @@
         initNavigation();
         initLanguageToggle();
         initScrollEffects();
+        initNavbarScroll();
+        initArtistShowcase();
+        initHeroVideo();
+        initSectionSnapping();
+        initArtistAnimations();
 
         // Apply initial language
         applyLanguage();
@@ -287,20 +298,54 @@
             });
         });
 
-        // Highlight active section on scroll
-        window.addEventListener("scroll", throttle(updateActiveNavLink, 100));
+        // Highlight active section on scroll with optimized performance
+        window.addEventListener("scroll", throttle(updateActiveNavLink, 50), {
+            passive: true,
+        });
     }
 
     function smoothScrollTo(target) {
         const element = document.querySelector(target);
         if (element) {
-            const navHeight = document.querySelector(".nav").offsetHeight;
+            const navHeight = document.querySelector(".nav")?.offsetHeight || 0;
             const elementPosition = element.offsetTop - navHeight;
 
-            window.scrollTo({
-                top: elementPosition,
-                behavior: "smooth",
-            });
+            // Enhanced smooth scrolling with better performance
+            if ("scrollBehavior" in document.documentElement.style) {
+                window.scrollTo({
+                    top: elementPosition,
+                    behavior: "smooth",
+                });
+            } else {
+                // Fallback for older browsers
+                const startPosition = window.pageYOffset;
+                const distance = elementPosition - startPosition;
+                const duration = 800;
+                let start = null;
+
+                function animation(currentTime) {
+                    if (start === null) start = currentTime;
+                    const timeElapsed = currentTime - start;
+                    const run = ease(
+                        timeElapsed,
+                        startPosition,
+                        distance,
+                        duration
+                    );
+                    window.scrollTo(0, run);
+                    if (timeElapsed < duration)
+                        requestAnimationFrame(animation);
+                }
+
+                function ease(t, b, c, d) {
+                    t /= d / 2;
+                    if (t < 1) return (c / 2) * t * t + b;
+                    t--;
+                    return (-c / 2) * (t * (t - 2) - 1) + b;
+                }
+
+                requestAnimationFrame(animation);
+            }
         }
     }
 
@@ -580,6 +625,403 @@
         setTimeout(() => {
             document.body.removeChild(announcement);
         }, 1000);
+    }
+
+    // Navbar scroll behavior
+    function initNavbarScroll() {
+        const navbar = document.querySelector(".nav");
+        if (!navbar) return;
+
+        // Add transition for smooth animation
+        navbar.style.transition = "transform 0.3s ease-in-out";
+
+        window.addEventListener(
+            "scroll",
+            throttle(() => {
+                const currentScrollY = window.scrollY;
+
+                // Don't hide navbar if at top of page
+                if (currentScrollY < 100) {
+                    showNavbar(navbar);
+                    return;
+                }
+
+                // Hide navbar when scrolling down, show when scrolling up
+                if (currentScrollY > lastScrollY && !navbarHidden) {
+                    hideNavbar(navbar);
+                } else if (currentScrollY < lastScrollY && navbarHidden) {
+                    showNavbar(navbar);
+                }
+
+                lastScrollY = currentScrollY;
+            }, 16), // ~60fps for smoother performance
+            { passive: true }
+        );
+    }
+
+    function hideNavbar(navbar) {
+        navbar.style.transform = "translateY(-100%)";
+        navbarHidden = true;
+    }
+
+    function showNavbar(navbar) {
+        navbar.style.transform = "translateY(0)";
+        navbarHidden = false;
+    }
+
+    // Artist Showcase functionality
+    function initArtistShowcase() {
+        const showcaseContainer = document.querySelector(".artists-showcase");
+        if (!showcaseContainer) return;
+
+        // Intersection Observer for animations
+        const showcaseObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("in-view");
+
+                        // Let CSS animations handle the runway effect
+                        // No need for manual JavaScript animation
+                    }
+                });
+            },
+            {
+                threshold: 0.2,
+                rootMargin: "0px 0px -50px 0px",
+            }
+        );
+
+        // Observe all artist showcase sections
+        const artistSections = document.querySelectorAll(".artist-showcase");
+        artistSections.forEach((section) => {
+            showcaseObserver.observe(section);
+        });
+
+        // Let natural scrolling work without interference
+
+        console.log(
+            "Artist Showcase initialized with",
+            artistSections.length,
+            "sections"
+        );
+    }
+
+    // Hero video functionality
+    function initHeroVideo() {
+        const heroVideo = document.querySelector(".hero-video");
+        if (heroVideo) {
+            // Loop the video
+            heroVideo.loop = true;
+
+            // Ensure video plays on mobile
+            heroVideo.addEventListener("loadeddata", () => {
+                heroVideo.play().catch((e) => {
+                    console.log("Video autoplay failed:", e);
+                });
+            });
+
+            // Handle video errors
+            heroVideo.addEventListener("error", (e) => {
+                console.log("Video error:", e);
+                // Fallback to background gradient if video fails
+                const hero = document.querySelector(".hero");
+                if (hero) {
+                    hero.style.background =
+                        "linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 50%, #0d0d0d 100%)";
+                }
+            });
+        }
+    }
+
+    // Section snapping functionality for enhanced scroll behavior
+    function initSectionSnapping() {
+        const sections = document.querySelectorAll("section");
+        if (sections.length === 0) return;
+
+        let isSnapping = false;
+        let scrollTimer;
+        let wheelEventCount = 0;
+        let lastWheelTime = 0;
+
+        // Track current section
+        function getCurrentSectionIndex() {
+            const scrollPosition = window.scrollY + 100; // Small offset for better detection
+            let closestSection = 0;
+            let closestDistance = Infinity;
+
+            for (let i = 0; i < sections.length; i++) {
+                const section = sections[i];
+                const sectionTop = section.offsetTop;
+                const distance = Math.abs(scrollPosition - sectionTop);
+
+                if (distance < closestDistance) {
+                    closestDistance = distance;
+                    closestSection = i;
+                }
+            }
+
+            return closestSection;
+        }
+
+        // Smooth scroll to specific section
+        function scrollToSection(index) {
+            if (index < 0 || index >= sections.length) return;
+
+            isSnapping = true;
+            const targetSection = sections[index];
+
+            window.scrollTo({
+                top: targetSection.offsetTop,
+                behavior: "smooth",
+            });
+
+            // Reset snapping flag after animation
+            setTimeout(() => {
+                isSnapping = false;
+                currentSection = index;
+            }, 1000); // 애니메이션 시간을 좀 더 길게
+        }
+
+        // Enhanced wheel event handling for section-by-section scrolling
+        function handleWheel(e) {
+            const currentIndex = getCurrentSectionIndex();
+            const currentSection = sections[currentIndex];
+
+            // Info 섹션에서는 자유 스크롤 허용
+            if (
+                currentSection &&
+                currentSection.classList.contains("info-section")
+            ) {
+                return; // info 섹션에서는 기본 스크롤 허용
+            }
+
+            if (isSnapping) {
+                e.preventDefault();
+                return;
+            }
+
+            const now = Date.now();
+            const timeDiff = now - lastWheelTime;
+
+            // Reset wheel count if too much time has passed
+            if (timeDiff > 200) {
+                // 시간을 좀 더 넉넉하게
+                wheelEventCount = 0;
+            }
+
+            wheelEventCount++;
+            lastWheelTime = now;
+
+            // Only trigger section change after multiple wheel events (prevents oversensitive scrolling)
+            if (wheelEventCount < 3) {
+                // 더 많은 휠 이벤트 필요
+                e.preventDefault();
+                return;
+            }
+
+            e.preventDefault();
+            wheelEventCount = 0;
+
+            const direction = e.deltaY > 0 ? 1 : -1;
+            const nextIndex = currentIndex + direction;
+
+            // 다음 섹션이 info 섹션인 경우 특별 처리
+            if (nextIndex >= 0 && nextIndex < sections.length) {
+                const nextSection = sections[nextIndex];
+                if (
+                    nextSection &&
+                    nextSection.classList.contains("info-section")
+                ) {
+                    // info 섹션으로 이동할 때는 부드럽게 스크롤
+                    window.scrollTo({
+                        top: nextSection.offsetTop,
+                        behavior: "smooth",
+                    });
+                } else {
+                    scrollToSection(nextIndex);
+                }
+            }
+        }
+
+        // Touch handling for mobile section snapping
+        let touchStartY = 0;
+        let touchEndY = 0;
+        let isTouching = false;
+
+        function handleTouchStart(e) {
+            if (isSnapping) return;
+            touchStartY = e.touches[0].clientY;
+            isTouching = true;
+        }
+
+        function handleTouchEnd(e) {
+            if (!isTouching || isSnapping) return;
+
+            touchEndY = e.changedTouches[0].clientY;
+            const touchDiff = touchStartY - touchEndY;
+            const minSwipeDistance = 50;
+
+            if (Math.abs(touchDiff) > minSwipeDistance) {
+                const currentIndex = getCurrentSectionIndex();
+                const direction = touchDiff > 0 ? 1 : -1;
+                const nextIndex = currentIndex + direction;
+
+                if (nextIndex >= 0 && nextIndex < sections.length) {
+                    const nextSection = sections[nextIndex];
+                    if (
+                        nextSection &&
+                        nextSection.classList.contains("info-section")
+                    ) {
+                        // info 섹션으로 이동할 때는 부드럽게 스크롤
+                        window.scrollTo({
+                            top: nextSection.offsetTop,
+                            behavior: "smooth",
+                        });
+                    } else {
+                        scrollToSection(nextIndex);
+                    }
+                }
+            }
+
+            isTouching = false;
+        }
+
+        // Keyboard navigation enhancement
+        function handleKeydown(e) {
+            if (isSnapping) return;
+
+            const currentIndex = getCurrentSectionIndex();
+            let nextIndex = currentIndex;
+
+            switch (e.key) {
+                case "ArrowDown":
+                case "PageDown":
+                case " ": // Space key
+                    e.preventDefault();
+                    nextIndex = currentIndex + 1;
+                    break;
+                case "ArrowUp":
+                case "PageUp":
+                    e.preventDefault();
+                    nextIndex = currentIndex - 1;
+                    break;
+                case "Home":
+                    e.preventDefault();
+                    nextIndex = 0;
+                    break;
+                case "End":
+                    e.preventDefault();
+                    nextIndex = sections.length - 1;
+                    break;
+            }
+
+            if (
+                nextIndex !== currentIndex &&
+                nextIndex >= 0 &&
+                nextIndex < sections.length
+            ) {
+                const nextSection = sections[nextIndex];
+                if (
+                    nextSection &&
+                    nextSection.classList.contains("info-section")
+                ) {
+                    // info 섹션으로 이동할 때는 부드럽게 스크롤
+                    window.scrollTo({
+                        top: nextSection.offsetTop,
+                        behavior: "smooth",
+                    });
+                } else {
+                    scrollToSection(nextIndex);
+                }
+            }
+        }
+
+        // Initialize current section
+        currentSection = getCurrentSectionIndex();
+
+        // Add event listeners
+        window.addEventListener("wheel", handleWheel, { passive: false });
+        window.addEventListener("touchstart", handleTouchStart, {
+            passive: true,
+        });
+        window.addEventListener("touchend", handleTouchEnd, { passive: true });
+        window.addEventListener("keydown", handleKeydown, { passive: false });
+
+        // Handle browser back/forward navigation
+        window.addEventListener("popstate", () => {
+            currentSection = getCurrentSectionIndex();
+        });
+
+        console.log(
+            "Section snapping initialized with",
+            sections.length,
+            "sections"
+        );
+    }
+
+    // 아티스트 섹션 애니메이션 초기화
+    function initArtistAnimations() {
+        // Intersection Observer를 사용하여 각 아티스트 섹션이 뷰포트에 들어올 때 애니메이션 트리거
+        const observerOptions = {
+            root: null,
+            rootMargin: "-10% 0px -10% 0px", // 뷰포트의 상하 10%를 제외한 영역에서 트리거
+            threshold: 0.3, // 요소의 30%가 보일 때 트리거
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                const section = entry.target;
+
+                if (entry.isIntersecting) {
+                    // 섹션이 뷰포트에 들어올 때 - 애니메이션 활성화
+                    section.classList.add("in-view");
+
+                    // 추가적인 샤랴라라~ 효과를 위한 순차 애니메이션
+                    const elements = section.querySelectorAll(
+                        ".profile-image, .artist-name, .artist-career, .work-image, .artist-description p"
+                    );
+
+                    elements.forEach((element, index) => {
+                        setTimeout(() => {
+                            element.style.animationDelay = `${index * 0.1}s`;
+                            element.classList.add("animate-in");
+                        }, index * 100); // 100ms씩 순차 애니메이션
+                    });
+                } else {
+                    // 섹션이 뷰포트를 벗어날 때 - 애니메이션 리셋 (선택사항)
+                    // section.classList.remove('in-view');
+                    // 한번 나타난 애니메이션은 유지하고 싶다면 위 줄을 주석 처리
+                }
+            });
+        }, observerOptions);
+
+        // 모든 아티스트 섹션을 관찰 대상으로 등록
+        const artistSections = document.querySelectorAll(".artist-showcase");
+        artistSections.forEach((section) => {
+            observer.observe(section);
+        });
+
+        // 아티스트 인트로 섹션도 관찰
+        const introSection = document.querySelector(".artists-intro");
+        if (introSection) {
+            const introObserver = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("animate-intro");
+                        }
+                    });
+                },
+                {
+                    root: null,
+                    rootMargin: "-20% 0px -20% 0px",
+                    threshold: 0.5,
+                }
+            );
+
+            introObserver.observe(introSection);
+        }
     }
 
     // Initialize the application

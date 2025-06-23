@@ -275,7 +275,7 @@
             }
         </script>
     </head>
-    <body>
+    <body style="background-color: #000000">
         <!-- Navigation -->
         <nav class="nav" role="navigation" aria-label="Main navigation">
             <div class="nav-container">
@@ -290,7 +290,7 @@
                     <a href="#landing" data-i18n="nav-home" class="nav-link"
                         >Home</a
                     >
-                    <a href="#artists" data-i18n="nav-artists" class="nav-link"
+                    <a href="#artist-1" data-i18n="nav-artists" class="nav-link"
                         >Artists</a
                     >
                     <a href="#info" data-i18n="nav-info" class="nav-link"
@@ -310,6 +310,12 @@
 
         <!-- Hero Section -->
         <section id="landing" class="hero" role="banner">
+            <!-- Background Video -->
+            <video class="hero-video" autoplay muted playsinline preload="auto">
+                <source src="assets/hero.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+
             <div class="hero-content">
                 <!-- <div class="hero-badge">
                     <span data-i18n="hero-badge">First Ever</span>
@@ -335,567 +341,508 @@
                 </div>
             </div>
             <div class="hero-overlay"></div>
-            <div class="hero-particles"></div>
-            <div class="circuit-pattern"></div>
         </section>
 
-        <!-- Artists Section -->
-        <section id="artists" class="artists-section">
-            <div class="container">
-                <h2 class="section-title" data-i18n="artists-title">
-                    Featured Artists & Researchers
-                </h2>
-                <div class="artists-grid">
-                    <!-- Artist 1: 권병준 -->
-                    <div class="artist-card">
-                        <div class="artist-layout">
-                            <div class="artist-images">
-                                <div class="artist-portrait">
-                                    <img
-                                        src="assets/artist/1.png"
-                                        alt="권병준 작가 사진"
-                                    />
-                                </div>
-                                <div class="artist-work">
-                                    <img
-                                        src="assets/robot/1.png"
-                                        alt="권병준 작가 작품"
-                                    />
-                                    <div class="work-caption">
-                                        <span data-i18n="work-1-title"
-                                            >On the Birds' Day (2024)</span
-                                        >
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="artist-info">
-                                <div class="artist-header">
-                                    <img
-                                        src="assets/artist/1.png"
-                                        alt="권병준 프로필"
-                                        class="mobile-profile-img"
-                                    />
-                                    <div class="artist-name-wrapper">
-                                        <h3 class="artist-name">
-                                            <span data-i18n="artist-1-name"
-                                                >권병준</span
-                                            >
-                                            <span class="artist-country"
-                                                >(KR)</span
-                                            >
-                                        </h3>
-                                    </div>
-                                    <a
-                                        href="https://byungjun.pe.kr/works/koreaartistprize"
-                                        target="_blank"
-                                        class="artist-link profile-link"
-                                        title="View Profile"
-                                    >
-                                        <svg
-                                            class="profile-icon"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                        >
-                                            <path
-                                                opacity="0.4"
-                                                d="M12.1605 10.87C12.0605 10.86 11.9405 10.86 11.8305 10.87C9.45055 10.79 7.56055 8.84 7.56055 6.44C7.56055 3.99 9.54055 2 12.0005 2C14.4505 2 16.4405 3.99 16.4405 6.44C16.4305 8.84 14.5405 10.79 12.1605 10.87Z"
-                                                stroke="currentColor"
-                                                stroke-width="1.5"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                            />
-                                            <path
-                                                d="M7.1607 14.56C4.7407 16.18 4.7407 18.82 7.1607 20.43C9.9107 22.27 14.4207 22.27 17.1707 20.43C19.5907 18.81 19.5907 16.17 17.1707 14.56C14.4307 12.73 9.9207 12.73 7.1607 14.56Z"
-                                                stroke="currentColor"
-                                                stroke-width="1.5"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                            />
-                                        </svg>
-                                    </a>
-                                </div>
-                                <div class="artist-bio">
-                                    <p
-                                        class="artist-achievement"
-                                        data-i18n="artist-1-achievement"
-                                    >
-                                        올해의 작가상 2023 수상
-                                    </p>
-                                    <p
-                                        class="artist-career"
-                                        data-i18n="artist-1-career"
-                                    >
-                                        네덜란드 전자악기 연구개발 기관 STEIM
-                                        하드웨어 엔지니어
-                                    </p>
-                                    <p
-                                        class="artist-education"
-                                        data-i18n="artist-1-education"
-                                    >
-                                        서울대 불문과 학사/ 헤이그 왕립 음악원
-                                        아트 사이언스 석사
-                                    </p>
-                                    <p
-                                        class="artist-specialty"
-                                        data-i18n="artist-1-specialty"
-                                    >
-                                        소리와 관련한 하드웨어 연구, 새로운 악기
-                                        무대장치를 개발 활용한 극적 장면을
-                                        연출하여 음악, 연극, 미술을 아우르는
-                                        뉴미디어 퍼포먼스
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+        <!-- Artists Section - 빈 섹션 제거 -->
+
+        <!-- Artist 1: 권병준 -->
+        <section id="artist-1" class="artist-showcase" data-artist="1">
+            <div class="showcase-background">
+                <img
+                    src="assets/robot/1.png"
+                    alt="권병준 작품 배경"
+                    class="background-work"
+                />
+                <div class="background-overlay"></div>
+            </div>
+            <div class="showcase-content">
+                <div class="artist-profile">
+                    <img
+                        src="assets/artist/1.png"
+                        alt="권병준"
+                        class="profile-image"
+                    />
+                    <div class="profile-info">
+                        <h3 class="artist-name">
+                            <span data-i18n="artist-1-name">권병준</span>
+                            <span class="artist-country">(KR)</span>
+                        </h3>
+                        <p class="artist-career" data-i18n="artist-1-career">
+                            네덜란드 전자악기 연구개발 기관 STEIM 하드웨어
+                            엔지니어
+                        </p>
+                        <p
+                            class="artist-achievement"
+                            data-i18n="artist-1-achievement"
+                        >
+                            올해의 작가상 2023 수상
+                        </p>
+                    </div>
+                </div>
+
+                <div class="artist-details">
+                    <div class="work-showcase">
+                        <img
+                            src="assets/robot/1.png"
+                            alt="On the Birds' Day"
+                            class="work-image"
+                        />
+                        <p class="work-title" data-i18n="work-1-title">
+                            On the Birds' Day (2024)
+                        </p>
                     </div>
 
-                    <!-- Artist 2: Hyun Parke -->
-                    <div class="artist-card">
-                        <div class="artist-layout">
-                            <div class="artist-images">
-                                <div class="artist-portrait">
-                                    <img
-                                        src="assets/artist/2.png"
-                                        alt="Hyun Parke Artist Photo"
-                                    />
-                                </div>
-                                <div class="artist-work">
-                                    <img
-                                        src="assets/robot/2.png"
-                                        alt="Hyun Parke Artist Work"
-                                    />
-                                    <div class="work-caption">
-                                        <span data-i18n="work-2-title"
-                                            >3D Structural Pneumatic Inflation
-                                            Study (2020)</span
-                                        >
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="artist-info">
-                                <div class="artist-header">
-                                    <img
-                                        src="assets/artist/2.png"
-                                        alt="Hyun Parke Profile"
-                                        class="mobile-profile-img"
-                                    />
-                                    <div class="artist-name-wrapper">
-                                        <h3 class="artist-name">
-                                            <span data-i18n="artist-2-name"
-                                                >Hyun Parke</span
-                                            >
-                                            <span class="artist-country"
-                                                >(KR/US)</span
-                                            >
-                                        </h3>
-                                    </div>
-                                    <a
-                                        href="https://www.hyunparke.com/works/3-dimensional-structural-pneumatic-inflation-study-2020"
-                                        target="_blank"
-                                        class="artist-link profile-link"
-                                        title="View Profile"
-                                    >
-                                        <svg
-                                            class="profile-icon"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                        >
-                                            <path
-                                                opacity="0.4"
-                                                d="M12.1605 10.87C12.0605 10.86 11.9405 10.86 11.8305 10.87C9.45055 10.79 7.56055 8.84 7.56055 6.44C7.56055 3.99 9.54055 2 12.0005 2C14.4505 2 16.4405 3.99 16.4405 6.44C16.4305 8.84 14.5405 10.79 12.1605 10.87Z"
-                                                stroke="currentColor"
-                                                stroke-width="1.5"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                            />
-                                            <path
-                                                d="M7.1607 14.56C4.7407 16.18 4.7407 18.82 7.1607 20.43C9.9107 22.27 14.4207 22.27 17.1707 20.43C19.5907 18.81 19.5907 16.17 17.1707 14.56C14.4307 12.73 9.9207 12.73 7.1607 14.56Z"
-                                                stroke="currentColor"
-                                                stroke-width="1.5"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                            />
-                                        </svg>
-                                    </a>
-                                </div>
-                                <div class="artist-bio">
-                                    <p
-                                        class="artist-achievement"
-                                        data-i18n="artist-2-achievement"
-                                    >
-                                        Ars Electronica Museum Permanent
-                                        Exhibition Artist
-                                    </p>
-                                    <p
-                                        class="artist-career"
-                                        data-i18n="artist-2-career"
-                                    >
-                                        Research Associate at Carnegie Mellon
-                                        University
-                                    </p>
-                                    <p
-                                        class="artist-education"
-                                        data-i18n="artist-2-education"
-                                    >
-                                        BFA School of the Art Institute of
-                                        Chicago, MS MIT
-                                    </p>
-                                    <p
-                                        class="artist-specialty"
-                                        data-i18n="artist-2-specialty"
-                                    >
-                                        Interdisciplinary artist exploring
-                                        pneumatic structures, inflatable
-                                        objects, and dimensional display
-                                        systems. Known for innovative work in
-                                        air-reinforced structures and additive
-                                        manufacturing technologies
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="artist-description">
+                        <p
+                            class="artist-education"
+                            data-i18n="artist-1-education"
+                        >
+                            서울대 불문과 학사/ 헤이그 왕립 음악원 아트 사이언스
+                            석사
+                        </p>
+                        <p
+                            class="artist-specialty"
+                            data-i18n="artist-1-specialty"
+                        >
+                            소리와 관련한 하드웨어 연구, 새로운 악기 무대장치를
+                            개발 활용한 극적 장면을 연출하여 음악, 연극, 미술을
+                            아우르는 뉴미디어 퍼포먼스
+                        </p>
+
+                        <a
+                            href="https://byungjun.pe.kr/works/koreaartistprize"
+                            target="_blank"
+                            class="profile-icon-btn"
+                            title="View Profile"
+                        >
+                            <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                            >
+                                <path
+                                    opacity="0.4"
+                                    d="M12.1605 10.87C12.0605 10.86 11.9405 10.86 11.8305 10.87C9.45055 10.79 7.56055 8.84 7.56055 6.44C7.56055 3.99 9.54055 2 12.0005 2C14.4505 2 16.4405 3.99 16.4405 6.44C16.4305 8.84 14.5405 10.79 12.1605 10.87Z"
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                                <path
+                                    d="M7.1607 14.56C4.7407 16.18 4.7407 18.82 7.1607 20.43C9.9107 22.27 14.4207 22.27 17.1707 20.43C19.5907 18.81 19.5907 16.17 17.1707 14.56C14.4307 12.73 9.9207 12.73 7.1607 14.56Z"
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Artist 2: Hyun Parke -->
+        <section id="artist-2" class="artist-showcase" data-artist="2">
+            <div class="showcase-background">
+                <img
+                    src="assets/robot/2.png"
+                    alt="Hyun Parke 작품 배경"
+                    class="background-work"
+                />
+                <div class="background-overlay"></div>
+            </div>
+            <div class="showcase-content">
+                <div class="artist-profile">
+                    <img
+                        src="assets/artist/2.png"
+                        alt="Hyun Parke"
+                        class="profile-image"
+                    />
+                    <div class="profile-info">
+                        <h3 class="artist-name">
+                            <span data-i18n="artist-2-name">Hyun Parke</span>
+                            <span class="artist-country">(KR/US)</span>
+                        </h3>
+                        <p class="artist-career" data-i18n="artist-2-career">
+                            Research Associate at Carnegie Mellon University
+                        </p>
+                        <p
+                            class="artist-achievement"
+                            data-i18n="artist-2-achievement"
+                        >
+                            Ars Electronica Museum Permanent Exhibition Artist
+                        </p>
+                    </div>
+                </div>
+
+                <div class="artist-details">
+                    <div class="work-showcase">
+                        <img
+                            src="assets/robot/2.png"
+                            alt="3D Structural Pneumatic Inflation Study"
+                            class="work-image"
+                        />
+                        <p class="work-title" data-i18n="work-2-title">
+                            3D Structural Pneumatic Inflation Study (2020)
+                        </p>
                     </div>
 
-                    <!-- Artist 3: Young Ah Seong -->
-                    <div class="artist-card">
-                        <div class="artist-layout">
-                            <div class="artist-images">
-                                <div class="artist-portrait">
-                                    <img
-                                        src="assets/artist/3.png"
-                                        alt="Young Ah Seong Artist Photo"
-                                    />
-                                </div>
-                                <div class="artist-work">
-                                    <img
-                                        src="assets/robot/3.png"
-                                        alt="Young Ah Seong Artist Work"
-                                    />
-                                    <div class="work-caption">
-                                        <span data-i18n="work-3-title"
-                                            >Puff Me Up! (2024)</span
-                                        >
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="artist-info">
-                                <div class="artist-header">
-                                    <img
-                                        src="assets/artist/3.png"
-                                        alt="Young Ah Seong Profile"
-                                        class="mobile-profile-img"
-                                    />
-                                    <div class="artist-name-wrapper">
-                                        <h3 class="artist-name">
-                                            <span data-i18n="artist-3-name"
-                                                >Young Ah Seong</span
-                                            >
-                                            <span class="artist-country"
-                                                >(JP)</span
-                                            >
-                                        </h3>
-                                    </div>
-                                    <div class="artist-links">
-                                        <a
-                                            href="https://www.affectivedesignlab.com/en"
-                                            target="_blank"
-                                            class="artist-link profile-link"
-                                            title="View Profile"
-                                        >
-                                            <svg
-                                                class="profile-icon"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                            >
-                                                <path
-                                                    opacity="0.4"
-                                                    d="M12.1605 10.87C12.0605 10.86 11.9405 10.86 11.8305 10.87C9.45055 10.79 7.56055 8.84 7.56055 6.44C7.56055 3.99 9.54055 2 12.0005 2C14.4505 2 16.4405 3.99 16.4405 6.44C16.4305 8.84 14.5405 10.79 12.1605 10.87Z"
-                                                    stroke="currentColor"
-                                                    stroke-width="1.5"
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                />
-                                                <path
-                                                    d="M7.1607 14.56C4.7407 16.18 4.7407 18.82 7.1607 20.43C9.9107 22.27 14.4207 22.27 17.1707 20.43C19.5907 18.81 19.5907 16.17 17.1707 14.56C14.4307 12.73 9.9207 12.73 7.1607 14.56Z"
-                                                    stroke="currentColor"
-                                                    stroke-width="1.5"
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                />
-                                            </svg>
-                                        </a>
-                                        <a
-                                            href="https://www.youtube.com/watch?v=Kpn0joo7luo"
-                                            target="_blank"
-                                            class="artist-link youtube-link"
-                                            title="YouTube Video"
-                                        >
-                                            <svg
-                                                class="social-icon"
-                                                viewBox="0 0 512 512"
-                                                fill="currentColor"
-                                            >
-                                                <path
-                                                    d="M265,96c65.3,0,118.7,1.1,168.1,3.3l0.7,0h0.7c23.1,0,42,22,42,49.1v1.1l0.1,1.1c2.3,34,3.4,69.3,3.4,104.9v0v0    c0.1,35.6-1.1,70.9-3.4,104.9l-0.1,1.1v1.1c0,13.8-4.7,26.6-13.4,36.1c-7.8,8.6-18,13.4-28.6,13.4h-0.8l-0.8,0    c-52.9,2.5-108.8,3.8-166.4,3.8c-3.5,0-7.1,0-10.6,0H256h-0.1c-3.6,0-7.2,0-10.8,0c-57.8,0-113.7-1.3-166.2-3.7l-0.8,0h-0.8    c-10.6,0-20.7-4.8-28.5-13.4c-8.6-9.5-13.4-22.3-13.4-36.1v-1.1l-0.1-1.1c-2.4-34.1-3.5-69.4-3.3-104.7v-0.1v-0.1    c-0.1-35.3,1-70.5,3.3-104.6l0.1-1.1v-1.1c0-27.2,18.8-49.3,41.9-49.3H78l0.7,0c49.5-2.3,102.9-3.3,168.2-3.3h9H265 M265,64    c-3,0-6,0-9,0s-6,0-9,0c-57.6,0-114.2,0.8-169.6,3.3c-40.8,0-73.9,36.3-73.9,81.3C1,184.4-0.1,220,0,255.7    c-0.1,35.7,0.9,71.3,3.4,107c0,45,33.1,81.6,73.9,81.6c54.8,2.6,110.7,3.8,167.8,3.8c3.6,0,7.3,0,10.9,0c3.6,0,7.2,0,10.7,0    c57.1,0,113-1.2,167.9-3.8c40.9,0,74-36.6,74-81.6c2.4-35.7,3.5-71.4,3.4-107.1c0.1-35.7-1-71.3-3.4-107.1c0-45-33.1-81.1-74-81.1    C379.2,64.8,322.7,64,265,64L265,64z"
-                                                />
-                                                <path
-                                                    d="M207,353.8V157.4l145,98.2L207,353.8z"
-                                                />
-                                            </svg>
-                                            <span data-i18n="view-video"
-                                                >Video →</span
-                                            >
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="artist-bio">
-                                    <p
-                                        class="artist-achievement"
-                                        data-i18n="artist-3-achievement"
-                                    >
-                                        ACM UIST/IEEE Robosoft Best
-                                        Demonstration Award
-                                    </p>
-                                    <p
-                                        class="artist-career"
-                                        data-i18n="artist-3-career"
-                                    >
-                                        Associate Professor at Hosei University,
-                                        Tokyo
-                                    </p>
-                                    <p
-                                        class="artist-education"
-                                        data-i18n="artist-3-education"
-                                    >
-                                        Ph.D in Interdisciplinary Informatics,
-                                        University of Tokyo
-                                    </p>
-                                    <p
-                                        class="artist-specialty"
-                                        data-i18n="artist-3-specialty"
-                                    >
-                                        Director of Affective Design Lab,
-                                        specializing in innovative technology
-                                        and interaction design. Research focus
-                                        on emotional interfaces and soft
-                                        robotics for human-computer interaction
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="artist-description">
+                        <p
+                            class="artist-education"
+                            data-i18n="artist-2-education"
+                        >
+                            BFA School of the Art Institute of Chicago, MS MIT
+                        </p>
+                        <p
+                            class="artist-specialty"
+                            data-i18n="artist-2-specialty"
+                        >
+                            Interdisciplinary artist exploring pneumatic
+                            structures, inflatable objects, and dimensional
+                            display systems. Known for innovative work in
+                            air-reinforced structures and additive manufacturing
+                            technologies
+                        </p>
+
+                        <a
+                            href="https://www.hyunparke.com/works/3-dimensional-structural-pneumatic-inflation-study-2020"
+                            target="_blank"
+                            class="profile-icon-btn"
+                            title="View Profile"
+                        >
+                            <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                            >
+                                <path
+                                    opacity="0.4"
+                                    d="M12.1605 10.87C12.0605 10.86 11.9405 10.86 11.8305 10.87C9.45055 10.79 7.56055 8.84 7.56055 6.44C7.56055 3.99 9.54055 2 12.0005 2C14.4505 2 16.4405 3.99 16.4405 6.44C16.4305 8.84 14.5405 10.79 12.1605 10.87Z"
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                                <path
+                                    d="M7.1607 14.56C4.7407 16.18 4.7407 18.82 7.1607 20.43C9.9107 22.27 14.4207 22.27 17.1707 20.43C19.5907 18.81 19.5907 16.17 17.1707 14.56C14.4307 12.73 9.9207 12.73 7.1607 14.56Z"
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Artist 3: Young Ah Seong -->
+        <section id="artist-3" class="artist-showcase" data-artist="3">
+            <div class="showcase-background">
+                <img
+                    src="assets/robot/3.png"
+                    alt="Young Ah Seong 작품 배경"
+                    class="background-work"
+                />
+                <div class="background-overlay"></div>
+            </div>
+            <div class="showcase-content">
+                <div class="artist-profile">
+                    <img
+                        src="assets/artist/3.png"
+                        alt="Young Ah Seong"
+                        class="profile-image"
+                    />
+                    <div class="profile-info">
+                        <h3 class="artist-name">
+                            <span data-i18n="artist-3-name"
+                                >Young Ah Seong</span
+                            >
+                            <span class="artist-country">(JP)</span>
+                        </h3>
+                        <p class="artist-career" data-i18n="artist-3-career">
+                            Associate Professor at Hosei University, Tokyo
+                        </p>
+                        <p
+                            class="artist-achievement"
+                            data-i18n="artist-3-achievement"
+                        >
+                            ACM UIST/IEEE Robosoft Best Demonstration Award
+                        </p>
+                    </div>
+                </div>
+
+                <div class="artist-details">
+                    <div class="work-showcase">
+                        <img
+                            src="assets/robot/3.png"
+                            alt="Puff Me Up!"
+                            class="work-image"
+                        />
+                        <p class="work-title" data-i18n="work-3-title">
+                            Puff Me Up! (2024)
+                        </p>
                     </div>
 
-                    <!-- Artist 4: Deborah Won -->
-                    <div class="artist-card">
-                        <div class="artist-layout">
-                            <div class="artist-images">
-                                <div class="artist-portrait">
-                                    <img
-                                        src="assets/artist/4.png"
-                                        alt="Deborah Won Artist Photo"
+                    <div class="artist-description">
+                        <p
+                            class="artist-education"
+                            data-i18n="artist-3-education"
+                        >
+                            Ph.D in Interdisciplinary Informatics, University of
+                            Tokyo
+                        </p>
+                        <p
+                            class="artist-specialty"
+                            data-i18n="artist-3-specialty"
+                        >
+                            Director of Affective Design Lab, specializing in
+                            innovative technology and interaction design.
+                            Research focus on emotional interfaces and soft
+                            robotics for human-computer interaction
+                        </p>
+
+                        <div class="artist-links">
+                            <a
+                                href="https://www.affectivedesignlab.com/en"
+                                target="_blank"
+                                class="profile-icon-btn"
+                                title="View Profile"
+                            >
+                                <svg
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                >
+                                    <path
+                                        opacity="0.4"
+                                        d="M12.1605 10.87C12.0605 10.86 11.9405 10.86 11.8305 10.87C9.45055 10.79 7.56055 8.84 7.56055 6.44C7.56055 3.99 9.54055 2 12.0005 2C14.4505 2 16.4405 3.99 16.4405 6.44C16.4305 8.84 14.5405 10.79 12.1605 10.87Z"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
                                     />
-                                </div>
-                                <div class="artist-work">
-                                    <img
-                                        src="assets/robot/4.png"
-                                        alt="Deborah Won Artist Work"
+                                    <path
+                                        d="M7.1607 14.56C4.7407 16.18 4.7407 18.82 7.1607 20.43C9.9107 22.27 14.4207 22.27 17.1707 20.43C19.5907 18.81 19.5907 16.17 17.1707 14.56C14.4307 12.73 9.9207 12.73 7.1607 14.56Z"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
                                     />
-                                    <div class="work-caption">
-                                        <span data-i18n="work-4-title"
-                                            >Rhododendrons (2024)</span
-                                        >
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="artist-info">
-                                <div class="artist-header">
-                                    <img
-                                        src="assets/artist/4.png"
-                                        alt="Deborah Won Profile"
-                                        class="mobile-profile-img"
+                                </svg>
+                            </a>
+                            <a
+                                href="https://www.youtube.com/watch?v=Kpn0joo7luo"
+                                target="_blank"
+                                class="youtube-icon-btn"
+                                title="Watch Video"
+                            >
+                                <svg
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 512 512"
+                                    fill="currentColor"
+                                >
+                                    <path
+                                        d="M265,96c65.3,0,118.7,1.1,168.1,3.3l0.7,0h0.7c23.1,0,42,22,42,49.1v1.1l0.1,1.1c2.3,34,3.4,69.3,3.4,104.9v0v0    c0.1,35.6-1.1,70.9-3.4,104.9l-0.1,1.1v1.1c0,13.8-4.7,26.6-13.4,36.1c-7.8,8.6-18,13.4-28.6,13.4h-0.8l-0.8,0    c-52.9,2.5-108.8,3.8-166.4,3.8c-3.5,0-7.1,0-10.6,0H256h-0.1c-3.6,0-7.2,0-10.8,0c-57.8,0-113.7-1.3-166.2-3.7l-0.8,0h-0.8    c-10.6,0-20.7-4.8-28.5-13.4c-8.6-9.5-13.4-22.3-13.4-36.1v-1.1l-0.1-1.1c-2.4-34.1-3.5-69.4-3.3-104.7v-0.1v-0.1    c-0.1-35.3,1-70.5,3.3-104.6l0.1-1.1v-1.1c0-27.2,18.8-49.3,41.9-49.3H78l0.7,0c49.5-2.3,102.9-3.3,168.2-3.3h9H265 M265,64    c-3,0-6,0-9,0s-6,0-9,0c-57.6,0-114.2,0.8-169.6,3.3c-40.8,0-73.9,36.3-73.9,81.3C1,184.4-0.1,220,0,255.7    c-0.1,35.7,0.9,71.3,3.4,107c0,45,33.1,81.6,73.9,81.6c54.8,2.6,110.7,3.8,167.8,3.8c3.6,0,7.3,0,10.9,0c3.6,0,7.2,0,10.7,0    c57.1,0,113-1.2,167.9-3.8c40.9,0,74-36.6,74-81.6c2.4-35.7,3.5-71.4,3.4-107.1c0.1-35.7-1-71.3-3.4-107.1c0-45-33.1-81.1-74-81.1    C379.2,64.8,322.7,64,265,64L265,64z"
                                     />
-                                    <div class="artist-name-wrapper">
-                                        <h3 class="artist-name">
-                                            <span data-i18n="artist-4-name"
-                                                >Deborah Won</span
-                                            >
-                                            <span class="artist-country"
-                                                >(US)</span
-                                            >
-                                        </h3>
-                                    </div>
-                                    <div class="artist-links">
-                                        <a
-                                            href="https://www.instagram.com/reel/DE5j5g4Shn8/?utm_source=ig_web_copy_link"
-                                            target="_blank"
-                                            class="artist-link instagram-link"
-                                            title="Instagram"
-                                        >
-                                            <svg
-                                                class="social-icon"
-                                                viewBox="0 0 56.7 56.7"
-                                                fill="currentColor"
-                                            >
-                                                <path
-                                                    d="M28.2,16.7c-7,0-12.8,5.7-12.8,12.8s5.7,12.8,12.8,12.8S41,36.5,41,29.5S35.2,16.7,28.2,16.7z M28.2,37.7c-4.5,0-8.2-3.7-8.2-8.2s3.7-8.2,8.2-8.2s8.2,3.7,8.2,8.2S32.7,37.7,28.2,37.7z"
-                                                />
-                                                <circle
-                                                    cx="41.5"
-                                                    cy="16.4"
-                                                    r="2.9"
-                                                />
-                                                <path
-                                                    d="M49,8.9c-2.6-2.7-6.3-4.1-10.5-4.1H17.9c-8.7,0-14.5,5.8-14.5,14.5v20.5c0,4.3,1.4,8,4.2,10.7c2.7,2.6,6.3,3.9,10.4,3.9h20.4c4.3,0,7.9-1.4,10.5-3.9c2.7-2.6,4.1-6.3,4.1-10.6V19.3C53,15.1,51.6,11.5,49,8.9z M48.6,39.9c0,3.1-1.1,5.6-2.9,7.3s-4.3,2.6-7.3,2.6H18c-3,0-5.5-0.9-7.3-2.6C8.9,45.4,8,42.9,8,39.8V19.3c0-3,0.9-5.5,2.7-7.3c1.7-1.7,4.3-2.6,7.3-2.6h20.6c3,0,5.5,0.9,7.3,2.7c1.7,1.8,2.7,4.3,2.7,7.2V39.9L48.6,39.9z"
-                                                />
-                                            </svg>
-                                            <span data-i18n="view-instagram"
-                                                >Instagram →</span
-                                            >
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="artist-bio">
-                                    <p
-                                        class="artist-achievement"
-                                        data-i18n="artist-4-achievement"
-                                    >
-                                        Featured in Vogue, i-D Magazine, 1
-                                        Granary, Marie Claire
-                                    </p>
-                                    <p
-                                        class="artist-career"
-                                        data-i18n="artist-4-career"
-                                    >
-                                        Creative Director at c.Vernoy, Senior
-                                        Designer at Converse
-                                    </p>
-                                    <p
-                                        class="artist-education"
-                                        data-i18n="artist-4-education"
-                                    >
-                                        Founder of Pisces Rising, New York
-                                    </p>
-                                    <p
-                                        class="artist-specialty"
-                                        data-i18n="artist-4-specialty"
-                                    >
-                                        NYC-based fashion designer who conjures
-                                        a tactile dialogue between body, fabric,
-                                        and space. Specializing in zero-gravity
-                                        environment fashion design
-                                    </p>
-                                </div>
-                            </div>
+                                    <path
+                                        d="M207,353.8V157.4l145,98.2L207,353.8z"
+                                    />
+                                </svg>
+                            </a>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
 
-                    <!-- Artist 5: Dennis Hong -->
-                    <div class="artist-card">
-                        <div class="artist-layout">
-                            <div class="artist-images">
-                                <div class="artist-portrait">
-                                    <img
-                                        src="assets/artist/5.png"
-                                        alt="Dennis Hong Artist Photo"
-                                    />
-                                </div>
-                                <div class="artist-work">
-                                    <img
-                                        src="assets/robot/5.png"
-                                        alt="Dennis Hong Artist Work"
-                                    />
-                                    <div class="work-caption">
-                                        <span data-i18n="work-5-title"
-                                            >BALLU: Buoyancy Assisted
-                                            Lightweight Legged Unit</span
-                                        >
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="artist-info">
-                                <div class="artist-header">
-                                    <img
-                                        src="assets/artist/5.png"
-                                        alt="Dennis Hong Profile"
-                                        class="mobile-profile-img"
-                                    />
-                                    <div class="artist-name-wrapper">
-                                        <h3 class="artist-name">
-                                            <span data-i18n="artist-5-name"
-                                                >Dennis Hong</span
-                                            >
-                                            <span class="artist-country"
-                                                >(US)</span
-                                            >
-                                        </h3>
-                                    </div>
-                                    <div class="artist-links">
-                                        <a
-                                            href="https://www.romela.org/dr-dennis-hong/"
-                                            target="_blank"
-                                            class="artist-link profile-link"
-                                            title="View Profile"
-                                        >
-                                            <svg
-                                                class="profile-icon"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                            >
-                                                <path
-                                                    opacity="0.4"
-                                                    d="M12.1605 10.87C12.0605 10.86 11.9405 10.86 11.8305 10.87C9.45055 10.79 7.56055 8.84 7.56055 6.44C7.56055 3.99 9.54055 2 12.0005 2C14.4505 2 16.4405 3.99 16.4405 6.44C16.4305 8.84 14.5405 10.79 12.1605 10.87Z"
-                                                    stroke="currentColor"
-                                                    stroke-width="1.5"
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                />
-                                                <path
-                                                    d="M7.1607 14.56C4.7407 16.18 4.7407 18.82 7.1607 20.43C9.9107 22.27 14.4207 22.27 17.1707 20.43C19.5907 18.81 19.5907 16.17 17.1707 14.56C14.4307 12.73 9.9207 12.73 7.1607 14.56Z"
-                                                    stroke="currentColor"
-                                                    stroke-width="1.5"
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                />
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="artist-bio">
-                                    <p
-                                        class="artist-achievement"
-                                        data-i18n="artist-5-achievement"
-                                    >
-                                        "Brilliant 10" by Popular Science, TED
-                                        Alumnus
-                                    </p>
-                                    <p
-                                        class="artist-career"
-                                        data-i18n="artist-5-career"
-                                    >
-                                        Professor & Founding Director of RoMeLa
-                                        at UCLA
-                                    </p>
-                                    <p
-                                        class="artist-education"
-                                        data-i18n="artist-5-education"
-                                    >
-                                        Ph.D in Mechanical Engineering, Purdue
-                                        University
-                                    </p>
-                                    <p
-                                        class="artist-specialty"
-                                        data-i18n="artist-5-specialty"
-                                    >
-                                        Director of RoMeLa (Robotics &
-                                        Mechanisms Laboratory). Research focuses
-                                        on robot locomotion and manipulation,
-                                        autonomous vehicles and humanoid robots.
-                                        Called "the Leonardo da Vinci of robots"
-                                        by Washington Post
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+        <!-- Artist 4: Deborah Won -->
+        <section id="artist-4" class="artist-showcase" data-artist="4">
+            <div class="showcase-background">
+                <img
+                    src="assets/robot/4.png"
+                    alt="Deborah Won 작품 배경"
+                    class="background-work"
+                />
+                <div class="background-overlay"></div>
+            </div>
+            <div class="showcase-content">
+                <div class="artist-profile">
+                    <img
+                        src="assets/artist/4.png"
+                        alt="Deborah Won"
+                        class="profile-image"
+                    />
+                    <div class="profile-info">
+                        <h3 class="artist-name">
+                            <span data-i18n="artist-4-name">Deborah Won</span>
+                            <span class="artist-country">(US)</span>
+                        </h3>
+                        <p class="artist-career" data-i18n="artist-4-career">
+                            Creative Director at c.Vernoy, Senior Designer at
+                            Converse
+                        </p>
+                        <p
+                            class="artist-achievement"
+                            data-i18n="artist-4-achievement"
+                        >
+                            Featured in Vogue, i-D Magazine, 1 Granary, Marie
+                            Claire
+                        </p>
+                    </div>
+                </div>
+
+                <div class="artist-details">
+                    <div class="work-showcase">
+                        <img
+                            src="assets/robot/4.png"
+                            alt="Rhododendrons"
+                            class="work-image"
+                        />
+                        <p class="work-title" data-i18n="work-4-title">
+                            Rhododendrons (2024)
+                        </p>
+                    </div>
+
+                    <div class="artist-description">
+                        <p
+                            class="artist-education"
+                            data-i18n="artist-4-education"
+                        >
+                            Founder of Pisces Rising, New York
+                        </p>
+                        <p
+                            class="artist-specialty"
+                            data-i18n="artist-4-specialty"
+                        >
+                            NYC-based fashion designer who conjures a tactile
+                            dialogue between body, fabric, and space.
+                            Specializing in zero-gravity environment fashion
+                            design
+                        </p>
+
+                        <a
+                            href="https://www.instagram.com/reel/DE5j5g4Shn8/?utm_source=ig_web_copy_link"
+                            target="_blank"
+                            class="instagram-icon-btn"
+                            title="Instagram"
+                        >
+                            <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                            >
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                                />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Artist 5: Dennis Hong -->
+        <section id="artist-5" class="artist-showcase" data-artist="5">
+            <div class="showcase-background">
+                <img
+                    src="assets/robot/5.png"
+                    alt="Dennis Hong 작품 배경"
+                    class="background-work"
+                />
+                <div class="background-overlay"></div>
+            </div>
+            <div class="showcase-content">
+                <div class="artist-profile">
+                    <img
+                        src="assets/artist/5.png"
+                        alt="Dennis Hong"
+                        class="profile-image"
+                    />
+                    <div class="profile-info">
+                        <h3 class="artist-name">
+                            <span data-i18n="artist-5-name">Dennis Hong</span>
+                            <span class="artist-country">(US)</span>
+                        </h3>
+                        <p class="artist-career" data-i18n="artist-5-career">
+                            Professor & Founding Director of RoMeLa at UCLA
+                        </p>
+                        <p
+                            class="artist-achievement"
+                            data-i18n="artist-5-achievement"
+                        >
+                            "Brilliant 10" by Popular Science, TED Alumnus
+                        </p>
+                    </div>
+                </div>
+
+                <div class="artist-details">
+                    <div class="work-showcase">
+                        <img
+                            src="assets/robot/5.png"
+                            alt="BALLU"
+                            class="work-image"
+                        />
+                        <p class="work-title" data-i18n="work-5-title">
+                            BALLU: Buoyancy Assisted Lightweight Legged Unit
+                        </p>
+                    </div>
+
+                    <div class="artist-description">
+                        <p
+                            class="artist-education"
+                            data-i18n="artist-5-education"
+                        >
+                            Ph.D in Mechanical Engineering, Purdue University
+                        </p>
+                        <p
+                            class="artist-specialty"
+                            data-i18n="artist-5-specialty"
+                        >
+                            Director of RoMeLa (Robotics & Mechanisms
+                            Laboratory). Research focuses on robot locomotion
+                            and manipulation, autonomous vehicles and humanoid
+                            robots. Called "the Leonardo da Vinci of robots" by
+                            Washington Post
+                        </p>
+
+                        <a
+                            href="https://www.romela.org/dr-dennis-hong/"
+                            target="_blank"
+                            class="profile-icon-btn"
+                            title="View Profile"
+                        >
+                            <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                            >
+                                <path
+                                    opacity="0.4"
+                                    d="M12.1605 10.87C12.0605 10.86 11.9405 10.86 11.8305 10.87C9.45055 10.79 7.56055 8.84 7.56055 6.44C7.56055 3.99 9.54055 2 12.0005 2C14.4505 2 16.4405 3.99 16.4405 6.44C16.4305 8.84 14.5405 10.79 12.1605 10.87Z"
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                                <path
+                                    d="M7.1607 14.56C4.7407 16.18 4.7407 18.82 7.1607 20.43C9.9107 22.27 14.4207 22.27 17.1707 20.43C19.5907 18.81 19.5907 16.17 17.1707 14.56C14.4307 12.73 9.9207 12.73 7.1607 14.56Z"
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -966,11 +913,11 @@
                             Jean Oh (CMU)
                         </p>
                         <a
-                            href="mailto:jeanoh@cmu.edu?subject=[RoboFashion25]"
+                            href="mailto:hpark3@andrew.cmu.edu?subject=[RoboFashion25]"
                             class="contact-email"
                             data-i18n="info-contact-email"
                         >
-                            jeanoh@cmu.edu
+                            hpark3@andrew.cmu.edu
                         </a>
                         <div class="contact-note">
                             <small
