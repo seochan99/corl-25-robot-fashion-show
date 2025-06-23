@@ -1,0 +1,39 @@
+/*
+ * Robot Fashion Show 2025 - Main Stylesheet
+ * 
+ * Architecture: Modular CSS with @import for better maintainability
+ * Each module handles a specific component/section
+ */
+
+/* === CORE MODULES === */
+@import url("./base.css"); /* CSS Reset, Base styles, Typography */
+@import url("./navigation.css"); /* Header Navigation */
+
+/* === LAYOUT MODULES === */
+@import url("./hero.css"); /* Hero Section with Effects */
+@import url("./carousel.css"); /* Artists Carousel */
+@import url("./info.css"); /* Event Information Section */
+@import url("./footer.css"); /* Footer */
+
+/* === EFFECT MODULES === */
+@import url("./animations.css"); /* All Keyframe Animations */
+@import url("./responsive.css"); /* Responsive Design & Media Queries */
+
+/*
+ * File Structure Summary:
+ * ├── base.css       - Reset, typography, containers, accessibility
+ * ├── navigation.css - Header nav, language toggle
+ * ├── hero.css       - Hero section, badges, particles, circuits
+ * ├── carousel.css   - Artist cards, carousel controls, indicators
+ * ├── info.css       - Event info grid, CTA cards, CoRL styling
+ * ├── footer.css     - Footer layout and links
+ * ├── animations.css - All @keyframes (robotPulse, neonGlow, etc.)
+ * └── responsive.css - Mobile-first responsive design
+ *
+ * Benefits:
+ * ✅ Easier maintenance and debugging
+ * ✅ Better team collaboration
+ * ✅ Faster build times (can be cached separately)
+ * ✅ Logical separation of concerns
+ * ✅ Easier to add new features
+ */

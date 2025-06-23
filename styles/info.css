@@ -1,0 +1,325 @@
+/* Info Section Styles - Clean & Minimal */
+.info-section {
+    padding: 120px 0;
+    background: #0d0d0d;
+    position: relative;
+}
+
+.info-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+            90deg,
+            transparent 1px,
+            rgba(255, 255, 255, 0.03) 1px
+        ),
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.3;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 60px;
+    position: relative;
+    z-index: 2;
+}
+
+.info-card {
+    background: #1a1a1a;
+    padding: 40px 30px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    border: 1px solid #333;
+    position: relative;
+}
+
+.info-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+    border-color: #555;
+}
+
+/* Card Icons */
+.card-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 25px;
+    background: #2a2a2a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.card-icon svg {
+    width: 28px;
+    height: 28px;
+    color: #ffffff;
+}
+
+.info-card:hover .card-icon {
+    background: #333;
+}
+
+/* Typography */
+.info-card h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.primary-info {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.secondary-info {
+    color: #999;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+/* Conference Badges */
+.conference-badges {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.mini-badge {
+    background: #333;
+    color: #ffffff;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Contact Card */
+.contact-card {
+    background: #1a1a1a;
+    border: 1px solid #444;
+}
+
+.contact-card:hover {
+    border-color: #666;
+}
+
+.contact-avatar {
+    margin-bottom: 20px;
+}
+
+.avatar-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover .avatar-circle {
+    background: #444;
+}
+
+.contact-name {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.contact-email {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    background: #2a2a2a;
+}
+
+.contact-email:hover {
+    color: #ffffff;
+    background: #333;
+}
+
+.contact-note {
+    margin-top: 10px;
+}
+
+.contact-note small {
+    color: #777;
+    font-size: 0.8rem;
+    font-style: italic;
+}
+
+/* CTA Card */
+.cta-card {
+    background: #1a1a1a;
+    border: 1px solid #444;
+}
+
+.cta-card:hover {
+    border-color: #666;
+}
+
+.cta-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 25px;
+    background: #2a2a2a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    transition: all 0.3s ease;
+}
+
+.cta-card:hover .cta-icon {
+    background: #333;
+}
+
+.cta-description {
+    color: #aaa;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 25px;
+    font-style: italic;
+}
+
+.cta-button {
+    display: inline-block;
+    background: #ffffff;
+    color: #0d0d0d;
+    padding: 12px 24px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 15px 0 10px;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background: #f0f0f0;
+    transform: translateY(-1px);
+}
+
+.cta-deadline {
+    display: block;
+    color: #777;
+    font-size: 0.85rem;
+    font-weight: 400;
+    margin-top: 10px;
+    padding: 6px 12px;
+    background: #2a2a2a;
+    border-radius: 4px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .info-section {
+        padding: 80px 0;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        margin-top: 50px;
+    }
+
+    .info-card {
+        padding: 35px 25px;
+    }
+
+    .card-icon,
+    .avatar-circle,
+    .cta-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .card-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .cta-icon {
+        font-size: 1.5rem;
+    }
+
+    .info-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .primary-info {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .info-card {
+        padding: 30px 20px;
+    }
+
+    .card-icon,
+    .avatar-circle,
+    .cta-icon {
+        width: 45px;
+        height: 45px;
+        margin-bottom: 20px;
+    }
+
+    .card-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .cta-icon {
+        font-size: 1.3rem;
+    }
+
+    .info-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+    }
+
+    .cta-button {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+    }
+}

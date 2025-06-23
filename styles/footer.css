@@ -1,0 +1,64 @@
+/* Footer Styles */
+.footer {
+    background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%);
+    color: #a0a0a0;
+    padding: 60px 0;
+    text-align: center;
+    border-top: 1px solid #333;
+    position: relative;
+}
+
+.footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #45334A, transparent);
+}
+
+.footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 30px;
+}
+
+.footer-links a {
+    color: #a0a0a0;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.6s ease;
+    position: relative;
+}
+
+.footer-links a::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #45334A;
+    transition: width 0.6s ease;
+}
+
+.footer-links a:hover,
+.footer-links a:focus {
+    color: #45334A;
+}
+
+.footer-links a:hover::after,
+.footer-links a:focus::after {
+    width: 100%;
+}
