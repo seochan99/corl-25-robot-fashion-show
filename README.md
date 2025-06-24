@@ -1,4 +1,4 @@
-# Robot Fashion Show 2025 - https://robotfashion.show/
+# Robot Fashion Show 2025 - https://robotfashion.show
 
 
 A cutting-edge microsite showcasing the first-ever Robot Fashion Show at CoRL '25 & Humanoids '25 in Seoul, featuring cross-species haute couture experiences bridging robotics and fashion.
