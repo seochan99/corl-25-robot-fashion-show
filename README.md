@@ -3,8 +3,6 @@
 
 A cutting-edge microsite showcasing the first-ever Robot Fashion Show at CoRL '25 & Humanoids '25 in Seoul, featuring cross-species haute couture experiences bridging robotics and fashion.
 
-![Robot Fashion Show 2025](assets/logo.png)
-
 ## 🌟 Overview
 
 Robot Fashion Show 2025 is an innovative one-page bilingual website that presents a revolutionary fusion of robotics and fashion. Staged during the prestigious CoRL 2025 and Humanoids 2025 conferences in Seoul, this event marks the first-ever cross-species haute couture experience.
