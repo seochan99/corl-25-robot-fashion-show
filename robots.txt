@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://corl25-fashion-show.netlify.app/sitemap.xml
+Sitemap: https://robotfashion.show//sitemap.xml
 
 # setting
 Crawl-delay: 1
