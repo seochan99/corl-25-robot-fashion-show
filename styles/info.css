@@ -143,6 +143,14 @@
     font-weight: 600;
     color: #ffffff;
     transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.avatar-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .contact-card:hover .avatar-circle {
