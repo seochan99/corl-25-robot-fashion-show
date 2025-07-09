@@ -42,6 +42,35 @@
     font-size: 0.85rem;
     transition: all 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
     position: relative;
+    outline: none;
+    border: none;
+}
+
+.nav-link:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* Remove outline from all clickable elements */
+button,
+a,
+input,
+select,
+textarea,
+[tabindex] {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+button:focus,
+a:focus,
+input:focus,
+select:focus,
+textarea:focus,
+[tabindex]:focus {
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 .nav-link:hover,

@@ -52,15 +52,16 @@
 
         navLinks.forEach((link) => {
             link.addEventListener("click", function (e) {
-                e.preventDefault();
                 const target = this.getAttribute("href");
 
-                // Handle external links
+                // Handle external links and .html files - let browser handle normally
                 if (target.startsWith("http") || target.includes(".html")) {
-                    window.location.href = target;
+                    // Don't prevent default for external links and .html files
                     return;
                 }
 
+                // Only prevent default for internal hash links
+                e.preventDefault();
                 smoothScrollTo(target);
             });
         });
