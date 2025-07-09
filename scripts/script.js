@@ -54,13 +54,19 @@
             link.addEventListener("click", function (e) {
                 const target = this.getAttribute("href");
 
-                // Handle external links and .html files - let browser handle normally
-                if (target.startsWith("http") || target.includes(".html")) {
-                    // Don't prevent default for external links and .html files
+                // Handle external links, .html files, and absolute paths - let browser handle normally
+                if (
+                    target.startsWith("http") ||
+                    target.includes(".html") ||
+                    target.startsWith("/") ||
+                    target.includes("://") ||
+                    !target.startsWith("#")
+                ) {
+                    // Don't prevent default for external navigation
                     return;
                 }
 
-                // Only prevent default for internal hash links
+                // Only prevent default for internal hash links (starting with #)
                 e.preventDefault();
                 smoothScrollTo(target);
             });
