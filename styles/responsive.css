@@ -20,6 +20,50 @@
         padding: 0 15px;
     }
 
+    /* Hero Mobile Fixes */
+    .hero {
+        height: 100vh;
+        margin-top: 0;
+        padding: 0 15px;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        padding: 0 15px;
+    }
+
+    .hero-title {
+        font-size: clamp(2.5rem, 8vw, 4rem);
+        margin-bottom: 20px;
+    }
+
+    .hero-tagline {
+        font-size: clamp(1rem, 3vw, 1.2rem);
+        margin-bottom: 30px;
+    }
+
+    .hero-timeline {
+        padding: 0 15px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .hero-cta-primary,
+    .hero-cta-secondary {
+        width: 100%;
+        max-width: 280px;
+        padding: 15px 20px;
+        font-size: 1rem;
+    }
+
+    .scroll-cue {
+        margin-top: 3rem;
+    }
+
     .hero-badge {
         font-size: 0.8rem;
         padding: 6px 16px;
@@ -172,8 +216,25 @@
         height: 30px;
     }
 
+    /* Hero Mobile Fixes for Small Screens */
     .hero {
         padding: 0 10px;
+        height: 100vh;
+        margin-top: 0;
+    }
+
+    .hero-content {
+        padding: 0 10px;
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 7vw, 3rem);
+        margin-bottom: 15px;
+    }
+
+    .hero-tagline {
+        font-size: clamp(0.9rem, 3vw, 1.1rem);
+        margin-bottom: 25px;
     }
 
     .hero-badge {

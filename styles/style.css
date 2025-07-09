@@ -11,6 +11,7 @@
 
 /* === LAYOUT MODULES === */
 @import url("./hero.css"); /* Hero Section with Effects */
+@import url("./hero-timeline.css"); /* Hero Timeline and CTA Styles */
 @import url("./carousel.css"); /* Artists Carousel */
 @import url("./artist-showcase.css"); /* New Fullscreen Artist Showcase */
 @import url("./info.css"); /* Event Information Section */

@@ -1,197 +1,8 @@
-// Robot Fashion Show 2025 - Main JavaScript
+// Robot Fashion Show 2025 - Main JavaScript (English Only)
 (function () {
     "use strict";
 
-    // Language translations
-    const translations = {
-        en: {
-            title: "Robot Fashion Show 2025 - Cross-Species Haute Couture",
-            description:
-                "Discover emerging cross-species fashion concepts at Robot Fashion Show 2025, staged during CoRL '25 & Humanoids '25 in Seoul.",
-            "nav-home": "Home",
-            "nav-artists": "Artists",
-            "nav-info": "Info",
-            "lang-toggle": "Language",
-            "hero-title": "Robot Fashion Show 2025",
-            "hero-tagline":
-                "A cross-species haute couture experience bridging robotics and fashion",
-            "scroll-hint": "Scroll to explore",
-            "artists-title": "Featured Artists & Researchers",
-            "artist-1-name": "Byungjun Kwon",
-            "artist-1-achievement-1":
-                "Hardware Engineer at STEIM (Netherlands Electronic Music Research Institute)",
-            "artist-1-achievement-2":
-                "Solo Exhibition at Théâtre de Liège, Liège, Belgium",
-            "artist-1-achievement-3":
-                '"Layered Medium: We ARE IN Open Circuits", Manarat Al Saadiyat, Abu Dhabi',
-            "artist-1-education":
-                // "BA French Literature, Seoul National University / MA Art Science, Royal Conservatory of The Hague",
-                "",
-            "artist-1-career": "Korea Artist Prize 2023 Winner",
-            "artist-1-specialty":
-                "Leading player in multi-channel sound installation using Ambisonic technology and now directing robotic mechanical theater.",
-            "work-1-title": "On the Birds' Day (2024)",
-            "artist-2-name": "Hyun Parke",
-            "artist-2-achievement":
-                "Hyundai Motors ZER01NE creative platform selected artist",
-            "artist-2-education":
-                "BFA School of the Art Institute of Chicago, MS MIT",
-            "artist-2-career":
-                "Artist/Designer/Research Associate at Carnegie Mellon University",
-            "artist-2-specialty":
-                "Interdisciplinary artist exploring pneumatic structures, inflatable objects, and dimensional display systems. Known for innovative work in air-reinforced structures and additive manufacturing technologies",
-            "work-2-title": "3D Structural Pneumatic Inflation Study (2020)",
-            "artist-3-name": "Young Ah Seong",
-            "artist-3-achievement":
-                "Innovative Technology, Interaction 2018/2022 Presentation Award",
-            "artist-3-education":
-                "Associate Professor, Hosei University, Tokyo, Japan",
-            "artist-3-career": "Affective Design Lab",
-            "artist-3-specialty":
-                "Director of Affective Design Lab, specializing in innovative technology and interaction design. Research focus on emotional interfaces and soft robotics for human-computer interaction",
-            "work-3-title": "Puff Me Up! (2024)",
-            "view-video": "Video →",
-            "artist-4-name": "Deborah Won",
-            "artist-4-achievement":
-                "Featured in Vogue, i-D Magazine, 1 Granary, Marie Claire",
-            "artist-4-education": "Founder of Pisces Rising, New York",
-            "artist-4-career": "Fashion for the Zero-Gravity Environment",
-            "artist-4-specialty":
-                "NYC-based fashion designer who conjures a tactile dialogue between body, fabric, and space. Specializing in zero-gravity environment fashion design",
-            "work-4-title": "Rhododendrons (2024)",
-            "view-instagram": "Instagram →",
-            "artist-5-name": "Dennis Hong",
-            "artist-5-achievement":
-                '"Brilliant 10" by Popular Science, TED Alumnus',
-            "artist-5-education":
-                "Ph.D in Mechanical Engineering, Purdue University",
-            "artist-5-career":
-                "Professor & Founding Director of RoMeLa at UCLA",
-            "artist-5-specialty":
-                'Director of RoMeLa (Robotics & Mechanisms Laboratory). Research focuses on robot locomotion and manipulation, autonomous vehicles and humanoid robots. Called "the Leonardo da Vinci of robots" by Washington Post',
-            "work-5-title": "Robots at RoMeLa",
-            "view-more": "View More →",
-            "hero-badge": "First Ever",
-            "corl-badge": "CoRL '25",
-            "humanoids-badge": "Humanoids '25",
-            "info-title": "Event Information",
-            "info-date-title": "Date",
-            "info-date": "September 30, 2025",
-            "info-date-detail": "CoRL: Sep 27-30 | Humanoids: Sep 30-Oct 2",
-            "info-venue-title": "Venue",
-            "info-venue": "COEX Convention & Exhibition Center",
-            "info-venue-detail": "513 Yeongdong-daero, Gangnam District, Seoul",
-            "info-organizer-title": "Organizers",
-            "info-organizer": "CoRL '25 & Humanoids '25",
-            "info-chairs-title": "Contact",
-            "info-chairs": "Jean Oh (CMU)",
-            "info-chairs-detail": "",
-            "info-cta-title": "Call for Participation",
-            "info-cta-button": "Submit Proposal",
-            "info-cta-deadline": "Deadline: July 15, 2025",
-            "footer-copyright":
-                "© 2025 Robot Fashion Show. All rights reserved.",
-            "footer-corl": "CoRL 2025",
-            "footer-contact": "Contact",
-            "footer-press": "Press",
-            "footer-sponsors": "Sponsors",
-            "info-contact-title": "Contact",
-            "info-contact": "Hyun Woo Park",
-            "info-contact-email": "",
-            "info-contact-subject": "[RoboFashion25]",
-        },
-        ko: {
-            title: "Robot Fashion Show 2025 - Cross-Species Haute Couture",
-            description:
-                "CoRL '25 & Humanoids '25 서울에서 개최되는 로봇 패션쇼 2025에서 새로운 종간 패션 개념을 발견해보세요.",
-            "nav-home": "Home",
-            "nav-artists": "Artists",
-            "nav-info": "Info",
-            "lang-toggle": "Language",
-            "hero-title": "Robot Fashion Show 2025",
-            "hero-tagline":
-                "A cross-species haute couture experience bridging robotics and fashion",
-            "scroll-hint": "SCROLL TO EXPLORE",
-            "artists-title": "Featured Artists & Researchers",
-            "artist-1-name": "Byungjun Kwon",
-            "artist-1-achievement-1":
-                "Hardware Engineer at STEIM (Netherlands Electronic Music Research Institute)",
-            "artist-1-achievement-2":
-                "Solo Exhibition at Théâtre de Liège, Liège, Belgium",
-            "artist-1-achievement-3":
-                '"Layered Medium: We ARE IN Open Circuits", Manarat Al Saadiyat, Abu Dhabi',
-
-            "artist-1-career":
-                "네덜란드 전자악기 연구개발 기관 STEIM 하드웨어 엔지니어",
-            "artist-1-specialty":
-                "소리와 관련한 하드웨어 연구, 새로운 악기 무대장치를 개발 활용한 극적 장면을 연출하여 음악, 연극, 미술을 아우르는 뉴미디어 퍼포먼스",
-            "work-1-title": "On the Birds' Day (2024)",
-            "artist-2-name": "Hyun Parke",
-            "artist-2-achievement": "아르스 일렉트로니카 뮤지엄 상설전시 작가",
-            "artist-2-education": "시카고 아트 인스티튜트 BFA, MIT MS",
-            "artist-2-career": "카네기 멜론 대학교 연구원",
-            "artist-2-specialty":
-                "공압 구조물, 팽창 가능한 오브젝트, 차원적 디스플레이 시스템을 탐구하는 학제간 아티스트. 공기 강화 구조물과 적층 제조 기술 분야의 혁신적 작업으로 유명",
-            "work-2-title": "3차원 구조적 공압 팽창 연구 (2020)",
-            "artist-3-name": "Young Ah Seong",
-            "artist-3-achievement": "ACM UIST/IEEE Robosoft 최우수 데모 상",
-            "artist-3-education": "도쿄대학교 학제정보학 박사",
-            "artist-3-career": "호세이대학교 부교수, 도쿄",
-            "artist-3-specialty":
-                "감정 디자인 연구실 디렉터, 혁신 기술과 인터랙션 디자인 전문. 감정적 인터페이스와 인간-컴퓨터 상호작용을 위한 소프트 로보틱스 연구에 집중",
-            "work-3-title": "Puff Me Up! (2024)",
-            "view-video": "영상 →",
-            "artist-4-name": "Deborah Won",
-            "artist-4-achievement":
-                "보그, i-D 매거진, 1 Granary, 마리끌레르 피처드",
-            "artist-4-education": "Pisces Rising 설립자, 뉴욕",
-            "artist-4-career":
-                "c.Vernoy 크리에이티브 디렉터, 컨버스 시니어 디자이너",
-            "artist-4-specialty":
-                "몸과 원단, 공간 사이의 촉각적 대화를 만들어내는 뉴욕 기반 패션 디자이너. 무중력 환경 패션 디자인 전문",
-            "work-4-title": "Rhododendrons (2024)",
-            "view-instagram": "인스타그램 →",
-            "artist-5-name": "Dennis Hong",
-            "artist-5-achievement": '팝퓰러 사이언스 "브릴리언트 10", TED 연사',
-            "artist-5-education": "퍼듀대학교 기계공학 박사",
-            "artist-5-career": "UCLA RoMeLa 연구실 교수 및 설립 디렉터",
-            "artist-5-specialty":
-                'RoMeLa(로보틱스 & 메커니즘 연구소) 디렉터. 로봇 보행 및 조작, 자율주행차, 휴머노이드 로봇 연구에 집중. 워싱턴 포스트에서 "로봇의 레오나르도 다 빈치"라고 불림',
-            "work-5-title": "BALLU: 부력 보조 경량 다리 유닛",
-            "view-more": "더 보기 →",
-            "hero-badge": "첫 번째",
-            "corl-badge": "CoRL '25",
-            "humanoids-badge": "Humanoids '25",
-            "info-title": "행사 정보",
-            "info-date-title": "날짜",
-            "info-date": "2025년 9월 30일",
-            "info-date-detail":
-                "CoRL: 9월 27-30일 | Humanoids: 9월 30일-10월 2일",
-            "info-venue-title": "장소",
-            "info-venue": "코엑스 컨벤션 & 전시센터",
-            "info-venue-detail": "서울시 강남구 영동대로 513",
-            "info-organizer-title": "주최",
-            "info-organizer": "CoRL '25 & Humanoids '25",
-            "info-chairs-title": "연락처",
-            "info-chairs": "Jean Oh (CMU)",
-            "info-chairs-detail": "",
-            "info-cta-title": "참가 신청",
-            "info-cta-button": "제안서 제출",
-            "info-cta-deadline": "마감일: 2025년 7월 15일",
-            "footer-copyright": "© 2025 Robot Fashion Show 2025.",
-            "footer-corl": "CoRL 2025",
-            "footer-contact": "Contact",
-            "footer-press": "Press",
-            "footer-sponsors": "Sponsors",
-            "info-contact-title": "Contact",
-            "info-contact": "Hyunwoo Park",
-            "info-contact-email": "",
-            "info-contact-subject": "[RoboFashion25]",
-        },
-    };
-
     // State management
-    let currentLanguage = "en";
     let currentSlide = 0;
     let autoSlideInterval;
     let isAutoSliding = true;
@@ -202,7 +13,7 @@
     let scrollTimeout;
 
     // DOM elements
-    let carousel, carouselTrack, indicators, prevBtn, nextBtn, langToggle;
+    let carousel, carouselTrack, indicators, prevBtn, nextBtn;
 
     // Initialize application
     function init() {
@@ -221,14 +32,9 @@
         indicators = document.querySelectorAll(".indicator");
         prevBtn = document.querySelector(".carousel-prev");
         nextBtn = document.querySelector(".carousel-next");
-        langToggle = document.querySelector(".lang-toggle");
-
-        // Detect initial language
-        detectLanguage();
 
         // Initialize components
         initNavigation();
-        initLanguageToggle();
         initScrollEffects();
         initNavbarScroll();
         initArtistShowcase();
@@ -237,62 +43,7 @@
         initArtistAnimations();
         initImageSliders();
 
-        // Apply initial language
-        applyLanguage();
-        updateLanguageToggle();
-
         console.log("Robot Fashion Show 2025 initialized");
-    }
-
-    // Language detection and management
-    function detectLanguage() {
-        const browserLang = navigator.language || navigator.userLanguage;
-        if (browserLang.startsWith("ko")) {
-            currentLanguage = "ko";
-        } else {
-            currentLanguage = "en";
-        }
-    }
-
-    function toggleLanguage() {
-        currentLanguage = currentLanguage === "en" ? "ko" : "en";
-        applyLanguage();
-        updateLanguageToggle();
-    }
-
-    function updateLanguageToggle() {
-        if (langToggle) {
-            langToggle.innerHTML =
-                currentLanguage === "en"
-                    ? '<span class="lang-active">EN</span> / <span class="lang-inactive">KR</span>'
-                    : '<span class="lang-inactive">EN</span> / <span class="lang-active">KR</span>';
-        }
-    }
-
-    function applyLanguage() {
-        const elements = document.querySelectorAll("[data-i18n]");
-        elements.forEach((element) => {
-            const key = element.getAttribute("data-i18n");
-            const translation = translations[currentLanguage][key];
-
-            if (translation) {
-                if (
-                    element.tagName === "TITLE" ||
-                    element.hasAttribute("content")
-                ) {
-                    element.setAttribute("content", translation);
-                    if (element.tagName === "TITLE") {
-                        element.textContent = translation;
-                    }
-                } else {
-                    element.textContent = translation;
-                }
-            }
-        });
-
-        // Update HTML lang attribute
-        document.documentElement.setAttribute("lang", currentLanguage);
-        document.documentElement.setAttribute("data-lang", currentLanguage);
     }
 
     // Navigation functionality
@@ -303,6 +54,13 @@
             link.addEventListener("click", function (e) {
                 e.preventDefault();
                 const target = this.getAttribute("href");
+
+                // Handle external links
+                if (target.startsWith("http") || target.includes(".html")) {
+                    window.location.href = target;
+                    return;
+                }
+
                 smoothScrollTo(target);
             });
         });
@@ -526,19 +284,6 @@
         });
     }
 
-    // Language toggle
-    function initLanguageToggle() {
-        if (langToggle) {
-            langToggle.addEventListener("click", toggleLanguage);
-
-            // Update initial display
-            const langCurrent = document.querySelector(".lang-current");
-            if (langCurrent) {
-                langCurrent.textContent = currentLanguage.toUpperCase();
-            }
-        }
-    }
-
     // Scroll effects
     function initScrollEffects() {
         // Smooth scroll for anchor links
@@ -611,31 +356,6 @@
         }
     });
 
-    // Accessibility enhancements
-    function announceSlideChange() {
-        const currentArtist = carouselTrack.children[currentSlide];
-        const artistName =
-            currentArtist.querySelector(".artist-name").textContent;
-
-        // Create screen reader announcement
-        const announcement = document.createElement("div");
-        announcement.setAttribute("aria-live", "polite");
-        announcement.setAttribute("aria-atomic", "true");
-        announcement.className = "sr-only";
-        announcement.style.position = "absolute";
-        announcement.style.width = "1px";
-        announcement.style.height = "1px";
-        announcement.style.overflow = "hidden";
-        announcement.style.clip = "rect(0, 0, 0, 0)";
-
-        announcement.textContent = `Now showing: ${artistName}`;
-        document.body.appendChild(announcement);
-
-        setTimeout(() => {
-            document.body.removeChild(announcement);
-        }, 1000);
-    }
-
     // Navbar scroll behavior
     function initNavbarScroll() {
         const navbar = document.querySelector(".nav");
@@ -689,9 +409,6 @@
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add("in-view");
-
-                        // Let CSS animations handle the runway effect
-                        // No need for manual JavaScript animation
                     }
                 });
             },
@@ -706,8 +423,6 @@
         artistSections.forEach((section) => {
             showcaseObserver.observe(section);
         });
-
-        // Let natural scrolling work without interference
 
         console.log(
             "Artist Showcase initialized with",
@@ -755,7 +470,7 @@
 
         // Track current section
         function getCurrentSectionIndex() {
-            const scrollPosition = window.scrollY + 100; // Small offset for better detection
+            const scrollPosition = window.scrollY + 100;
             let closestSection = 0;
             let closestDistance = Infinity;
 
@@ -789,7 +504,7 @@
             setTimeout(() => {
                 isSnapping = false;
                 currentSection = index;
-            }, 1000); // 애니메이션 시간을 좀 더 길게
+            }, 1000);
         }
 
         // Enhanced wheel event handling for section-by-section scrolling
@@ -797,12 +512,15 @@
             const currentIndex = getCurrentSectionIndex();
             const currentSection = sections[currentIndex];
 
-            // Info 섹션에서는 자유 스크롤 허용
+            // Info section and participation-info section allow free scrolling
             if (
                 currentSection &&
-                currentSection.classList.contains("info-section")
+                (currentSection.classList.contains("info-section") ||
+                    currentSection.classList.contains(
+                        "participation-info-section"
+                    ))
             ) {
-                return; // info 섹션에서는 기본 스크롤 허용
+                return;
             }
 
             if (isSnapping) {
@@ -815,16 +533,14 @@
 
             // Reset wheel count if too much time has passed
             if (timeDiff > 200) {
-                // 시간을 좀 더 넉넉하게
                 wheelEventCount = 0;
             }
 
             wheelEventCount++;
             lastWheelTime = now;
 
-            // Only trigger section change after multiple wheel events (prevents oversensitive scrolling)
+            // Only trigger section change after multiple wheel events
             if (wheelEventCount < 3) {
-                // 더 많은 휠 이벤트 필요
                 e.preventDefault();
                 return;
             }
@@ -835,14 +551,13 @@
             const direction = e.deltaY > 0 ? 1 : -1;
             const nextIndex = currentIndex + direction;
 
-            // 다음 섹션이 info 섹션인 경우 특별 처리
+            // Handle info section specially
             if (nextIndex >= 0 && nextIndex < sections.length) {
                 const nextSection = sections[nextIndex];
                 if (
                     nextSection &&
                     nextSection.classList.contains("info-section")
                 ) {
-                    // info 섹션으로 이동할 때는 부드럽게 스크롤
                     window.scrollTo({
                         top: nextSection.offsetTop,
                         behavior: "smooth",
@@ -867,12 +582,23 @@
         function handleTouchEnd(e) {
             if (!isTouching || isSnapping) return;
 
+            const currentIndex = getCurrentSectionIndex();
+            const currentSection = sections[currentIndex];
+
+            // Allow free scrolling in participation-info section
+            if (
+                currentSection &&
+                currentSection.classList.contains("participation-info-section")
+            ) {
+                isTouching = false;
+                return;
+            }
+
             touchEndY = e.changedTouches[0].clientY;
             const touchDiff = touchStartY - touchEndY;
             const minSwipeDistance = 50;
 
             if (Math.abs(touchDiff) > minSwipeDistance) {
-                const currentIndex = getCurrentSectionIndex();
                 const direction = touchDiff > 0 ? 1 : -1;
                 const nextIndex = currentIndex + direction;
 
@@ -882,7 +608,6 @@
                         nextSection &&
                         nextSection.classList.contains("info-section")
                     ) {
-                        // info 섹션으로 이동할 때는 부드럽게 스크롤
                         window.scrollTo({
                             top: nextSection.offsetTop,
                             behavior: "smooth",
@@ -901,6 +626,16 @@
             if (isSnapping) return;
 
             const currentIndex = getCurrentSectionIndex();
+            const currentSection = sections[currentIndex];
+
+            // Allow free scrolling in participation-info section
+            if (
+                currentSection &&
+                currentSection.classList.contains("participation-info-section")
+            ) {
+                return;
+            }
+
             let nextIndex = currentIndex;
 
             switch (e.key) {
@@ -935,7 +670,6 @@
                     nextSection &&
                     nextSection.classList.contains("info-section")
                 ) {
-                    // info 섹션으로 이동할 때는 부드럽게 스크롤
                     window.scrollTo({
                         top: nextSection.offsetTop,
                         behavior: "smooth",
@@ -969,13 +703,12 @@
         );
     }
 
-    // 아티스트 섹션 애니메이션 초기화 - 스크롤할 때마다 반복!
+    // Artist animations initialization
     function initArtistAnimations() {
-        // Intersection Observer를 사용하여 각 아티스트 섹션이 뷰포트에 들어올 때 애니메이션 트리거
         const observerOptions = {
             root: null,
-            rootMargin: "0px", // 마진 제거로 성능 향상
-            threshold: 0.1, // 요소의 10%만 보여도 트리거 (더 빨리 시작)
+            rootMargin: "0px",
+            threshold: 0.1,
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -983,22 +716,20 @@
                 const section = entry.target;
 
                 if (entry.isIntersecting) {
-                    // 섹션이 뷰포트에 들어올 때 - 애니메이션 활성화 (단순하게)
                     section.classList.add("in-view");
                 } else {
-                    // 섹션이 뷰포트를 벗어날 때 - 애니메이션 리셋해서 다시 들어올 때 반복되도록!
                     section.classList.remove("in-view");
                 }
             });
         }, observerOptions);
 
-        // 모든 아티스트 섹션을 관찰 대상으로 등록
+        // Observe all artist sections
         const artistSections = document.querySelectorAll(".artist-showcase");
         artistSections.forEach((section) => {
             observer.observe(section);
         });
 
-        // 아티스트 인트로 섹션도 관찰 - 이것도 반복되도록!
+        // Artist intro section
         const introSection = document.querySelector(".artists-intro");
         if (introSection) {
             const introObserver = new IntersectionObserver(
@@ -1007,7 +738,6 @@
                         if (entry.isIntersecting) {
                             entry.target.classList.add("animate-intro");
                         } else {
-                            // 인트로도 다시 들어올 때 반복되도록
                             entry.target.classList.remove("animate-intro");
                         }
                     });
@@ -1023,7 +753,7 @@
         }
     }
 
-    // 이미지 슬라이더 기능 초기화
+    // Image sliders initialization
     function initImageSliders() {
         const sliders = document.querySelectorAll(".work-images-slider");
 
@@ -1040,19 +770,19 @@
 
             let currentImageIndex = 0;
 
-            // 이미지가 1개면 네비게이션 숨기기
+            // Hide navigation if only one image
             if (images.length <= 1) {
                 if (prevBtn) prevBtn.style.display = "none";
                 if (nextBtn) nextBtn.style.display = "none";
                 return;
             }
 
-            // 슬라이더 업데이트 함수
+            // Update slider function
             function updateSlider() {
                 const translateX = -currentImageIndex * 100;
                 slider.style.transform = `translateX(${translateX}%)`;
 
-                // 인디케이터 업데이트
+                // Update indicators
                 indicators.forEach((indicator, index) => {
                     indicator.classList.toggle(
                         "active",
@@ -1060,17 +790,17 @@
                     );
                 });
 
-                // 현재 이미지 인덱스 저장
+                // Store current image index
                 slider.setAttribute("data-current-image", currentImageIndex);
             }
 
-            // 다음 이미지
+            // Next image
             function nextImage() {
                 currentImageIndex = (currentImageIndex + 1) % images.length;
                 updateSlider();
             }
 
-            // 이전 이미지
+            // Previous image
             function prevImage() {
                 currentImageIndex =
                     currentImageIndex === 0
@@ -1079,13 +809,13 @@
                 updateSlider();
             }
 
-            // 특정 이미지로 이동
+            // Go to specific image
             function goToImage(index) {
                 currentImageIndex = index;
                 updateSlider();
             }
 
-            // 이벤트 리스너 등록
+            // Event listeners
             if (prevBtn) {
                 prevBtn.addEventListener("click", prevImage);
             }
@@ -1094,12 +824,12 @@
                 nextBtn.addEventListener("click", nextImage);
             }
 
-            // 인디케이터 클릭 이벤트
+            // Indicator click events
             indicators.forEach((indicator, index) => {
                 indicator.addEventListener("click", () => goToImage(index));
             });
 
-            // 터치 지원 (모바일)
+            // Touch support
             let touchStartX = 0;
             let touchEndX = 0;
 
@@ -1120,16 +850,16 @@
 
                     if (Math.abs(touchDiff) > minSwipeDistance) {
                         if (touchDiff > 0) {
-                            nextImage(); // 왼쪽으로 스와이프 - 다음 이미지
+                            nextImage();
                         } else {
-                            prevImage(); // 오른쪽으로 스와이프 - 이전 이미지
+                            prevImage();
                         }
                     }
                 },
                 { passive: true }
             );
 
-            // 키보드 지원
+            // Keyboard support
             slider.addEventListener("keydown", (e) => {
                 if (e.key === "ArrowLeft") {
                     e.preventDefault();
@@ -1140,22 +870,22 @@
                 }
             });
 
-            // 슬라이더에 포커스 가능하도록 설정
+            // Make slider focusable
             slider.setAttribute("tabindex", "0");
 
-            // 자동 슬라이드 (선택사항 - 3장 이상일 때만)
+            // Auto-slide for 3+ images
             if (images.length > 2) {
                 let autoSlideInterval;
 
                 function startAutoSlide() {
-                    autoSlideInterval = setInterval(nextImage, 5000); // 5초마다
+                    autoSlideInterval = setInterval(nextImage, 5000);
                 }
 
                 function stopAutoSlide() {
                     clearInterval(autoSlideInterval);
                 }
 
-                // 마우스 호버 시 자동 슬라이드 정지
+                // Pause auto-slide on hover
                 slider.parentElement.addEventListener(
                     "mouseenter",
                     stopAutoSlide
@@ -1165,11 +895,11 @@
                     startAutoSlide
                 );
 
-                // 초기 자동 슬라이드 시작
+                // Start auto-slide
                 startAutoSlide();
             }
 
-            // 초기 상태 설정
+            // Initialize slider
             updateSlider();
         });
     }
@@ -1177,17 +907,16 @@
     // Initialize the application
     init();
 
-    // DOM이 로드된 후 이미지 슬라이더 초기화
+    // DOM loaded image slider initialization
     document.addEventListener("DOMContentLoaded", initImageSliders);
 
-    // 이미 로드된 경우에도 실행
+    // Initialize if already loaded
     if (document.readyState !== "loading") {
         initImageSliders();
     }
 
-    // Export functions for potential external use
+    // Export functions for external use
     window.RobotFashionShow = {
-        toggleLanguage,
         goToSlide,
         pauseAutoSlide,
         resumeAutoSlide,

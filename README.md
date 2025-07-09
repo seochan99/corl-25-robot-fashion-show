@@ -1,7 +1,6 @@
-# Robot Fashion Show 2025 - https://robotfashion.show
+# Robot Fashion Show 2025 - <https://robotfashion.show>
 
-
-A cutting-edge microsite showcasing the first-ever Robot Fashion Show at CoRL '25 & Humanoids '25 in Seoul, featuring cross-species haute couture experiences bridging robotics and fashion.
+A cutting-edge microsite showcasing the first-ever Robot Fashion Show at Humanoids '25 in Seoul, featuring cross-species haute couture experiences bridging robotics and fashion.
 
 ## 🌟 Overview
 
@@ -181,13 +180,12 @@ This project is created for the Robot Fashion Show 2025 event in conjunction wit
 
 ## 👥 Contributors
 
--   **Event Organizers**: CoRL '25 & Humanoids '25
+-   **Event Organizers**: Humanoids '25
 -   **Contact**: Jean Oh (CMU) - <jeanoh@cmu.edu>
 -   **Website Development**: [Your Name/Team]
 
 ## 🔗 Related Links
 
--   [CoRL 2025 Official Website](https://www.corl.org/home)
 -   [Call for Robot Fashion Show Submissions](https://www.corl.org/contributions/call-for-robot-fashion-show)
 -   [COEX Convention Center](https://www.coex.co.kr/)
 

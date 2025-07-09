@@ -1,0 +1,1157 @@
+/* 
+ * Call for Participation Page Styles
+ * Robot Fashion Show 2025
+ * Bright, accessible design with olive green accent
+ */
+
+/* Variables for consistency */
+:root {
+    --primary-color: #87b375;
+    --primary-hover: #738a63;
+    --primary-light: #a5c496;
+    --text-dark: #2c2c2c;
+    --text-medium: #555555;
+    --text-light: #777777;
+    --background-light: #ffffff;
+    --background-gray: #f8f9fa;
+    --background-card: #ffffff;
+    --border-color: #e9ecef;
+    --border-accent: #87b375;
+    --shadow-light: rgba(135, 179, 117, 0.1);
+    --shadow-medium: rgba(135, 179, 117, 0.2);
+}
+
+/* Hero Section */
+.cfp-hero {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.cfp-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.cfp-hero-badge {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    box-shadow: 0 4px 12px var(--shadow-light);
+}
+
+.cfp-hero-title {
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    font-family: "Playfair Display", serif;
+    letter-spacing: -0.02em;
+}
+
+.cfp-hero-subtitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.cfp-hero-description {
+    font-size: 1.25rem;
+    color: var(--text-medium);
+    margin-bottom: 3rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+}
+
+.cfp-hero-actions {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cfp-cta-primary,
+.cfp-cta-secondary {
+    display: inline-block;
+    padding: 1.25rem 2.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    min-width: 200px;
+    text-align: center;
+}
+
+.cfp-cta-primary {
+    background-color: var(--primary-color);
+    color: white;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 4px 15px var(--shadow-medium);
+}
+
+.cfp-cta-primary:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--shadow-medium);
+}
+
+.cfp-cta-secondary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.cfp-cta-secondary:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px var(--shadow-medium);
+}
+
+/* Remove overlay and particles */
+.cfp-hero-overlay,
+.cfp-hero-particles {
+    display: none;
+}
+
+/* Main Content */
+.cfp-main {
+    background-color: var(--background-light);
+}
+
+.cfp-section {
+    padding: 5rem 0;
+}
+
+.cfp-section:nth-child(even) {
+    background-color: var(--background-gray);
+}
+
+.cfp-section-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 4rem;
+    text-align: center;
+    font-family: "Playfair Display", serif;
+    letter-spacing: -0.02em;
+    position: relative;
+}
+
+.cfp-section-title::after {
+    content: "";
+    position: absolute;
+    bottom: -1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+.cfp-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.cfp-lead {
+    font-size: 1.4rem;
+    color: var(--text-medium);
+    margin-bottom: 2rem;
+    line-height: 1.7;
+    text-align: center;
+    font-weight: 400;
+}
+
+.cfp-text {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    line-height: 1.8;
+    text-align: center;
+}
+
+/* Timeline - Completely redesigned */
+.cfp-dates-section {
+    background: linear-gradient(
+        135deg,
+        var(--background-gray) 0%,
+        #f0f2f1 100%
+    );
+}
+
+.cfp-timeline {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 0 1rem;
+}
+
+.cfp-timeline::before {
+    display: none;
+}
+
+.cfp-timeline-item {
+    position: relative;
+    margin-bottom: 0;
+    display: block;
+}
+
+.cfp-timeline-content {
+    background-color: var(--background-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.cfp-timeline-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(
+        90deg,
+        var(--primary-color),
+        var(--primary-light)
+    );
+}
+
+.cfp-timeline-content:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    border-color: var(--primary-color);
+}
+
+.cfp-timeline-date {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.cfp-timeline-event {
+    font-size: 1.25rem;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.cfp-timeline-time {
+    font-size: 1rem;
+    color: var(--text-medium);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.cfp-timeline-note {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    font-style: italic;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.cfp-timeline-location {
+    font-size: 1rem;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.cfp-timeline-marker {
+    display: none;
+}
+
+/* Research Areas */
+.cfp-research-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.cfp-research-item {
+    background-color: var(--background-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.cfp-research-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(
+        90deg,
+        var(--primary-color),
+        var(--primary-light)
+    );
+}
+
+.cfp-research-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    border-color: var(--primary-color);
+}
+
+.cfp-research-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+}
+
+.cfp-research-description {
+    color: var(--text-medium);
+    line-height: 1.7;
+    font-size: 1.1rem;
+}
+
+/* Tracks */
+.cfp-tracks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.cfp-track-item {
+    background-color: var(--background-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 3rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.cfp-track-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(
+        90deg,
+        var(--primary-color),
+        var(--primary-light)
+    );
+}
+
+.cfp-track-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    border-color: var(--primary-color);
+}
+
+.cfp-track-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+}
+
+.cfp-track-description {
+    color: var(--text-medium);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.cfp-track-details {
+    color: var(--text-medium);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.cfp-track-requirement {
+    background-color: var(--background-gray);
+    border-left: 4px solid var(--primary-color);
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    color: var(--text-medium);
+    border-radius: 0 8px 8px 0;
+    line-height: 1.6;
+}
+
+.cfp-track-requirement strong {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Submission Section */
+.cfp-submission-section {
+    background: linear-gradient(
+        135deg,
+        var(--background-gray) 0%,
+        #f0f2f1 100%
+    );
+}
+
+.cfp-submission-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.cfp-submission-format {
+    margin-bottom: 4rem;
+}
+
+.cfp-submission-format h3 {
+    font-size: 2rem;
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.cfp-submission-format ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 1.5rem;
+}
+
+.cfp-submission-format li {
+    background-color: var(--background-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.cfp-submission-format li::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(
+        90deg,
+        var(--primary-color),
+        var(--primary-light)
+    );
+}
+
+.cfp-submission-item-title {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.cfp-submission-item-details {
+    color: var(--text-medium);
+    line-height: 1.7;
+    font-size: 1.1rem;
+}
+
+.cfp-submission-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 2rem auto 0;
+    /* 모바일에서는 column으로 변경 */
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
+}
+
+.cfp-submission-link {
+    display: block;
+    background: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    transition: all 0.2s ease;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid var(--primary-color);
+}
+
+.cfp-submission-link:hover {
+    background: var(--primary-hover);
+    border-color: var(--primary-hover);
+    transform: translateY(-1px);
+}
+
+.cfp-submission-icon {
+    display: none;
+}
+
+.cfp-submission-text h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: white;
+    line-height: 1.2;
+}
+
+.cfp-submission-text p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.4;
+    margin: 0;
+    font-weight: 400;
+}
+
+/* Requirements and Notes */
+.cfp-requirements-list,
+.cfp-notes-list {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.cfp-requirements-list ul,
+.cfp-notes-list ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 1.5rem;
+}
+
+.cfp-requirements-list li,
+.cfp-notes-list li {
+    background-color: var(--background-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    color: var(--text-medium);
+    line-height: 1.7;
+    position: relative;
+    padding-left: 4rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.cfp-requirements-list li:hover,
+.cfp-notes-list li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.cfp-requirements-list li::before,
+.cfp-notes-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 1.5rem;
+    top: 2rem;
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.2rem;
+    width: 24px;
+    height: 24px;
+    background-color: var(--background-gray);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Setup Section - Completely redesigned */
+.cfp-setup-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.cfp-setup-info {
+    background-color: var(--background-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 3rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.cfp-setup-info h3 {
+    font-size: 2rem;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.cfp-setup-info p {
+    color: var(--text-medium);
+    margin-bottom: 2rem;
+    line-height: 1.7;
+    font-size: 1.1rem;
+}
+
+.cfp-setup-link {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    box-shadow: 0 4px 12px var(--shadow-light);
+}
+
+.cfp-setup-link:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--shadow-medium);
+}
+
+.cfp-setup-visual {
+    background-color: var(--background-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 3rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.cfp-runway-diagram {
+    text-align: center;
+}
+
+.cfp-runway-stage {
+    background: linear-gradient(
+        135deg,
+        var(--primary-color),
+        var(--primary-light)
+    );
+    color: white;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 12px var(--shadow-light);
+}
+
+.cfp-runway-path {
+    background-color: var(--background-gray);
+    border: 2px dashed var(--primary-color);
+    padding: 3rem 2rem;
+    border-radius: 12px;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 1.3rem;
+    position: relative;
+}
+
+.cfp-runway-path::before {
+    content: "←";
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary-color);
+    font-size: 2rem;
+}
+
+.cfp-runway-path::after {
+    content: "→";
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary-color);
+    font-size: 2rem;
+}
+
+/* Contact Section */
+.cfp-contact-section {
+    background: linear-gradient(
+        135deg,
+        var(--background-gray) 0%,
+        #f0f2f1 100%
+    );
+}
+
+.cfp-contact-card {
+    display: flex;
+    align-items: center;
+    background-color: var(--background-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 3rem;
+    max-width: 700px;
+    margin: 0 auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.cfp-contact-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Contact Avatar - 완전히 새로 설계 */
+.cfp-contact-avatar {
+    margin-right: 2rem;
+    flex-shrink: 0;
+}
+
+.cfp-avatar-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--primary-color);
+    box-shadow: 0 4px 15px var(--shadow-medium);
+    position: relative;
+    background: linear-gradient(
+        135deg,
+        var(--primary-color),
+        var(--primary-light)
+    );
+}
+
+.cfp-avatar-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    border-radius: 50%;
+}
+
+/* 이미지가 없을 때를 위한 fallback 텍스트 스타일 */
+.cfp-avatar-circle:not(:has(img)) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: white;
+    font-size: 1.8rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.cfp-contact-name {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.cfp-contact-email {
+    color: var(--primary-color);
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.cfp-contact-email:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+.cfp-contact-note {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .cfp-timeline {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .cfp-research-grid,
+    .cfp-tracks-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .cfp-setup-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .cfp-hero {
+        min-height: 60vh;
+        padding: 2rem 0;
+    }
+
+    .cfp-hero-content {
+        padding: 0 1rem;
+    }
+
+    .cfp-hero-title {
+        font-size: clamp(2.2rem, 7vw, 3.5rem);
+        line-height: 1.2;
+        margin-bottom: 1rem;
+    }
+
+    .cfp-hero-subtitle {
+        font-size: clamp(1.1rem, 4vw, 1.4rem);
+        margin-bottom: 1rem;
+    }
+
+    .cfp-hero-description {
+        font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+        margin-bottom: 2rem;
+        max-width: 100%;
+    }
+
+    .cfp-hero-actions {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .cfp-cta-primary,
+    .cfp-cta-secondary {
+        width: 100%;
+        max-width: 280px;
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    }
+
+    .cfp-section {
+        padding: 2.5rem 0;
+    }
+
+    .cfp-section-title {
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .cfp-lead {
+        font-size: clamp(1rem, 3.5vw, 1.2rem);
+        text-align: center;
+    }
+
+    .cfp-text {
+        font-size: clamp(0.9rem, 3vw, 1rem);
+        text-align: center;
+    }
+
+    .cfp-timeline {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    .cfp-timeline-content {
+        padding: 1rem;
+    }
+
+    .cfp-timeline-date {
+        font-size: 1rem;
+    }
+
+    .cfp-timeline-event {
+        font-size: 0.9rem;
+    }
+
+    .cfp-research-grid,
+    .cfp-tracks-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .cfp-research-item,
+    .cfp-track-item {
+        padding: 2rem;
+        text-align: center;
+    }
+
+    .cfp-research-title,
+    .cfp-track-title {
+        font-size: 1.3rem;
+    }
+
+    .cfp-research-description,
+    .cfp-track-description {
+        font-size: 0.95rem;
+    }
+
+    .cfp-submission-links {
+        gap: 1rem;
+        max-width: 100%;
+        margin: 1.5rem auto 0;
+    }
+
+    .cfp-submission-link {
+        padding: 1.3rem 1.5rem;
+    }
+
+    .cfp-submission-text h3 {
+        font-size: 1.1rem;
+    }
+
+    .cfp-submission-text p {
+        font-size: 0.9rem;
+    }
+
+    .cfp-contact-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem;
+        max-width: 100%;
+    }
+
+    .cfp-contact-avatar {
+        margin-right: 0;
+        margin-bottom: 1.5rem;
+    }
+
+    .cfp-contact-name {
+        font-size: 1.3rem;
+    }
+
+    .cfp-contact-email {
+        font-size: 1rem;
+    }
+
+    .cfp-setup-info,
+    .cfp-setup-visual {
+        text-align: center;
+        padding: 1.5rem;
+    }
+
+    .cfp-setup-info h3 {
+        font-size: clamp(1.2rem, 4.5vw, 1.5rem);
+        word-break: keep-all;
+        overflow-wrap: break-word;
+        max-width: 100%;
+        padding: 0 0.5rem;
+        margin: 0 auto 1rem;
+    }
+
+    .cfp-setup-info p {
+        padding: 0 0.5rem;
+        font-size: 1rem;
+    }
+
+    .cfp-runway-diagram {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 0.75rem;
+    }
+
+    .cfp-hero {
+        min-height: 50vh;
+        padding: 1.5rem 0;
+    }
+
+    .cfp-hero-content {
+        padding: 0 0.75rem;
+    }
+
+    .cfp-hero-title {
+        font-size: clamp(1.8rem, 6vw, 2.8rem);
+        margin-bottom: 0.8rem;
+    }
+
+    .cfp-hero-subtitle {
+        font-size: clamp(1rem, 3.5vw, 1.2rem);
+        margin-bottom: 0.8rem;
+    }
+
+    .cfp-hero-description {
+        font-size: clamp(0.85rem, 3vw, 1rem);
+        margin-bottom: 1.5rem;
+    }
+
+    .cfp-cta-primary,
+    .cfp-cta-secondary {
+        max-width: 260px;
+        padding: 0.9rem 1.8rem;
+        font-size: 0.95rem;
+    }
+
+    .cfp-section {
+        padding: 2rem 0;
+    }
+
+    .cfp-section-title {
+        font-size: clamp(1.5rem, 4.5vw, 2rem);
+        margin-bottom: 1.5rem;
+    }
+
+    .cfp-lead {
+        font-size: clamp(0.9rem, 3vw, 1rem);
+        margin-bottom: 1.2rem;
+    }
+
+    .cfp-text {
+        font-size: clamp(0.85rem, 2.8vw, 0.95rem);
+        margin-bottom: 1rem;
+    }
+
+    .cfp-timeline-content {
+        padding: 0.8rem;
+    }
+
+    .cfp-timeline-date {
+        font-size: 0.9rem;
+    }
+
+    .cfp-timeline-event {
+        font-size: 0.8rem;
+    }
+
+    .cfp-timeline-time {
+        font-size: 0.75rem;
+    }
+
+    .cfp-research-item,
+    .cfp-track-item {
+        padding: 1.5rem;
+    }
+
+    .cfp-research-title,
+    .cfp-track-title {
+        font-size: 1.2rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .cfp-research-description,
+    .cfp-track-description {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .cfp-submission-link {
+        padding: 1.1rem 1.2rem;
+    }
+
+    .cfp-submission-text h3 {
+        font-size: 1rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .cfp-submission-text p {
+        font-size: 0.85rem;
+    }
+
+    .cfp-contact-card {
+        padding: 1.5rem;
+    }
+
+    .cfp-contact-name {
+        font-size: 1.2rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .cfp-contact-email {
+        font-size: 0.95rem;
+    }
+
+    .cfp-avatar-circle {
+        width: 70px;
+        height: 70px;
+        font-size: 1.3rem;
+        border-width: 3px;
+    }
+
+    .cfp-setup-info,
+    .cfp-setup-visual {
+        padding: 1rem 0.5rem;
+    }
+
+    /* Setup 섹션에서 컨테이너 여백 증가 */
+    #setup .container {
+        padding: 0 0.5rem;
+        max-width: 100%;
+    }
+
+    .cfp-setup-info h3 {
+        font-size: clamp(1.1rem, 4vw, 1.3rem);
+        word-break: keep-all;
+        overflow-wrap: break-word;
+        max-width: 100%;
+        padding: 0 0.5rem;
+        margin: 0 auto 1rem;
+        text-align: center;
+    }
+
+    .cfp-setup-info p {
+        font-size: 0.9rem;
+        padding: 0 0.5rem;
+        text-align: center;
+    }
+
+    .cfp-runway-diagram {
+        max-width: 280px;
+        height: 140px;
+    }
+
+    .cfp-runway-stage,
+    .cfp-runway-path {
+        font-size: 0.8rem;
+    }
+}

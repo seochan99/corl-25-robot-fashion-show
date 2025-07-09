@@ -20,6 +20,8 @@
     justify-content: space-between;
     align-items: center;
     height: 60px;
+    @media (max-width: 768px) {
+    }
 }
 
 .nav-logo {
@@ -44,24 +46,7 @@
 
 .nav-link:hover,
 .nav-link:focus {
-    color: #45334a;
-}
-
-.nav-link::after {
-    content: "";
-    position: absolute;
-    bottom: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, #45334a, transparent);
-    transition: width 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-
-.nav-link:hover::after,
-.nav-link:focus::after {
-    width: 100%;
+    color: #87b375;
 }
 
 .lang-toggle {
@@ -79,7 +64,7 @@
 
 .lang-toggle:hover,
 .lang-toggle:focus {
-    color: #45334a;
+    color: #87b375;
 }
 
 .lang-active {
@@ -90,4 +75,125 @@
 .lang-inactive {
     font-weight: 400;
     color: rgba(255, 255, 255, 0.6);
+}
+
+/* Nav Badge Styles */
+.nav-badge {
+    flex-shrink: 0;
+    margin-left: 20px;
+}
+
+.humanoids-badge {
+    display: inline-block;
+    /* background: rgba(255, 255, 255, 0.1); */
+    /* border: 1px solid rgba(255, 255, 255, 0.2); */
+    color: #e5e5e5;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 8px 16px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.humanoids-badge:hover {
+    color: #87b375;
+    transform: translateY(-1px);
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+    .nav-container {
+        height: auto;
+        padding: 20px 25px;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        gap: 15px;
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        flex-wrap: wrap;
+    }
+
+    .nav-links {
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+        color: #fff;
+    }
+
+    .nav-link:hover {
+        color: #87b375 !important;
+    }
+
+    .nav-link.active {
+        color: #87b375 !important;
+    }
+
+    /* Hide some links on mobile */
+    .nav-link:nth-child(2), /* Invited Artists */
+    .nav-link:nth-child(3)  /* Info */ {
+        display: none;
+    }
+
+    .nav-badge {
+        margin-left: 0;
+        flex-shrink: 0;
+    }
+
+    .humanoids-badge {
+        font-size: 0.75rem;
+        padding: 6px 12px;
+        border-radius: 15px;
+        transition: all 0.2s ease;
+        color: #fff;
+    }
+
+    .humanoids-badge:hover {
+        color: #87b375 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-container {
+        padding: 18px 20px;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    .nav-link {
+        font-size: 0.85rem;
+        padding: 6px 10px;
+    }
+
+    .humanoids-badge {
+        font-size: 0.7rem;
+        padding: 5px 10px;
+    }
+
+    /* Keep only essential links on small mobile */
+    .nav-link:nth-child(2), /* Invited Artists */
+    .nav-link:nth-child(3)  /* Info */ {
+        display: none;
+    }
+
+    .humanoids-badge {
+        font-size: 0.65rem;
+        padding: 3px 6px;
+    }
 }
