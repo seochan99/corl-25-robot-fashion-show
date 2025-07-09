@@ -36,7 +36,7 @@
         // Initialize components
         initNavigation();
         initScrollEffects();
-        initNavbarScroll();
+        // initNavbarScroll();
         initArtistShowcase();
         initHeroVideo();
         initSectionSnapping();
@@ -364,36 +364,36 @@
     });
 
     // Navbar scroll behavior
-    function initNavbarScroll() {
-        const navbar = document.querySelector(".nav");
-        if (!navbar) return;
+    // function initNavbarScroll() {
+    //     const navbar = document.querySelector(".nav");
+    //     if (!navbar) return;
 
-        // Add transition for smooth animation
-        navbar.style.transition = "transform 0.3s ease-in-out";
+    //     // Add transition for smooth animation
+    //     navbar.style.transition = "transform 0.3s ease-in-out";
 
-        window.addEventListener(
-            "scroll",
-            throttle(() => {
-                const currentScrollY = window.scrollY;
+    //     window.addEventListener(
+    //         "scroll",
+    //         throttle(() => {
+    //             const currentScrollY = window.scrollY;
 
-                // Don't hide navbar if at top of page
-                if (currentScrollY < 100) {
-                    showNavbar(navbar);
-                    return;
-                }
+    //             // Don't hide navbar if at top of page
+    //             if (currentScrollY < 100) {
+    //                 showNavbar(navbar);
+    //                 return;
+    //             }
 
-                // Hide navbar when scrolling down, show when scrolling up
-                if (currentScrollY > lastScrollY && !navbarHidden) {
-                    hideNavbar(navbar);
-                } else if (currentScrollY < lastScrollY && navbarHidden) {
-                    showNavbar(navbar);
-                }
+    //             // Hide navbar when scrolling down, show when scrolling up
+    //             if (currentScrollY > lastScrollY && !navbarHidden) {
+    //                 hideNavbar(navbar);
+    //             } else if (currentScrollY < lastScrollY && navbarHidden) {
+    //                 showNavbar(navbar);
+    //             }
 
-                lastScrollY = currentScrollY;
-            }, 16), // ~60fps for smoother performance
-            { passive: true }
-        );
-    }
+    //             lastScrollY = currentScrollY;
+    //         }, 16), // ~60fps for smoother performance
+    //         { passive: true }
+    //     );
+    // }
 
     function hideNavbar(navbar) {
         navbar.style.transform = "translateY(-100%)";
