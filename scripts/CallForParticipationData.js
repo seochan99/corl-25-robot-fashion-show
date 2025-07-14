@@ -86,7 +86,7 @@ export const robotFashionShowData = {
     submission: {
         platform: {
             name: "OpenReview",
-            url: "https://openreview.net/group?id=robot-learning.org/CoRL/2025/Robot_Fashion_Show",
+            url: "https://openreview.net/group?id=IEEE.org/RAS/Humanoids/2025/Robot_Fashion_Show#tab-recent-activity",
         },
         template: {
             name: "Proposal Template",
