@@ -15,6 +15,173 @@
     // DOM elements
     let carousel, carouselTrack, indicators, prevBtn, nextBtn;
 
+    // Google Analytics Event Tracking
+    function trackEvent(category, action, label = null, value = null) {
+        if (typeof gtag !== 'undefined') {
+            gtag('event', action, {
+                event_category: category,
+                event_label: label,
+                value: value
+            });
+        }
+    }
+
+    // Track button clicks and interactions
+    function initEventTracking() {
+        // Track CTA button clicks with specific tracking for Submit Proposal buttons
+        const ctaButtons = document.querySelectorAll('.hero-cta-primary, .hero-cta-secondary, .participation-button');
+        ctaButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const buttonText = this.textContent.trim();
+                const href = this.getAttribute('href');
+                const buttonClass = this.className;
+                
+                // Specific tracking for Submit Proposal buttons
+                if (buttonText.includes('Submit') || buttonText.includes('Proposal')) {
+                    if (buttonClass.includes('hero-cta-primary')) {
+                        trackEvent('Submit_Proposal', 'click', 'Hero Section - Primary CTA');
+                    } else if (buttonClass.includes('participation-button')) {
+                        trackEvent('Submit_Proposal', 'click', 'Participation Section - Secondary CTA');
+                    } else {
+                        trackEvent('Submit_Proposal', 'click', 'Other Location');
+                    }
+                } else {
+                    trackEvent('CTA', 'click', `${buttonText} - ${href}`);
+                }
+            });
+        });
+
+        // Track navigation clicks
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                const linkText = this.textContent.trim();
+                const href = this.getAttribute('href');
+                
+                // Specific tracking for Call for Participation link
+                if (linkText.includes('Call for Participation') || href.includes('call-for-participation')) {
+                    trackEvent('Navigation', 'click', 'Call for Participation Link');
+                } else {
+                    trackEvent('Navigation', 'click', `${linkText} - ${href}`);
+                }
+            });
+        });
+
+        // Track artist profile clicks
+        const profileLinks = document.querySelectorAll('.profile-icon-btn, .youtube-icon-btn, .instagram-icon-btn');
+        profileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                const linkType = this.classList.contains('profile-icon-btn') ? 'Profile' : 
+                               this.classList.contains('youtube-icon-btn') ? 'YouTube' : 'Instagram';
+                const href = this.getAttribute('href');
+                const artistSection = this.closest('.artist-showcase');
+                const artistName = artistSection ? artistSection.querySelector('.artist-name span').textContent : 'Unknown';
+                trackEvent('Artist', 'click', `${linkType} - ${artistName} - ${href}`);
+            });
+        });
+
+        // Track image slider interactions
+        const imageNavButtons = document.querySelectorAll('.image-nav-btn');
+        imageNavButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const direction = this.classList.contains('prev') ? 'Previous' : 'Next';
+                const artistSection = this.closest('.artist-showcase');
+                const artistName = artistSection ? artistSection.querySelector('.artist-name span').textContent : 'Unknown';
+                trackEvent('ImageSlider', 'click', `${direction} - ${artistName}`);
+            });
+        });
+
+        // Track image indicator clicks
+        const imageIndicators = document.querySelectorAll('.image-indicator');
+        imageIndicators.forEach(indicator => {
+            indicator.addEventListener('click', function() {
+                const index = this.getAttribute('data-index');
+                const artistSection = this.closest('.artist-showcase');
+                const artistName = artistSection ? artistSection.querySelector('.artist-name span').textContent : 'Unknown';
+                trackEvent('ImageSlider', 'indicator', `${artistName} - Image ${parseInt(index) + 1}`);
+            });
+        });
+
+        // Track sponsor link clicks
+        const sponsorLinks = document.querySelectorAll('.sponsor-item a');
+        sponsorLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                const sponsorName = this.querySelector('img')?.alt || 'Unknown Sponsor';
+                const href = this.getAttribute('href');
+                trackEvent('Sponsor', 'click', `${sponsorName} - ${href}`);
+            });
+        });
+
+        // Track contact email clicks
+        const contactEmail = document.querySelector('.contact-email');
+        if (contactEmail) {
+            contactEmail.addEventListener('click', function() {
+                trackEvent('Contact', 'click', 'Email - hpark3@andrew.cmu.edu');
+            });
+        }
+
+        // Track humanoids badge clicks
+        const humanoidsBadge = document.querySelector('.humanoids-badge');
+        if (humanoidsBadge) {
+            humanoidsBadge.addEventListener('click', function() {
+                trackEvent('External', 'click', 'Humanoids 2025 Badge');
+            });
+        }
+
+        // Track timeline item clicks (if they become clickable)
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        timelineItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const date = this.querySelector('.timeline-date')?.textContent || 'Unknown Date';
+                const label = this.querySelector('.timeline-label')?.textContent || 'Unknown Label';
+                trackEvent('Timeline', 'click', `${date} - ${label}`);
+            });
+        });
+
+        // Track participation highlights clicks (if they become interactive)
+        const highlightItems = document.querySelectorAll('.highlight-item');
+        highlightItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const title = this.querySelector('h4')?.textContent || 'Unknown Highlight';
+                trackEvent('Participation', 'click', `Highlight - ${title}`);
+            });
+        });
+
+        // Track scroll depth (optional - can be resource intensive)
+        let maxScrollDepth = 0;
+        window.addEventListener('scroll', throttle(() => {
+            const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+            if (scrollPercent > maxScrollDepth && scrollPercent % 25 === 0) {
+                maxScrollDepth = scrollPercent;
+                trackEvent('Engagement', 'scroll_depth', `${scrollPercent}%`);
+            }
+        }, 1000));
+
+        // Track time on page (every 30 seconds)
+        let timeOnPage = 0;
+        setInterval(() => {
+            timeOnPage += 30;
+            if (timeOnPage % 60 === 0) { // Track every minute
+                trackEvent('Engagement', 'time_on_page', `${timeOnPage} seconds`);
+            }
+        }, 30000);
+
+        // Track section visibility
+        const sections = document.querySelectorAll('section[id]');
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const sectionId = entry.target.getAttribute('id');
+                    trackEvent('Engagement', 'section_view', sectionId);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        sections.forEach(section => {
+            sectionObserver.observe(section);
+        });
+    }
+
     // Initialize application
     function init() {
         // Wait for DOM to be ready
@@ -42,6 +209,7 @@
         initSectionSnapping();
         initArtistAnimations();
         initImageSliders();
+        initEventTracking(); // Add event tracking
 
         console.log("Robot Fashion Show 2025 initialized");
     }

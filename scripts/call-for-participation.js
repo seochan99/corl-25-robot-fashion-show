@@ -9,6 +9,103 @@
 
     // DOM elements - language toggle removed
 
+    // Google Analytics Event Tracking
+    function trackEvent(category, action, label = null, value = null) {
+        if (typeof gtag !== 'undefined') {
+            gtag('event', action, {
+                event_category: category,
+                event_label: label,
+                value: value
+            });
+        }
+    }
+
+    // Track button clicks and interactions
+    function initEventTracking() {
+        // Track CTA button clicks
+        const ctaButtons = document.querySelectorAll('.cfp-cta-primary, .cfp-cta-secondary');
+        ctaButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const buttonText = this.textContent.trim();
+                const href = this.getAttribute('href');
+                trackEvent('CFP_CTA', 'click', `${buttonText} - ${href}`);
+            });
+        });
+
+        // Track submission link clicks
+        const submissionLinks = document.querySelectorAll('.cfp-submission-link');
+        submissionLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                const linkText = this.querySelector('h3')?.textContent || 'Unknown Link';
+                const href = this.getAttribute('href');
+                trackEvent('CFP_Submission', 'click', `${linkText} - ${href}`);
+            });
+        });
+
+        // Track setup document link
+        const setupDocLink = document.querySelector('#cfp-setup-doc-link');
+        if (setupDocLink) {
+            setupDocLink.addEventListener('click', function() {
+                trackEvent('CFP_Setup', 'click', 'Competition Categories Document');
+            });
+        }
+
+        // Track contact email clicks
+        const contactEmail = document.querySelector('.cfp-contact-email');
+        if (contactEmail) {
+            contactEmail.addEventListener('click', function() {
+                trackEvent('CFP_Contact', 'click', 'Email - jeanoh@cmu.edu');
+            });
+        }
+
+        // Track navigation clicks
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                const linkText = this.textContent.trim();
+                const href = this.getAttribute('href');
+                trackEvent('CFP_Navigation', 'click', `${linkText} - ${href}`);
+            });
+        });
+
+        // Track footer links
+        const footerLinks = document.querySelectorAll('.footer-links a');
+        footerLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                const linkText = this.textContent.trim();
+                const href = this.getAttribute('href');
+                trackEvent('CFP_Footer', 'click', `${linkText} - ${href}`);
+            });
+        });
+
+        // Track humanoids badge clicks
+        const humanoidsBadge = document.querySelector('.humanoids-badge');
+        if (humanoidsBadge) {
+            humanoidsBadge.addEventListener('click', function() {
+                trackEvent('CFP_External', 'click', 'Humanoids 2025 Badge');
+            });
+        }
+
+        // Track scroll depth (optional - can be resource intensive)
+        let maxScrollDepth = 0;
+        window.addEventListener('scroll', throttle(() => {
+            const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+            if (scrollPercent > maxScrollDepth && scrollPercent % 25 === 0) {
+                maxScrollDepth = scrollPercent;
+                trackEvent('CFP_Engagement', 'scroll_depth', `${scrollPercent}%`);
+            }
+        }, 1000));
+
+        // Track time on page (every 30 seconds)
+        let timeOnPage = 0;
+        setInterval(() => {
+            timeOnPage += 30;
+            if (timeOnPage % 60 === 0) { // Track every minute
+                trackEvent('CFP_Engagement', 'time_on_page', `${timeOnPage} seconds`);
+            }
+        }, 30000);
+    }
+
     // Initialize application
     function init() {
         // Wait for DOM to be ready
@@ -26,6 +123,7 @@
         // Initialize components
         initScrollEffects();
         initSmoothScrolling();
+        initEventTracking(); // Add event tracking
 
         // Render content
         renderContent();
