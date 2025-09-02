@@ -11,17 +11,20 @@
     let currentSection = 0;
     let isScrolling = false;
     let scrollTimeout;
+    let sections = [];
+    let sectionTops = [];
+    let isInitialized = false;
 
     // DOM elements
     let carousel, carouselTrack, indicators, prevBtn, nextBtn;
 
     // Google Analytics Event Tracking
     function trackEvent(category, action, label = null, value = null) {
-        if (typeof gtag !== 'undefined') {
-            gtag('event', action, {
+        if (typeof gtag !== "undefined") {
+            gtag("event", action, {
                 event_category: category,
                 event_label: label,
-                value: value
+                value: value,
             });
         }
     }
@@ -29,157 +32,220 @@
     // Track button clicks and interactions
     function initEventTracking() {
         // Track CTA button clicks with specific tracking for Submit Proposal buttons
-        const ctaButtons = document.querySelectorAll('.hero-cta-primary, .hero-cta-secondary, .participation-button');
-        ctaButtons.forEach(button => {
-            button.addEventListener('click', function() {
+        const ctaButtons = document.querySelectorAll(
+            ".hero-cta-primary, .hero-cta-secondary, .participation-button"
+        );
+        ctaButtons.forEach((button) => {
+            button.addEventListener("click", function () {
                 const buttonText = this.textContent.trim();
-                const href = this.getAttribute('href');
+                const href = this.getAttribute("href");
                 const buttonClass = this.className;
-                
+
                 // Specific tracking for Submit Proposal buttons
-                if (buttonText.includes('Submit') || buttonText.includes('Proposal')) {
-                    if (buttonClass.includes('hero-cta-primary')) {
-                        trackEvent('Submit_Proposal', 'click', 'Hero Section - Primary CTA');
-                    } else if (buttonClass.includes('participation-button')) {
-                        trackEvent('Submit_Proposal', 'click', 'Participation Section - Secondary CTA');
+                if (
+                    buttonText.includes("Submit") ||
+                    buttonText.includes("Proposal")
+                ) {
+                    if (buttonClass.includes("hero-cta-primary")) {
+                        trackEvent(
+                            "Submit_Proposal",
+                            "click",
+                            "Hero Section - Primary CTA"
+                        );
+                    } else if (buttonClass.includes("participation-button")) {
+                        trackEvent(
+                            "Submit_Proposal",
+                            "click",
+                            "Participation Section - Secondary CTA"
+                        );
                     } else {
-                        trackEvent('Submit_Proposal', 'click', 'Other Location');
+                        trackEvent(
+                            "Submit_Proposal",
+                            "click",
+                            "Other Location"
+                        );
                     }
                 } else {
-                    trackEvent('CTA', 'click', `${buttonText} - ${href}`);
+                    trackEvent("CTA", "click", `${buttonText} - ${href}`);
                 }
             });
         });
 
         // Track navigation clicks
-        const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
+        const navLinks = document.querySelectorAll(".nav-link");
+        navLinks.forEach((link) => {
+            link.addEventListener("click", function () {
                 const linkText = this.textContent.trim();
-                const href = this.getAttribute('href');
-                
+                const href = this.getAttribute("href");
+
                 // Specific tracking for Call for Participation link
-                if (linkText.includes('Call for Participation') || href.includes('call-for-participation')) {
-                    trackEvent('Navigation', 'click', 'Call for Participation Link');
+                if (
+                    linkText.includes("Call for Participation") ||
+                    href.includes("call-for-participation")
+                ) {
+                    trackEvent(
+                        "Navigation",
+                        "click",
+                        "Call for Participation Link"
+                    );
                 } else {
-                    trackEvent('Navigation', 'click', `${linkText} - ${href}`);
+                    trackEvent("Navigation", "click", `${linkText} - ${href}`);
                 }
             });
         });
 
         // Track artist profile clicks
-        const profileLinks = document.querySelectorAll('.profile-icon-btn, .youtube-icon-btn, .instagram-icon-btn');
-        profileLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                const linkType = this.classList.contains('profile-icon-btn') ? 'Profile' : 
-                               this.classList.contains('youtube-icon-btn') ? 'YouTube' : 'Instagram';
-                const href = this.getAttribute('href');
-                const artistSection = this.closest('.artist-showcase');
-                const artistName = artistSection ? artistSection.querySelector('.artist-name span').textContent : 'Unknown';
-                trackEvent('Artist', 'click', `${linkType} - ${artistName} - ${href}`);
+        const profileLinks = document.querySelectorAll(
+            ".profile-icon-btn, .youtube-icon-btn, .instagram-icon-btn"
+        );
+        profileLinks.forEach((link) => {
+            link.addEventListener("click", function () {
+                const linkType = this.classList.contains("profile-icon-btn")
+                    ? "Profile"
+                    : this.classList.contains("youtube-icon-btn")
+                    ? "YouTube"
+                    : "Instagram";
+                const href = this.getAttribute("href");
+                const artistSection = this.closest(".artist-showcase");
+                const artistName = artistSection
+                    ? artistSection.querySelector(".artist-name span")
+                          .textContent
+                    : "Unknown";
+                trackEvent(
+                    "Artist",
+                    "click",
+                    `${linkType} - ${artistName} - ${href}`
+                );
             });
         });
 
         // Track image slider interactions
-        const imageNavButtons = document.querySelectorAll('.image-nav-btn');
-        imageNavButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const direction = this.classList.contains('prev') ? 'Previous' : 'Next';
-                const artistSection = this.closest('.artist-showcase');
-                const artistName = artistSection ? artistSection.querySelector('.artist-name span').textContent : 'Unknown';
-                trackEvent('ImageSlider', 'click', `${direction} - ${artistName}`);
+        const imageNavButtons = document.querySelectorAll(".image-nav-btn");
+        imageNavButtons.forEach((button) => {
+            button.addEventListener("click", function () {
+                const direction = this.classList.contains("prev")
+                    ? "Previous"
+                    : "Next";
+                const artistSection = this.closest(".artist-showcase");
+                const artistName = artistSection
+                    ? artistSection.querySelector(".artist-name span")
+                          .textContent
+                    : "Unknown";
+                trackEvent(
+                    "ImageSlider",
+                    "click",
+                    `${direction} - ${artistName}`
+                );
             });
         });
 
         // Track image indicator clicks
-        const imageIndicators = document.querySelectorAll('.image-indicator');
-        imageIndicators.forEach(indicator => {
-            indicator.addEventListener('click', function() {
-                const index = this.getAttribute('data-index');
-                const artistSection = this.closest('.artist-showcase');
-                const artistName = artistSection ? artistSection.querySelector('.artist-name span').textContent : 'Unknown';
-                trackEvent('ImageSlider', 'indicator', `${artistName} - Image ${parseInt(index) + 1}`);
+        const imageIndicators = document.querySelectorAll(".image-indicator");
+        imageIndicators.forEach((indicator) => {
+            indicator.addEventListener("click", function () {
+                const index = this.getAttribute("data-index");
+                const artistSection = this.closest(".artist-showcase");
+                const artistName = artistSection
+                    ? artistSection.querySelector(".artist-name span")
+                          .textContent
+                    : "Unknown";
+                trackEvent(
+                    "ImageSlider",
+                    "indicator",
+                    `${artistName} - Image ${parseInt(index) + 1}`
+                );
             });
         });
 
         // Track sponsor link clicks
-        const sponsorLinks = document.querySelectorAll('.sponsor-item a');
-        sponsorLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                const sponsorName = this.querySelector('img')?.alt || 'Unknown Sponsor';
-                const href = this.getAttribute('href');
-                trackEvent('Sponsor', 'click', `${sponsorName} - ${href}`);
+        const sponsorLinks = document.querySelectorAll(".sponsor-item a");
+        sponsorLinks.forEach((link) => {
+            link.addEventListener("click", function () {
+                const sponsorName =
+                    this.querySelector("img")?.alt || "Unknown Sponsor";
+                const href = this.getAttribute("href");
+                trackEvent("Sponsor", "click", `${sponsorName} - ${href}`);
             });
         });
 
         // Track contact email clicks
-        const contactEmail = document.querySelector('.contact-email');
+        const contactEmail = document.querySelector(".contact-email");
         if (contactEmail) {
-            contactEmail.addEventListener('click', function() {
-                trackEvent('Contact', 'click', 'Email - hpark3@andrew.cmu.edu');
+            contactEmail.addEventListener("click", function () {
+                trackEvent("Contact", "click", "Email - hpark3@andrew.cmu.edu");
             });
         }
 
         // Track humanoids badge clicks
-        const humanoidsBadge = document.querySelector('.humanoids-badge');
+        const humanoidsBadge = document.querySelector(".humanoids-badge");
         if (humanoidsBadge) {
-            humanoidsBadge.addEventListener('click', function() {
-                trackEvent('External', 'click', 'Humanoids 2025 Badge');
+            humanoidsBadge.addEventListener("click", function () {
+                trackEvent("External", "click", "Humanoids 2025 Badge");
             });
         }
 
         // Track timeline item clicks (if they become clickable)
-        const timelineItems = document.querySelectorAll('.timeline-item');
-        timelineItems.forEach(item => {
-            item.addEventListener('click', function() {
-                const date = this.querySelector('.timeline-date')?.textContent || 'Unknown Date';
-                const label = this.querySelector('.timeline-label')?.textContent || 'Unknown Label';
-                trackEvent('Timeline', 'click', `${date} - ${label}`);
+        const timelineItems = document.querySelectorAll(".timeline-item");
+        timelineItems.forEach((item) => {
+            item.addEventListener("click", function () {
+                const date =
+                    this.querySelector(".timeline-date")?.textContent ||
+                    "Unknown Date";
+                const label =
+                    this.querySelector(".timeline-label")?.textContent ||
+                    "Unknown Label";
+                trackEvent("Timeline", "click", `${date} - ${label}`);
             });
         });
 
         // Track participation highlights clicks (if they become interactive)
-        const highlightItems = document.querySelectorAll('.highlight-item');
-        highlightItems.forEach(item => {
-            item.addEventListener('click', function() {
-                const title = this.querySelector('h4')?.textContent || 'Unknown Highlight';
-                trackEvent('Participation', 'click', `Highlight - ${title}`);
+        const highlightItems = document.querySelectorAll(".highlight-item");
+        highlightItems.forEach((item) => {
+            item.addEventListener("click", function () {
+                const title =
+                    this.querySelector("h4")?.textContent ||
+                    "Unknown Highlight";
+                trackEvent("Participation", "click", `Highlight - ${title}`);
             });
         });
 
-        // Track scroll depth (optional - can be resource intensive)
+        // Track scroll depth (optimized - reduced frequency)
         let maxScrollDepth = 0;
-        window.addEventListener('scroll', throttle(() => {
-            const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
-            if (scrollPercent > maxScrollDepth && scrollPercent % 25 === 0) {
-                maxScrollDepth = scrollPercent;
-                trackEvent('Engagement', 'scroll_depth', `${scrollPercent}%`);
-            }
-        }, 1000));
+        let scrollDepthTimeout;
+        window.addEventListener(
+            "scroll",
+            () => {
+                if (scrollDepthTimeout) return;
 
-        // Track time on page (every 30 seconds)
+                scrollDepthTimeout = setTimeout(() => {
+                    const scrollPercent = Math.round(
+                        (window.scrollY /
+                            (document.body.scrollHeight - window.innerHeight)) *
+                            100
+                    );
+                    if (
+                        scrollPercent > maxScrollDepth &&
+                        scrollPercent % 25 === 0
+                    ) {
+                        maxScrollDepth = scrollPercent;
+                        trackEvent(
+                            "Engagement",
+                            "scroll_depth",
+                            `${scrollPercent}%`
+                        );
+                    }
+                    scrollDepthTimeout = null;
+                }, 2000); // Reduced frequency
+            },
+            { passive: true }
+        );
+
+        // Track time on page (every 60 seconds instead of 30)
         let timeOnPage = 0;
         setInterval(() => {
-            timeOnPage += 30;
-            if (timeOnPage % 60 === 0) { // Track every minute
-                trackEvent('Engagement', 'time_on_page', `${timeOnPage} seconds`);
-            }
-        }, 30000);
-
-        // Track section visibility
-        const sections = document.querySelectorAll('section[id]');
-        const sectionObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const sectionId = entry.target.getAttribute('id');
-                    trackEvent('Engagement', 'section_view', sectionId);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        sections.forEach(section => {
-            sectionObserver.observe(section);
-        });
+            timeOnPage += 60;
+            trackEvent("Engagement", "time_on_page", `${timeOnPage} seconds`);
+        }, 60000);
     }
 
     // Initialize application
@@ -200,18 +266,27 @@
         prevBtn = document.querySelector(".carousel-prev");
         nextBtn = document.querySelector(".carousel-next");
 
+        // Initialize sections data
+        initSectionsData();
+
         // Initialize components
         initNavigation();
         initScrollEffects();
-        // initNavbarScroll();
         initArtistShowcase();
         initHeroVideo();
         initSectionSnapping();
         initArtistAnimations();
         initImageSliders();
-        initEventTracking(); // Add event tracking
+        initEventTracking();
 
         console.log("Robot Fashion Show 2025 initialized");
+    }
+
+    // Initialize sections data for better performance
+    function initSectionsData() {
+        sections = document.querySelectorAll("section");
+        sectionTops = Array.from(sections).map((section) => section.offsetTop);
+        isInitialized = true;
     }
 
     // Navigation functionality
@@ -240,8 +315,8 @@
             });
         });
 
-        // Highlight active section on scroll with optimized performance
-        window.addEventListener("scroll", throttle(updateActiveNavLink, 50), {
+        // Optimized active nav link update
+        window.addEventListener("scroll", updateActiveNavLink, {
             passive: true,
         });
     }
@@ -291,28 +366,41 @@
         }
     }
 
+    // Optimized active nav link update
     function updateActiveNavLink() {
-        const sections = document.querySelectorAll("section[id]");
-        const navLinks = document.querySelectorAll(".nav-link");
+        if (!isInitialized) return;
+
         const scrollPosition = window.scrollY + 100;
+        let activeSection = 0;
 
-        sections.forEach((section) => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute("id");
+        // Binary search for better performance
+        let left = 0;
+        let right = sectionTops.length - 1;
 
-            if (
-                scrollPosition >= sectionTop &&
-                scrollPosition < sectionTop + sectionHeight
-            ) {
-                navLinks.forEach((link) => {
-                    link.classList.remove("active");
-                    if (link.getAttribute("href") === `#${sectionId}`) {
-                        link.classList.add("active");
-                    }
-                });
+        while (left <= right) {
+            const mid = Math.floor((left + right) / 2);
+            if (sectionTops[mid] <= scrollPosition) {
+                activeSection = mid;
+                left = mid + 1;
+            } else {
+                right = mid - 1;
             }
+        }
+
+        // Update navigation
+        const navLinks = document.querySelectorAll(".nav-link");
+        navLinks.forEach((link) => {
+            link.classList.remove("active");
         });
+
+        const currentSectionElement = sections[activeSection];
+        if (currentSectionElement) {
+            const sectionId = currentSectionElement.getAttribute("id");
+            const activeLink = document.querySelector(`[href="#${sectionId}"]`);
+            if (activeLink) {
+                activeLink.classList.add("active");
+            }
+        }
     }
 
     // Carousel functionality
@@ -485,20 +573,18 @@
         }, observerOptions);
 
         // Observe sections for animations
-        const sections = document.querySelectorAll("section");
         sections.forEach((section) => observer.observe(section));
     }
 
     // Utility functions
     function throttle(func, wait) {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(timeout);
-                func(...args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
+        let inThrottle;
+        return function (...args) {
+            if (!inThrottle) {
+                func.apply(this, args);
+                inThrottle = true;
+                setTimeout(() => (inThrottle = false), wait);
+            }
         };
     }
 
@@ -519,6 +605,12 @@
         "resize",
         debounce(() => {
             updateCarousel();
+            // Recalculate section positions after resize
+            if (isInitialized) {
+                sectionTops = Array.from(sections).map(
+                    (section) => section.offsetTop
+                );
+            }
         }, 250)
     );
 
@@ -578,8 +670,8 @@
         const showcaseContainer = document.querySelector(".artists-showcase");
         if (!showcaseContainer) return;
 
-        // Intersection Observer for animations
-        const showcaseObserver = new IntersectionObserver(
+        // Single Intersection Observer for all animations
+        const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
@@ -588,106 +680,142 @@
                 });
             },
             {
-                threshold: 0.2,
-                rootMargin: "0px 0px -50px 0px",
+                threshold: 0.1,
+                rootMargin: "0px 0px -10% 0px",
             }
         );
 
-        // Observe all artist showcase sections
+        // Observe all artist sections
         const artistSections = document.querySelectorAll(".artist-showcase");
-        artistSections.forEach((section) => {
-            showcaseObserver.observe(section);
-        });
-
-        console.log(
-            "Artist Showcase initialized with",
-            artistSections.length,
-            "sections"
-        );
+        artistSections.forEach((section) => observer.observe(section));
     }
 
     // Hero video functionality
     function initHeroVideo() {
-        const heroVideo = document.querySelector(".hero-video");
-        if (heroVideo) {
-            // Loop the video
-            heroVideo.loop = true;
+        const video = document.querySelector(".hero-video");
+        if (!video) return;
 
-            // Ensure video plays on mobile
-            heroVideo.addEventListener("loadeddata", () => {
-                heroVideo.play().catch((e) => {
-                    console.log("Video autoplay failed:", e);
+        // Pause video when not visible
+        const videoObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        video.play().catch(() => {
+                            // Ignore autoplay errors
+                        });
+                    } else {
+                        video.pause();
+                    }
                 });
-            });
+            },
+            { threshold: 0.1 }
+        );
 
-            // Handle video errors
-            heroVideo.addEventListener("error", (e) => {
-                console.log("Video error:", e);
-                // Fallback to background gradient if video fails
-                const hero = document.querySelector(".hero");
-                if (hero) {
-                    hero.style.background =
-                        "linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 50%, #0d0d0d 100%)";
-                }
-            });
-        }
+        videoObserver.observe(video);
     }
 
-    // Section snapping functionality for enhanced scroll behavior
+    // Enhanced section snapping functionality with Intersection Observer
     function initSectionSnapping() {
-        const sections = document.querySelectorAll("section");
         if (sections.length === 0) return;
 
         let isSnapping = false;
-        let scrollTimer;
-        let wheelEventCount = 0;
-        let lastWheelTime = 0;
+        let lastScrollTime = 0;
+        let currentVisibleSection = 0;
 
-        // Track current section
-        function getCurrentSectionIndex() {
-            const scrollPosition = window.scrollY + 100;
-            let closestSection = 0;
-            let closestDistance = Infinity;
-
-            for (let i = 0; i < sections.length; i++) {
-                const section = sections[i];
-                const sectionTop = section.offsetTop;
-                const distance = Math.abs(scrollPosition - sectionTop);
-
-                if (distance < closestDistance) {
-                    closestDistance = distance;
-                    closestSection = i;
-                }
+        // Use Intersection Observer for accurate section detection
+        const sectionObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+                        const sectionIndex = sections.indexOf(entry.target);
+                        if (sectionIndex !== -1) {
+                            currentVisibleSection = sectionIndex;
+                        }
+                    }
+                });
+            },
+            {
+                root: null,
+                rootMargin: "0px",
+                threshold: [0.1, 0.3, 0.5, 0.7, 0.9],
             }
+        );
 
-            return closestSection;
-        }
+        // Observe all sections
+        sections.forEach((section) => sectionObserver.observe(section));
 
-        // Smooth scroll to specific section
+        // Enhanced smooth scroll to section with scroll completion detection
         function scrollToSection(index) {
-            if (index < 0 || index >= sections.length) return;
+            if (index < 0 || index >= sections.length || isSnapping) return;
 
             isSnapping = true;
             const targetSection = sections[index];
+            const targetPosition = targetSection.offsetTop;
+            const startPosition = window.scrollY;
 
             window.scrollTo({
-                top: targetSection.offsetTop,
+                top: targetPosition,
                 behavior: "smooth",
             });
 
-            // Reset snapping flag after animation
+            // Wait for scroll to complete using scroll event
+            let scrollTimeout;
+            let scrollCheckCount = 0;
+
+            const checkScrollComplete = () => {
+                scrollCheckCount++;
+                const currentPosition = window.scrollY;
+                const tolerance = 5; // 5px tolerance
+
+                // If scroll is complete or we've checked too many times
+                if (
+                    Math.abs(currentPosition - targetPosition) <= tolerance ||
+                    scrollCheckCount > 20
+                ) {
+                    isSnapping = false;
+                    currentSection = index;
+                    currentVisibleSection = index;
+                    if (scrollTimeout) clearTimeout(scrollTimeout);
+                    return;
+                }
+
+                // Continue checking
+                scrollTimeout = setTimeout(checkScrollComplete, 50);
+            };
+
+            // Start checking after a short delay
+            setTimeout(checkScrollComplete, 100);
+
+            // Fallback timeout (2 seconds max)
             setTimeout(() => {
-                isSnapping = false;
-                currentSection = index;
-            }, 1000);
+                if (isSnapping) {
+                    isSnapping = false;
+                    currentSection = index;
+                    currentVisibleSection = index;
+                }
+                if (scrollTimeout) clearTimeout(scrollTimeout);
+            }, 2000);
         }
 
-        // Enhanced wheel event handling for section-by-section scrolling
+        // Enhanced wheel event handling with direction detection
+        let lastWheelDirection = 0;
+        let wheelDirectionCount = 0;
+
         function handleWheel(e) {
-            const currentIndex = getCurrentSectionIndex();
+            const now = Date.now();
+            const timeDiff = now - lastScrollTime;
+
+            // Longer debouncing for wheel events
+            if (timeDiff < 800) {
+                e.preventDefault();
+                return;
+            }
+
+            // Use Intersection Observer result for current section
+            const currentIndex = currentVisibleSection;
             const currentSection = sections[currentIndex];
 
-            // Info section and participation-info section allow free scrolling
+            // Allow free scrolling in specific sections
             if (
                 currentSection &&
                 (currentSection.classList.contains("info-section") ||
@@ -703,64 +831,77 @@
                 return;
             }
 
-            const now = Date.now();
-            const timeDiff = now - lastWheelTime;
+            // Enhanced direction detection
+            const currentDirection = e.deltaY > 0 ? 1 : -1;
 
-            // Reset wheel count if too much time has passed
-            if (timeDiff > 200) {
-                wheelEventCount = 0;
+            // Reset direction count if direction changed
+            if (currentDirection !== lastWheelDirection) {
+                wheelDirectionCount = 0;
+                lastWheelDirection = currentDirection;
             }
 
-            wheelEventCount++;
-            lastWheelTime = now;
+            wheelDirectionCount++;
 
-            // Only trigger section change after multiple wheel events
-            if (wheelEventCount < 3) {
+            // Require consistent direction for 2+ events
+            if (wheelDirectionCount < 2) {
                 e.preventDefault();
                 return;
             }
 
+            lastScrollTime = now;
             e.preventDefault();
-            wheelEventCount = 0;
 
-            const direction = e.deltaY > 0 ? 1 : -1;
-            const nextIndex = currentIndex + direction;
+            const nextIndex = currentIndex + currentDirection;
+            wheelDirectionCount = 0; // Reset after successful scroll
 
-            // Handle info section specially
             if (nextIndex >= 0 && nextIndex < sections.length) {
-                const nextSection = sections[nextIndex];
-                if (
-                    nextSection &&
-                    nextSection.classList.contains("info-section")
-                ) {
-                    window.scrollTo({
-                        top: nextSection.offsetTop,
-                        behavior: "smooth",
-                    });
-                } else {
-                    scrollToSection(nextIndex);
-                }
+                scrollToSection(nextIndex);
             }
         }
 
-        // Touch handling for mobile section snapping
+        // Enhanced touch handling with better swipe detection
         let touchStartY = 0;
-        let touchEndY = 0;
         let isTouching = false;
+        let touchStartTime = 0;
 
         function handleTouchStart(e) {
             if (isSnapping) return;
+
             touchStartY = e.touches[0].clientY;
+            touchStartTime = Date.now();
             isTouching = true;
         }
 
         function handleTouchEnd(e) {
-            if (!isTouching || isSnapping) return;
+            if (!isTouching || isSnapping) {
+                isTouching = false;
+                return;
+            }
 
-            const currentIndex = getCurrentSectionIndex();
+            const now = Date.now();
+            const timeDiff = now - lastScrollTime;
+            const touchDuration = now - touchStartTime;
+
+            // Longer debouncing for touch events
+            if (timeDiff < 800) {
+                isTouching = false;
+                return;
+            }
+
+            // Ignore very quick touches (likely accidental)
+            if (touchDuration < 100) {
+                isTouching = false;
+                return;
+            }
+
+            // Use Intersection Observer result for current section
+            const currentIndex = currentVisibleSection;
             const currentSection = sections[currentIndex];
+            const touchEndY = e.changedTouches[0].clientY;
+            const touchDiff = touchStartY - touchEndY;
+            const minSwipeDistance = 100; // Increased for better mobile experience
 
-            // Allow free scrolling in participation-info section
+            // Allow free scrolling in specific sections
             if (
                 currentSection &&
                 currentSection.classList.contains("participation-info-section")
@@ -769,41 +910,37 @@
                 return;
             }
 
-            touchEndY = e.changedTouches[0].clientY;
-            const touchDiff = touchStartY - touchEndY;
-            const minSwipeDistance = 50;
-
             if (Math.abs(touchDiff) > minSwipeDistance) {
+                lastScrollTime = now;
                 const direction = touchDiff > 0 ? 1 : -1;
                 const nextIndex = currentIndex + direction;
 
                 if (nextIndex >= 0 && nextIndex < sections.length) {
-                    const nextSection = sections[nextIndex];
-                    if (
-                        nextSection &&
-                        nextSection.classList.contains("info-section")
-                    ) {
-                        window.scrollTo({
-                            top: nextSection.offsetTop,
-                            behavior: "smooth",
-                        });
-                    } else {
-                        scrollToSection(nextIndex);
-                    }
+                    scrollToSection(nextIndex);
                 }
             }
 
             isTouching = false;
         }
 
-        // Keyboard navigation enhancement
+        // Enhanced keyboard navigation with better debouncing
         function handleKeydown(e) {
             if (isSnapping) return;
 
-            const currentIndex = getCurrentSectionIndex();
+            const now = Date.now();
+            const timeDiff = now - lastScrollTime;
+
+            // Longer debouncing for keyboard events
+            if (timeDiff < 500) {
+                e.preventDefault();
+                return;
+            }
+
+            // Use Intersection Observer result for current section
+            const currentIndex = currentVisibleSection;
             const currentSection = sections[currentIndex];
 
-            // Allow free scrolling in participation-info section
+            // Allow free scrolling in specific sections
             if (
                 currentSection &&
                 currentSection.classList.contains("participation-info-section")
@@ -840,23 +977,13 @@
                 nextIndex >= 0 &&
                 nextIndex < sections.length
             ) {
-                const nextSection = sections[nextIndex];
-                if (
-                    nextSection &&
-                    nextSection.classList.contains("info-section")
-                ) {
-                    window.scrollTo({
-                        top: nextSection.offsetTop,
-                        behavior: "smooth",
-                    });
-                } else {
-                    scrollToSection(nextIndex);
-                }
+                lastScrollTime = now;
+                scrollToSection(nextIndex);
             }
         }
 
         // Initialize current section
-        currentSection = getCurrentSectionIndex();
+        currentSection = currentVisibleSection;
 
         // Add event listeners
         window.addEventListener("wheel", handleWheel, { passive: false });
@@ -878,11 +1005,11 @@
         );
     }
 
-    // Artist animations initialization
+    // Optimized artist animations initialization
     function initArtistAnimations() {
         const observerOptions = {
             root: null,
-            rootMargin: "0px",
+            rootMargin: "0px 0px -10% 0px",
             threshold: 0.1,
         };
 
@@ -898,32 +1025,22 @@
             });
         }, observerOptions);
 
-        // Observe all artist sections
-        const artistSections = document.querySelectorAll(".artist-showcase");
-        artistSections.forEach((section) => {
-            observer.observe(section);
-        });
+        // Observe all sections for animations
+        sections.forEach((section) => observer.observe(section));
 
-        // Artist intro section
-        const introSection = document.querySelector(".artists-intro");
+        // Intro animation observer
+        const introSection = document.querySelector(".hero");
         if (introSection) {
             const introObserver = new IntersectionObserver(
                 (entries) => {
                     entries.forEach((entry) => {
                         if (entry.isIntersecting) {
-                            entry.target.classList.add("animate-intro");
-                        } else {
-                            entry.target.classList.remove("animate-intro");
+                            entry.target.classList.add("in-view");
                         }
                     });
                 },
-                {
-                    root: null,
-                    rootMargin: "0px",
-                    threshold: 0.1,
-                }
+                { threshold: 0.1 }
             );
-
             introObserver.observe(introSection);
         }
     }

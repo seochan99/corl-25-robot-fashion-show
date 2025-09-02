@@ -1,4 +1,4 @@
-/* Advanced Robot Fashion Show Animations */
+/* Advanced Robot Fashion Show Animations - Optimized for Performance */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -99,11 +99,42 @@
     }
 }
 
-@keyframes hologramShimmer {
-    0% {
-        background-position: -200% center;
+/* Performance optimizations */
+.artist-showcase {
+    will-change: transform, opacity;
+    transform: translateZ(0); /* Force hardware acceleration */
+}
+
+.artist-showcase.in-view {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.work-images-slider {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+.hero-video {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+/* Reduce animation complexity during scroll */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
-    100% {
-        background-position: 200% center;
+}
+
+/* Optimize for mobile devices */
+@media (max-width: 768px) {
+    .artist-showcase {
+        will-change: auto; /* Disable will-change on mobile for better performance */
+    }
+
+    .work-images-slider {
+        will-change: auto;
     }
 }

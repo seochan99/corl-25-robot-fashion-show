@@ -9,10 +9,12 @@ export const artistsData = [
         workTitle: "On the Birds' Day (2024)",
         profileLink: "https://byungjun.pe.kr/works/koreaartistprize",
         achievement: "Korea Artist Prize 2023 Winner",
-        education: "BA French Literature, Seoul National University / MA Art Science, Royal Conservatory of The Hague",
+        education:
+            "BA French Literature, Seoul National University / MA Art Science, Royal Conservatory of The Hague",
         career: "Hardware Engineer at STEIM (Netherlands Electronic Music Research Institute)",
-        specialty: "Research on sound-related hardware, developing new musical instruments and stage devices to create dramatic scenes that encompass music, theater, and visual arts through new media performance",
-        socialLinks: []
+        specialty:
+            "Research on sound-related hardware, developing new musical instruments and stage devices to create dramatic scenes that encompass music, theater, and visual arts through new media performance",
+        socialLinks: [],
     },
     {
         id: 2,
@@ -21,12 +23,14 @@ export const artistsData = [
         portraitImage: "assets/artist/2.png",
         workImage: "assets/robot/2.png",
         workTitle: "3D Structural Pneumatic Inflation Study (2020)",
-        profileLink: "https://www.hyunparke.com/works/3-dimensional-structural-pneumatic-inflation-study-2020",
+        profileLink:
+            "https://www.hyunparke.com/works/3-dimensional-structural-pneumatic-inflation-study-2020",
         achievement: "Ars Electronica Museum Permanent Exhibition Artist",
         education: "BFA School of the Art Institute of Chicago, MS MIT",
         career: "Research Associate at Carnegie Mellon University (2024~)",
-        specialty: "Interdisciplinary artist exploring pneumatic structures, inflatable objects, and dimensional display systems. Known for innovative work in air-reinforced structures and additive manufacturing technologies",
-        socialLinks: []
+        specialty:
+            "Interdisciplinary artist exploring pneumatic structures, inflatable objects, and dimensional display systems. Known for innovative work in air-reinforced structures and additive manufacturing technologies",
+        socialLinks: [],
     },
     {
         id: 3,
@@ -39,34 +43,37 @@ export const artistsData = [
         achievement: "ACM UIST/IEEE Robosoft Best Demonstration Award",
         education: "Ph.D in Interdisciplinary Informatics, University of Tokyo",
         career: "Associate Professor at Hosei University, Tokyo",
-        specialty: "Director of Affective Design Lab, specializing in innovative technology and interaction design. Research focus on emotional interfaces and soft robotics for human-computer interaction",
+        specialty:
+            "Director of Affective Design Lab, specializing in innovative technology and interaction design. Research focus on emotional interfaces and soft robotics for human-computer interaction",
         socialLinks: [
             {
                 type: "youtube",
                 url: "https://www.youtube.com/watch?v=Kpn0joo7luo",
-                label: "Video →"
-            }
-        ]
+                label: "Video →",
+            },
+        ],
     },
     {
         id: 4,
-        name: "Deborah Won",
-        country: "US",
-        portraitImage: "assets/artist/4.png",
+        name: "Yang Minha",
+        country: "KR",
+        portraitImage:
+            "https://yt3.googleusercontent.com/ytc/AIdro_nPdHkG9aks_cIGSTSV_Ek06-AjYFTHVsf5Dw5-EA85xHs=s160-c-k-c0x00ffffff-no-rj",
         workImage: "assets/robot/4.png",
-        workTitle: "Rhododendrons (2024)",
+        workTitle: "A Repository of Reflection",
         profileLink: null,
         achievement: "Featured in Vogue, i-D Magazine, 1 Granary, Marie Claire",
         education: "Founder of Pisces Rising, New York",
-        career: "Creative Director at c.Vernoy, Senior Designer at Converse",
-        specialty: "NYC-based fashion designer who conjures a tactile dialogue between body, fabric, and space. Specializing in zero-gravity environment fashion design",
+        career: "Professor at University of Seoul Graduate School of Design",
+        specialty:
+            "NYC-based fashion designer who conjures a tactile dialogue between body, fabric, and space. Specializing in zero-gravity environment fashion design",
         socialLinks: [
             {
                 type: "instagram",
                 url: "https://www.instagram.com/reel/DE5j5g4Shn8/?utm_source=ig_web_copy_link",
-                label: "Instagram →"
-            }
-        ]
+                label: "Instagram →",
+            },
+        ],
     },
     {
         id: 5,
@@ -79,36 +86,43 @@ export const artistsData = [
         achievement: '"Brilliant 10" by Popular Science, TED Alumnus',
         education: "Ph.D in Mechanical Engineering, Purdue University",
         career: "Professor & Founding Director of RoMeLa at UCLA",
-        specialty: 'Director of RoMeLa (Robotics & Mechanisms Laboratory). Research focuses on robot locomotion and manipulation, autonomous vehicles and humanoid robots. Called "the Leonardo da Vinci of robots" by Washington Post',
-        socialLinks: []
-    }
+        specialty:
+            'Director of RoMeLa (Robotics & Mechanisms Laboratory). Research focuses on robot locomotion and manipulation, autonomous vehicles and humanoid robots. Called "the Leonardo da Vinci of robots" by Washington Post',
+        socialLinks: [],
+    },
 ];
 
 // 유틸리티 함수들
 export const getArtistById = (id) => {
-    return artistsData.find(artist => artist.id === id);
+    return artistsData.find((artist) => artist.id === id);
 };
 
 export const getArtistsByCountry = (country) => {
-    return artistsData.filter(artist => artist.country.includes(country));
+    return artistsData.filter((artist) => artist.country.includes(country));
 };
 
 export const generateArtistCard = (artist) => {
-    const socialLinksHtml = artist.socialLinks.map(link => {
-        const iconSvg = getSocialIcon(link.type);
-        return `
+    const socialLinksHtml = artist.socialLinks
+        .map((link) => {
+            const iconSvg = getSocialIcon(link.type);
+            return `
             <a href="${link.url}" target="_blank" class="artist-link ${link.type}-link" title="${link.type}">
                 ${iconSvg}
                 <span>${link.label}</span>
             </a>
         `;
-    }).join('');
+        })
+        .join("");
 
-    const profileLinkHtml = artist.profileLink ? `
-        <a href="${artist.profileLink}" target="_blank" class="artist-link profile-link" title="View Profile">
+    const profileLinkHtml = artist.profileLink
+        ? `
+        <a href="${
+            artist.profileLink
+        }" target="_blank" class="artist-link profile-link" title="View Profile">
             ${getProfileIcon()}
         </a>
-    ` : '';
+    `
+        : "";
 
     return `
         <div class="artist-card">
@@ -166,9 +180,9 @@ const getSocialIcon = (type) => {
             <path d="M28.2,16.7c-7,0-12.8,5.7-12.8,12.8s5.7,12.8,12.8,12.8S41,36.5,41,29.5S35.2,16.7,28.2,16.7z M28.2,37.7c-4.5,0-8.2-3.7-8.2-8.2s3.7-8.2,8.2-8.2s8.2,3.7,8.2,8.2S32.7,37.7,28.2,37.7z"/>
             <circle cx="41.5" cy="16.4" r="2.9"/>
             <path d="M49,8.9c-2.6-2.7-6.3-4.1-10.5-4.1H17.9c-8.7,0-14.5,5.8-14.5,14.5v20.5c0,4.3,1.4,8,4.2,10.7c2.7,2.6,6.3,3.9,10.4,3.9h20.4c4.3,0,7.9-1.4,10.5-3.9c2.7-2.6,4.1-6.3,4.1-10.6V19.3C53,15.1,51.6,11.5,49,8.9z M48.6,39.9c0,3.1-1.1,5.6-2.9,7.3s-4.3,2.6-7.3,2.6H18c-3,0-5.5-0.9-7.3-2.6C8.9,45.4,8,42.9,8,39.8V19.3c0-3,0.9-5.5,2.7-7.3c1.7-1.7,4.3-2.6,7.3-2.6h20.6c3,0,5.5,0.9,7.3,2.7c1.7,1.8,2.7,4.3,2.7,7.2V39.9L48.6,39.9z"/>
-        </svg>`
+        </svg>`,
     };
-    return icons[type] || '';
+    return icons[type] || "";
 };
 
 const getProfileIcon = () => {
