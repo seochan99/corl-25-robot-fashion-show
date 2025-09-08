@@ -13,7 +13,7 @@ export const robotFashionShowData = {
     importantDates: [
         {
             event: "Proposal Deadline",
-            date: "July 31, 2025",
+            date: "Jul 31, 2025",
             time: "11:59:59 AoE",
             note: "Anywhere on Earth",
         },
@@ -23,11 +23,11 @@ export const robotFashionShowData = {
         },
         {
             event: "Actual competition (Robot Fashion Show Track)",
-            date: "October 1, 2025",
+            date: "Oct 1, 2025",
         },
         {
             event: "Robot Fashion Show",
-            date: "October 2, 2025",
+            date: "Oct 2, 2025",
             location: "Seoul Impact Arena",
             note: "Selected teams from the peer-reviewed competition track will be invited to participate in the Robot Fashion Show with the invited artists. Transportation from and to COEX will be provided.",
         },
