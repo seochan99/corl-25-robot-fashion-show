@@ -23,7 +23,7 @@ export const robotFashionShowData = {
         },
         {
             event: "Actual competition (Robot Fashion Show Track)",
-            date: "September 30, 2025",
+            date: "October 1, 2025",
         },
         {
             event: "Robot Fashion Show",

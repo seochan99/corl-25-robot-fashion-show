@@ -194,7 +194,7 @@ This project is created for the Robot Fashion Show 2025 event in conjunction wit
 For technical support or inquiries about the Robot Fashion Show 2025:
 
 -   **Email**: <jeanoh@cmu.edu> (include "[RoboFashion25]" in subject)
--   **Event Date**: September 30, 2025
+-   **Event Date**: October 1, 2025
 -   **Venue**: COEX Convention & Exhibition Center, Seoul
 
 ---
