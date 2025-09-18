@@ -8,9 +8,12 @@
     background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 50%, #0d0d0d 100%);
     text-align: center;
     overflow: hidden;
-    margin-top: 2rem;
+    margin-top: 0;
     /* 스크롤 스냅 추가 */
     scroll-snap-align: start;
+    /* Optimize scroll performance */
+    contain: layout style paint;
+    transform: translate3d(0, 0, 0);
 }
 
 /* Background Video */
@@ -22,6 +25,12 @@
     height: 100%;
     object-fit: cover;
     z-index: 1;
+    /* GPU acceleration for smoother performance */
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    /* Optimize video rendering */
+    -webkit-transform: translate3d(0, 0, 0);
 }
 
 .hero::before {

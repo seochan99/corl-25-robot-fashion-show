@@ -1,0 +1,331 @@
+/* Participation Section Styles */
+.participation-info-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #0f0f0f, #0a0a0a);
+    position: relative;
+}
+
+/* Simplified Version */
+.participation-info-section.simplified {
+    padding: 60px 0;
+}
+
+.participation-simple {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.participation-simple .section-title {
+    margin-bottom: 30px;
+}
+
+.participation-simple .closed-notice {
+    margin: 30px 0;
+}
+
+.participation-simple .closed-badge {
+    display: inline-block;
+    padding: 8px 24px;
+    background: rgba(255, 100, 100, 0.12);
+    border: 1px solid rgba(255, 100, 100, 0.25);
+    color: #ff9999;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+}
+
+.participation-simple .closed-text {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1rem;
+    margin: 15px 0;
+}
+
+.view-presenters-btn {
+    display: inline-block;
+    padding: 14px 36px;
+    background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05rem;
+    border-radius: 30px;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.view-presenters-btn:hover {
+    background: linear-gradient(135deg, #333333, #222222);
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Toggle Button Styles */
+.details-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 20px 0;
+}
+
+.details-toggle:hover {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.toggle-icon {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    font-size: 0.8rem;
+}
+
+/* Participation Details Expandable Section */
+.participation-details {
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.3s ease;
+    margin-top: 30px;
+}
+
+.participation-details.collapsed {
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.participation-details.expanded {
+    max-height: 800px;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.participation-details .participation-text {
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    text-align: left;
+}
+
+.participation-details h3 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.participation-details p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 18px;
+}
+
+.participation-details .participation-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.participation-details .highlight-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.participation-details .highlight-item h4 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.participation-details .highlight-item p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.participation-info-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle at center,
+        rgba(255, 255, 255, 0.02) 0%,
+        transparent 70%
+    );
+    pointer-events: none;
+}
+
+.participation-content {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 60px;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.participation-text h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.participation-text p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.participation-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.highlight-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.highlight-item h4 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.highlight-item p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.participation-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.participation-closed-notice {
+    text-align: center;
+    padding: 25px 30px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+}
+
+.closed-badge {
+    display: inline-block;
+    padding: 8px 20px;
+    background: rgba(255, 100, 100, 0.15);
+    border: 1px solid rgba(255, 100, 100, 0.3);
+    color: #ff9999;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 15px;
+}
+
+.participation-button {
+    display: inline-block;
+    padding: 16px 40px;
+    background: #333333;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.participation-button:hover {
+    background: #555555;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.participation-button.view-presenters {
+    background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.participation-button.view-presenters:hover {
+    background: linear-gradient(135deg, #333333, #222222);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.participation-deadline {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.95rem;
+    margin: 0;
+    text-align: center;
+    line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .participation-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+    }
+    
+    .participation-highlights {
+        grid-template-columns: 1fr;
+    }
+    
+    .participation-text h3 {
+        font-size: 1.6rem;
+    }
+    
+    .participation-text p {
+        font-size: 1rem;
+    }
+    
+    .participation-details .participation-text {
+        padding: 20px;
+    }
+    
+    .participation-details h3 {
+        font-size: 1.3rem;
+    }
+    
+    .participation-details.expanded {
+        max-height: 1200px;
+    }
+}

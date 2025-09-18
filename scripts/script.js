@@ -695,23 +695,51 @@
         const video = document.querySelector(".hero-video");
         if (!video) return;
 
-        // Pause video when not visible
+        // Force high quality and continuous playback
+        video.setAttribute('webkit-playsinline', 'true');
+        video.setAttribute('x-webkit-airplay', 'allow');
+        
+        // Ensure loop and autoplay
+        video.loop = true;
+        video.muted = true;
+        video.autoplay = true;
+        
+        // Force start playback
+        video.addEventListener('loadeddata', () => {
+            video.play().catch(() => {
+                console.log('Autoplay blocked - user interaction required');
+            });
+        });
+
+        // Simplified video observer - always keep playing when visible
         const videoObserver = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        video.play().catch(() => {
-                            // Ignore autoplay errors
-                        });
-                    } else {
-                        video.pause();
+                        // Always play when visible
+                        if (video.paused) {
+                            video.play().catch(() => {
+                                // Handle autoplay restrictions
+                            });
+                        }
                     }
+                    // Never pause - let it loop continuously
                 });
             },
-            { threshold: 0.1 }
+            { 
+                threshold: 0.1,
+                rootMargin: "0px"
+            }
         );
 
         videoObserver.observe(video);
+        
+        // Force play on any user interaction
+        document.addEventListener('click', () => {
+            if (video.paused) {
+                video.play();
+            }
+        }, { once: true });
     }
 
     // Enhanced section snapping functionality with Intersection Observer
@@ -722,11 +750,11 @@
         let lastScrollTime = 0;
         let currentVisibleSection = 0;
 
-        // Use Intersection Observer for accurate section detection
+        // Optimized Intersection Observer for fast section detection
         const sectionObserver = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
-                    if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+                    if (entry.isIntersecting && entry.intersectionRatio > 0.2) {
                         const sectionIndex = sections.indexOf(entry.target);
                         if (sectionIndex !== -1) {
                             currentVisibleSection = sectionIndex;
@@ -737,7 +765,7 @@
             {
                 root: null,
                 rootMargin: "0px",
-                threshold: [0.1, 0.3, 0.5, 0.7, 0.9],
+                threshold: [0.2, 0.5],
             }
         );
 
@@ -752,61 +780,43 @@
             const targetSection = sections[index];
             const targetPosition = targetSection.offsetTop;
             const startPosition = window.scrollY;
+            const distance = targetPosition - startPosition;
+            const duration = 400; // Fast and snappy scrolling
+            let startTime = null;
 
-            window.scrollTo({
-                top: targetPosition,
-                behavior: "smooth",
-            });
+            // Optimized easing function for faster response
+            function easeOutQuart(t) {
+                return 1 - Math.pow(1 - t, 4);
+            }
 
-            // Wait for scroll to complete using scroll event
-            let scrollTimeout;
-            let scrollCheckCount = 0;
+            function animation(currentTime) {
+                if (startTime === null) startTime = currentTime;
+                const timeElapsed = currentTime - startTime;
+                const progress = Math.min(timeElapsed / duration, 1);
+                
+                const easeProgress = easeOutQuart(progress);
+                window.scrollTo(0, startPosition + distance * easeProgress);
 
-            const checkScrollComplete = () => {
-                scrollCheckCount++;
-                const currentPosition = window.scrollY;
-                const tolerance = 5; // 5px tolerance
-
-                // If scroll is complete or we've checked too many times
-                if (
-                    Math.abs(currentPosition - targetPosition) <= tolerance ||
-                    scrollCheckCount > 20
-                ) {
-                    isSnapping = false;
-                    currentSection = index;
-                    currentVisibleSection = index;
-                    if (scrollTimeout) clearTimeout(scrollTimeout);
-                    return;
-                }
-
-                // Continue checking
-                scrollTimeout = setTimeout(checkScrollComplete, 50);
-            };
-
-            // Start checking after a short delay
-            setTimeout(checkScrollComplete, 100);
-
-            // Fallback timeout (2 seconds max)
-            setTimeout(() => {
-                if (isSnapping) {
+                if (progress < 1) {
+                    requestAnimationFrame(animation);
+                } else {
+                    // Scroll complete
                     isSnapping = false;
                     currentSection = index;
                     currentVisibleSection = index;
                 }
-                if (scrollTimeout) clearTimeout(scrollTimeout);
-            }, 2000);
+            }
+
+            requestAnimationFrame(animation);
         }
 
-        // Enhanced wheel event handling with direction detection
-        let lastWheelDirection = 0;
-        let wheelDirectionCount = 0;
-
+        // Simplified and fast wheel event handling
         function handleWheel(e) {
             const now = Date.now();
             const timeDiff = now - lastScrollTime;
 
-            // Longer debouncing for wheel events
-            if (timeDiff < 800) {
+            // Ultra-fast response for smooth scrolling
+            if (timeDiff < 200) {
                 e.preventDefault();
                 return;
             }
@@ -831,30 +841,14 @@
                 return;
             }
 
-            // Enhanced direction detection
-            const currentDirection = e.deltaY > 0 ? 1 : -1;
+            // Instant direction detection - no delay
+            const direction = e.deltaY > 0 ? 1 : -1;
+            const nextIndex = currentIndex + direction;
 
-            // Reset direction count if direction changed
-            if (currentDirection !== lastWheelDirection) {
-                wheelDirectionCount = 0;
-                lastWheelDirection = currentDirection;
-            }
-
-            wheelDirectionCount++;
-
-            // Require consistent direction for 2+ events
-            if (wheelDirectionCount < 2) {
-                e.preventDefault();
-                return;
-            }
-
-            lastScrollTime = now;
-            e.preventDefault();
-
-            const nextIndex = currentIndex + currentDirection;
-            wheelDirectionCount = 0; // Reset after successful scroll
-
+            // Immediate execution
             if (nextIndex >= 0 && nextIndex < sections.length) {
+                lastScrollTime = now;
+                e.preventDefault();
                 scrollToSection(nextIndex);
             }
         }
@@ -882,14 +876,14 @@
             const timeDiff = now - lastScrollTime;
             const touchDuration = now - touchStartTime;
 
-            // Longer debouncing for touch events
-            if (timeDiff < 800) {
+            // Fast touch response
+            if (timeDiff < 200) {
                 isTouching = false;
                 return;
             }
 
             // Ignore very quick touches (likely accidental)
-            if (touchDuration < 100) {
+            if (touchDuration < 50) {
                 isTouching = false;
                 return;
             }
@@ -899,7 +893,7 @@
             const currentSection = sections[currentIndex];
             const touchEndY = e.changedTouches[0].clientY;
             const touchDiff = touchStartY - touchEndY;
-            const minSwipeDistance = 100; // Increased for better mobile experience
+            const minSwipeDistance = 50; // Reduced for faster response
 
             // Allow free scrolling in specific sections
             if (
@@ -930,8 +924,8 @@
             const now = Date.now();
             const timeDiff = now - lastScrollTime;
 
-            // Longer debouncing for keyboard events
-            if (timeDiff < 500) {
+            // Instant keyboard response
+            if (timeDiff < 150) {
                 e.preventDefault();
                 return;
             }
@@ -1207,6 +1201,34 @@
         initImageSliders();
     }
 
+    // Toggle Participation Details Function
+    function toggleParticipationDetails() {
+        const details = document.getElementById('participation-details');
+        const toggleBtn = document.querySelector('.details-toggle');
+        const toggleText = toggleBtn.querySelector('.toggle-text');
+        const toggleIcon = toggleBtn.querySelector('.toggle-icon');
+        
+        if (details.classList.contains('collapsed')) {
+            // Expand details
+            details.classList.remove('collapsed');
+            details.classList.add('expanded');
+            toggleText.textContent = 'Hide Details';
+            toggleIcon.textContent = '▲';
+            
+            // Track event
+            trackEvent('Participation', 'toggle', 'expanded');
+        } else {
+            // Collapse details
+            details.classList.remove('expanded');
+            details.classList.add('collapsed');
+            toggleText.textContent = 'Show Details';
+            toggleIcon.textContent = '▼';
+            
+            // Track event
+            trackEvent('Participation', 'toggle', 'collapsed');
+        }
+    }
+
     // Export functions for external use
     window.RobotFashionShow = {
         goToSlide,
@@ -1214,4 +1236,57 @@
         resumeAutoSlide,
         initImageSliders,
     };
+    
+    // Mobile Menu Functions
+    function toggleMobileMenu() {
+        const overlay = document.getElementById('mobile-menu-overlay');
+        const hamburgerBtn = document.querySelector('.mobile-menu-btn');
+        
+        if (overlay.classList.contains('active')) {
+            closeMobileMenu();
+        } else {
+            openMobileMenu();
+        }
+    }
+    
+    function openMobileMenu() {
+        const overlay = document.getElementById('mobile-menu-overlay');
+        const hamburgerBtn = document.querySelector('.mobile-menu-btn');
+        
+        overlay.classList.add('active');
+        hamburgerBtn.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent body scroll
+        
+        // Track event
+        trackEvent('Navigation', 'mobile_menu', 'opened');
+    }
+    
+    function closeMobileMenu() {
+        const overlay = document.getElementById('mobile-menu-overlay');
+        const hamburgerBtn = document.querySelector('.mobile-menu-btn');
+        
+        overlay.classList.remove('active');
+        hamburgerBtn.classList.remove('active');
+        document.body.style.overflow = ''; // Restore body scroll
+        
+        // Track event
+        trackEvent('Navigation', 'mobile_menu', 'closed');
+    }
+    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(e) {
+        const overlay = document.getElementById('mobile-menu-overlay');
+        const hamburgerBtn = document.querySelector('.mobile-menu-btn');
+        
+        if (overlay && overlay.classList.contains('active') && 
+            !overlay.contains(e.target) && 
+            !hamburgerBtn.contains(e.target)) {
+            closeMobileMenu();
+        }
+    });
+
+    // Export functions globally
+    window.toggleParticipationDetails = toggleParticipationDetails;
+    window.toggleMobileMenu = toggleMobileMenu;
+    window.closeMobileMenu = closeMobileMenu;
 })();

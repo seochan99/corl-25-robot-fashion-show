@@ -12,7 +12,9 @@
 /* === LAYOUT MODULES === */
 @import url("./hero.css"); /* Hero Section with Effects */
 @import url("./hero-timeline.css"); /* Hero Timeline and CTA Styles */
+@import url("./participation.css"); /* Participation Section */
 @import url("./carousel.css"); /* Artists Carousel */
+@import url("./accepted-presenters.css"); /* Accepted Presenters Grid */
 @import url("./artist-showcase.css"); /* New Fullscreen Artist Showcase */
 @import url("./info.css"); /* Event Information Section */
 @import url("./footer.css"); /* Footer */
@@ -61,23 +63,30 @@ body {
     color: var(--text-light);
     line-height: 1.6;
     overflow-x: hidden;
-    scroll-behavior: smooth;
-    /* Enhanced scrolling performance */
-    will-change: scroll-position;
-    /* 더 부드러운 스크롤을 위한 설정 */
+    scroll-behavior: auto; /* Disable native smooth scroll for JS control */
+    /* Performance optimization */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeSpeed;
+    /* Smooth scrolling settings */
     scroll-padding-top: 0;
-    overscroll-behavior: none;
+    overscroll-behavior-y: contain;
+    /* GPU acceleration for scroll performance */
+    will-change: scroll-position;
+    transform: translate3d(0, 0, 0);
 }
 
 /* Natural smooth scrolling for all sections */
 section {
-    transition: opacity 0.3s ease-in-out;
+    /* Remove unnecessary transitions that can cause lag */
     scroll-snap-align: start;
-    /* scroll-snap-stop: always; - 제거하여 자연스러운 스크롤 허용 */
-    /* Smooth section transitions */
-    transform: translateZ(0);
+    /* Hardware acceleration for smoother rendering */
+    transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
-    perspective: 1000px;
+    -webkit-backface-visibility: hidden;
+    /* Optimize rendering performance */
+    contain: layout style paint;
+    will-change: transform;
 }
 
 /* Info 섹션은 스크롤 스냅 제외하여 자유롭게 스크롤 가능하도록 */
@@ -88,7 +97,7 @@ section {
 /* Smooth scroll snap with natural feel */
 @media (prefers-reduced-motion: no-preference) {
     html {
-        scroll-snap-type: y proximity; /* proximity로 변경하여 더 부드럽게 */
+        scroll-snap-type: none; /* Disable scroll-snap for smoother custom scrolling */
     }
 
     section {
