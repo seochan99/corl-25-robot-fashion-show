@@ -99,6 +99,10 @@
     align-items: center;
     scroll-snap-align: start;
     overflow: hidden;
+    /* Optimize scroll performance */
+    contain: layout style paint;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
 }
 
 .showcase-background {
@@ -108,13 +112,20 @@
     width: 100%;
     height: 100%;
     z-index: 1;
+    /* Optimize for better scroll performance */
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
 }
 
 .background-work {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: blur(8px) brightness(0.3);
+    /* Reduce heavy blur effect for better performance */
+    filter: blur(4px) brightness(0.4);
+    /* GPU acceleration */
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
 }
 
 .background-overlay {
@@ -129,6 +140,10 @@
         rgba(0, 0, 0, 0.5) 50%,
         rgba(0, 0, 0, 0.8) 100%
     );
+    z-index: 2;
+    /* Optimize overlay rendering */
+    will-change: opacity;
+    transform: translate3d(0, 0, 0);
 }
 
 .showcase-content {
