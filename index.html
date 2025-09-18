@@ -205,8 +205,12 @@
         <!-- Navigation -->
         <nav class="nav" role="navigation" aria-label="Main navigation">
             <div class="nav-container">
-                <div class="nav-links">
+                <!-- Desktop navigation -->
+                <div class="nav-links desktop-nav">
                     <a href="#landing" class="nav-link">Home</a>
+                    <a href="#accepted-presenters" class="nav-link"
+                        >Accepted Presenters</a
+                    >
                     <a href="#invited-artists" class="nav-link"
                         >Invited Artists</a
                     >
@@ -216,6 +220,7 @@
                         >Call for Participation</a
                     >
                 </div>
+
                 <div class="nav-badge">
                     <a
                         href="https://2025humanoids.org/"
@@ -224,13 +229,72 @@
                         >2025 IEEE-RAS Humanoids'25</a
                     >
                 </div>
+
+                <!-- Mobile hamburger button -->
+                <button
+                    class="mobile-menu-btn"
+                    onclick="toggleMobileMenu()"
+                    aria-label="Toggle mobile menu"
+                >
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+
+            <!-- Mobile menu overlay -->
+            <div class="mobile-menu-overlay" id="mobile-menu-overlay">
+                <!-- Close button inside overlay -->
+                <!-- <button class="mobile-close-btn" onclick="closeMobileMenu()" aria-label="Close mobile menu">
+                    <span class="close-line"></span>
+                    <span class="close-line"></span>
+                </button> -->
+
+                <div class="mobile-menu-content">
+                    <a
+                        href="#landing"
+                        class="mobile-nav-link"
+                        onclick="closeMobileMenu()"
+                        >Home</a
+                    >
+                    <a
+                        href="#accepted-presenters"
+                        class="mobile-nav-link"
+                        onclick="closeMobileMenu()"
+                        >Accepted Presenters</a
+                    >
+                    <a
+                        href="#invited-artists"
+                        class="mobile-nav-link"
+                        onclick="closeMobileMenu()"
+                        >Invited Artists</a
+                    >
+                    <a
+                        href="#info"
+                        class="mobile-nav-link"
+                        onclick="closeMobileMenu()"
+                        >Organizers</a
+                    >
+                    <a
+                        href="#sponsors"
+                        class="mobile-nav-link"
+                        onclick="closeMobileMenu()"
+                        >Sponsors</a
+                    >
+                    <a
+                        href="call-for-participation.html"
+                        class="mobile-nav-link"
+                        onclick="closeMobileMenu()"
+                        >Call for Participation</a
+                    >
+                </div>
             </div>
         </nav>
 
         <!-- Hero Section -->
         <section id="landing" class="hero" role="banner">
             <!-- Background Video -->
-            <video class="hero-video" autoplay muted playsinline preload="auto">
+            <video class="hero-video" autoplay muted playsinline loop preload="auto">
                 <source src="assets/hero.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
@@ -251,11 +315,23 @@
                         <span class="timeline-label">Submission Deadline</span>
                     </div>
                     <div class="timeline-item">
-                        <span class="timeline-date">Oct 1, 2025</span>
-                        <span class="timeline-label">Competition Day</span>
+                        <span class="timeline-date">Sep 30, 2025</span>
+                        <span class="timeline-label"
+                            >Rehearsal (Tentative)</span
+                        >
                         <span class="timeline-detail"
-                            >5 PM - 6:30 PM<br />@ The Grand Ballroom lobby
-                            (1F), COEX</span
+                            >11:00 AM - 12:00 PM<br />@ COEX 1st floor
+                            lobby</span
+                        >
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-date">Oct 1, 2025</span>
+                        <span class="timeline-label">Fashion Show</span>
+                        <span class="timeline-detail"
+                            >4:00 PM - 5:30 PM<br />@ COEX 1st floor lobby<br />
+                            <small style="opacity: 0.8"
+                                >Setup from 3:30 PM</small
+                            ></span
                         >
                     </div>
                     <div class="timeline-item">
@@ -289,56 +365,145 @@
             <div class="hero-overlay"></div>
         </section>
 
-        <!-- Participation Info Section -->
-        <section id="participation-info" class="participation-info-section">
+        <!-- Participation Info Section - Simplified with Toggle -->
+        <section
+            id="participation-info"
+            class="participation-info-section simplified"
+        >
             <div class="container">
-                <h2 class="section-title">Open Call for Participation</h2>
-                <div class="participation-content">
-                    <div class="participation-text">
-                        <h3>Join the Future of Robotic Fashion</h3>
-                        <p>
-                            The Robot Fashion Show 2025 invites artists,
-                            designers, and researchers to propose creative ideas
-                            for "dressing up" robots for safety, aesthetic
-                            comfort, and creative expression.
+                <div class="participation-simple">
+                    <h2 class="section-title">Call for Participation</h2>
+                    <div class="closed-notice">
+                        <span class="closed-badge">Submissions Closed</span>
+                        <p class="closed-text">
+                            Thank you for your interest! Selections have been
+                            made.
                         </p>
-                        <p>
-                            This is your opportunity to be part of the
-                            first-ever cross-species
-                            <i>haute couture</i> experience, showcasing
-                            innovative approaches to robotic fashion and
-                            wearable technology.
-                        </p>
-                        <div class="participation-highlights">
-                            <div class="highlight-item">
-                                <h4>Open to All</h4>
-                                <p>
-                                    Artists, designers, researchers, and
-                                    innovators welcome
-                                </p>
-                            </div>
-                            <div class="highlight-item">
-                                <h4>Creative Freedom</h4>
-                                <p>
-                                    Explore safety, aesthetics, and creative
-                                    expression
-                                </p>
-                            </div>
-                            <div class="highlight-item">
-                                <h4>Global Platform</h4>
-                                <p>Showcase at Humanoids '25 in Seoul</p>
+                    </div>
+
+                    <button
+                        class="details-toggle"
+                        onclick="toggleParticipationDetails()"
+                    >
+                        <span class="toggle-text">Show Details</span>
+                        <span class="toggle-icon">▼</span>
+                    </button>
+
+                    <div
+                        id="participation-details"
+                        class="participation-details collapsed"
+                    >
+                        <div class="participation-text">
+                            <h3>Join the Future of Robotic Fashion</h3>
+                            <p>
+                                The Robot Fashion Show 2025 invites artists,
+                                designers, and researchers to propose creative
+                                ideas for "dressing up" robots for safety,
+                                aesthetic comfort, and creative expression.
+                            </p>
+                            <p>
+                                This is your opportunity to be part of the
+                                first-ever cross-species
+                                <i>haute couture</i> experience, showcasing
+                                innovative approaches to robotic fashion and
+                                wearable technology.
+                            </p>
+                            <div class="participation-highlights">
+                                <div class="highlight-item">
+                                    <h4>Open to All</h4>
+                                    <p>
+                                        Artists, designers, researchers, and
+                                        innovators welcome
+                                    </p>
+                                </div>
+                                <div class="highlight-item">
+                                    <h4>Creative Freedom</h4>
+                                    <p>
+                                        Explore safety, aesthetics, and creative
+                                        expression
+                                    </p>
+                                </div>
+                                <div class="highlight-item">
+                                    <h4>Global Platform</h4>
+                                    <p>Showcase at Humanoids '25 in Seoul</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="participation-cta">
-                        <a
-                            href="call-for-participation.html"
-                            class="participation-button"
-                        >
-                            Submit Your Proposal
-                        </a>
-                        <p class="participation-deadline">
-                            Deadline: Jul 31, 2025
+
+                    <a href="#accepted-presenters" class="view-presenters-btn">
+                        View Accepted Presenters ↓
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Accepted Presenters Section -->
+        <section id="accepted-presenters" class="accepted-presenters-section">
+            <div class="container">
+                <h2 class="section-title">Accepted Presenters</h2>
+                <p class="section-subtitle">
+                    Selected artists and researchers showcasing innovative robot
+                    fashion concepts at the event
+                </p>
+                <div class="presenters-grid">
+                    <div class="presenter-card">
+                        <div class="presenter-number">01</div>
+                        <h3 class="presenter-title">
+                            Modular Protective Garments for Space Robots
+                        </h3>
+                        <p class="presenter-author">Ravieshwar (Ravi) Singh</p>
+                    </div>
+                    <div class="presenter-card">
+                        <div class="presenter-number">02</div>
+                        <h3 class="presenter-title">
+                            Motion-Aware Couture: Real-Time Environment Design
+                            through Humanoid Mapping and Energetic Cues
+                        </h3>
+                        <p class="presenter-author">
+                            Rhea Malhotra, William Chong, Catie Cuan, Oussama
+                            Khatib
+                        </p>
+                    </div>
+                    <div class="presenter-card">
+                        <div class="presenter-number">03</div>
+                        <h3 class="presenter-title">
+                            Choreographing Elegance in Quadruped Robots for the
+                            Runway and Beyond
+                        </h3>
+                        <p class="presenter-author">
+                            Gigi Schadrack, Ravieshwar (Ravi) Singh
+                        </p>
+                    </div>
+                    <div class="presenter-card">
+                        <div class="presenter-number">04</div>
+                        <h3 class="presenter-title">K-pop Demon Robots</h3>
+                        <p class="presenter-author">
+                            Minseo Kim, Sungwoong Kim, Siyeol Kim, Hwasup Lim,
+                            Youngjae Yu
+                        </p>
+                    </div>
+                    <div class="presenter-card">
+                        <div class="presenter-number">05</div>
+                        <h3 class="presenter-title">Kintsugi Core</h3>
+                        <p class="presenter-author">Amanda Lim</p>
+                    </div>
+                    <div class="presenter-card">
+                        <div class="presenter-number">06</div>
+                        <h3 class="presenter-title">
+                            Baymax in Reality: A Humanoid System for Non-Contact
+                            Health Monitoring and Empathetic Interaction
+                        </h3>
+                        <p class="presenter-author">
+                            Taemoon Jeong, Junhyeong Park, Minseo Kwak, Jisoo
+                            Kim, Seungbeen Lee, Sungjoon Choi, Youngjae Yu
+                        </p>
+                    </div>
+                    <div class="presenter-card">
+                        <div class="presenter-number">07</div>
+                        <h3 class="presenter-title">Kangaroo Skywalker</h3>
+                        <p class="presenter-author">
+                            Luca Marchionni, Sai Kishor Kothakota
                         </p>
                     </div>
                 </div>
@@ -363,6 +528,7 @@
                     src="assets/robot/1-1.jpg"
                     alt="권병준 작품 배경"
                     class="background-work"
+                    loading="lazy"
                 />
                 <div class="background-overlay"></div>
             </div>
@@ -521,6 +687,7 @@
                     src="assets/robot/2-1.jpg"
                     alt="Hyun Parke 작품 배경"
                     class="background-work"
+                    loading="lazy"
                 />
                 <div class="background-overlay"></div>
             </div>
@@ -688,6 +855,7 @@
                     src="assets/robot/3-1.png"
                     alt="Young Ah Seong 작품 배경"
                     class="background-work"
+                    loading="lazy"
                 />
                 <div class="background-overlay"></div>
             </div>
@@ -850,6 +1018,7 @@
                     src="assets/robot/4-1.png"
                     alt="Deborah Won 작품 배경"
                     class="background-work"
+                    loading="lazy"
                 />
                 <div class="background-overlay"></div>
             </div>
@@ -947,6 +1116,7 @@
                     src="assets/robot/4.png"
                     alt="Yang Minha"
                     class="background-work"
+                    loading="lazy"
                 />
                 <div class="background-overlay"></div>
             </div>
@@ -1092,6 +1262,7 @@
                     src="assets/robot/5-1.png"
                     alt="Dennis Hong 작품 배경"
                     class="background-work"
+                    loading="lazy"
                 />
                 <div class="background-overlay"></div>
             </div>
@@ -1227,6 +1398,7 @@
                     src="assets/robot/6.png"
                     alt="Junhee Cho,"
                     class="background-work"
+                    loading="lazy"
                 />
                 <div class="background-overlay"></div>
             </div>
@@ -1378,6 +1550,7 @@
                     src="assets/robot/6-1.jpg"
                     alt="Ganit Goldstein 작품 배경"
                     class="background-work"
+                    loading="lazy"
                 />
                 <div class="background-overlay"></div>
             </div>
