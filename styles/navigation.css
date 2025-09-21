@@ -159,10 +159,11 @@
     background: #87b375;
 }
 
-/* Mobile responsive */
+/* Add padding when hamburger menu becomes visible */
 @media (max-width: 768px) {
     .nav {
         background: transparent;
+        padding-top: 20px; /* Add top padding when hamburger menu appears */
     }
 
     .nav-container {
@@ -180,6 +181,13 @@
 
     .nav-badge {
         display: none; /* Hide badge on mobile for cleaner look */
+    }
+}
+
+/* Ensure no padding on larger screens where hamburger is hidden */
+@media (min-width: 769px) {
+    .nav {
+        padding-top: 0; /* No top padding on desktop */
     }
 }
 
@@ -345,6 +353,10 @@ textarea:focus,
 }
 
 @media (max-width: 480px) {
+    .nav {
+        padding-top: 15px; /* Slightly less padding on smaller screens */
+    }
+
     .nav-container {
         padding: 18px 20px;
         gap: 1px;

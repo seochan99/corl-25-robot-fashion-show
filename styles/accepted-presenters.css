@@ -27,8 +27,42 @@
     font-size: 1.1rem;
     text-align: center;
     margin-top: 10px;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
     line-height: 1.6;
+}
+
+/* Event Info Styles */
+.event-info {
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 2;
+}
+
+.event-details {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+.event-detail {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.detail-label {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+}
+
+.detail-value {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.3px;
 }
 
 .presenters-grid {
@@ -103,8 +137,21 @@
     color: rgba(255, 255, 255, 0.6);
     font-size: 0.95rem;
     line-height: 1.5;
-    margin: 0;
+    margin: 0 0 15px 0;
     font-weight: 400;
+}
+
+.presenter-schedule {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: inline-block;
+    margin-top: 10px;
 }
 
 /* Responsive Design */
@@ -119,17 +166,34 @@
     .accepted-presenters-section {
         padding: 80px 0;
     }
-    
+
+    .event-details {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .event-detail {
+        flex-direction: column;
+        text-align: center;
+        gap: 5px;
+    }
+
+    .detail-label,
+    .detail-value {
+        font-size: 0.95rem;
+    }
+
     .presenters-grid {
         grid-template-columns: 1fr;
         gap: 20px;
         padding: 0 20px;
     }
-    
+
     .presenter-card {
         padding: 28px 24px;
     }
-    
+
     .presenter-number {
         width: 36px;
         height: 36px;
@@ -137,13 +201,18 @@
         font-size: 0.9rem;
         margin-bottom: 16px;
     }
-    
+
     .presenter-title {
         font-size: 1rem;
     }
-    
+
     .presenter-author {
         font-size: 0.9rem;
+    }
+
+    .presenter-schedule {
+        font-size: 0.85rem;
+        padding: 6px 10px;
     }
 }
 
@@ -163,10 +232,24 @@
     animation: fadeInUp 0.6s ease backwards;
 }
 
-.presenter-card:nth-child(1) { animation-delay: 0.1s; }
-.presenter-card:nth-child(2) { animation-delay: 0.2s; }
-.presenter-card:nth-child(3) { animation-delay: 0.3s; }
-.presenter-card:nth-child(4) { animation-delay: 0.4s; }
-.presenter-card:nth-child(5) { animation-delay: 0.5s; }
-.presenter-card:nth-child(6) { animation-delay: 0.6s; }
-.presenter-card:nth-child(7) { animation-delay: 0.7s; }
+.presenter-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+.presenter-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.presenter-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+.presenter-card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+.presenter-card:nth-child(5) {
+    animation-delay: 0.5s;
+}
+.presenter-card:nth-child(6) {
+    animation-delay: 0.6s;
+}
+.presenter-card:nth-child(7) {
+    animation-delay: 0.7s;
+}

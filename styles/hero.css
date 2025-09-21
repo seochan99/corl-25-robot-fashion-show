@@ -121,6 +121,27 @@
     text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
 }
 
+/* Add margin-top when hamburger menu appears */
+@media (max-width: 768px) {
+    .hero-title {
+        margin-top: 11rem; /* Add top margin when hamburger menu appears */
+    }
+}
+
+/* Adjust margin for smaller screens */
+@media (max-width: 480px) {
+    .hero-title {
+        margin-top: 8rem; /* Slightly less margin on smaller screens */
+    }
+}
+
+/* Ensure no margin on larger screens */
+@media (min-width: 769px) {
+    .hero-title {
+        margin-top: 0; /* No top margin on desktop */
+    }
+}
+
 .hero-tagline {
     font-size: clamp(1.1rem, 2.5vw, 1.3rem);
     color: #ffffff;
