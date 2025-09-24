@@ -44,6 +44,8 @@ body {
     overflow-x: hidden;
     font-weight: 400;
     letter-spacing: -0.01em;
+    transform: scale(0.9);
+    transform-origin: top center;
 }
 
 /* Korean Font */
