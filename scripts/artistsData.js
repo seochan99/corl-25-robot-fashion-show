@@ -6,7 +6,7 @@ export const artistsData = [
         country: "KR",
         portraitImage: "assets/artist/1.png",
         workImage: "assets/robot/1.png",
-        workTitle: "On the Birds' Day (2024)",
+        workTitle: "Nael Performing the Fan Dance (2021)",
         profileLink: "https://byungjun.pe.kr/works/koreaartistprize",
         achievement: "Korea Artist Prize 2023 Winner",
         education:

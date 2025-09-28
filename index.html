@@ -209,15 +209,13 @@
                 <div class="nav-links desktop-nav">
                     <a href="#landing" class="nav-link">Home</a>
                     <a href="#accepted-presenters" class="nav-link"
-                        >Accepted Presenters</a
+                        >Presenters</a
                     >
-                    <a href="#invited-artists" class="nav-link"
-                        >Invited Artists</a
-                    >
-                    <a href="#info" class="nav-link">Organizers</a>
-                    <a href="#sponsors" class="nav-link">Sponsors</a>
+                    <a href="#invited-artists" class="nav-link">Artists</a>
+                    <a href="#participators" class="nav-link">Participators</a>
+                    <a href="#credits" class="nav-link">Credits</a>
                     <a href="call-for-participation.html" class="nav-link"
-                        >Call for Participation</a
+                        >Participate</a
                     >
                 </div>
 
@@ -261,31 +259,31 @@
                         href="#accepted-presenters"
                         class="mobile-nav-link"
                         onclick="closeMobileMenu()"
-                        >Accepted Presenters</a
+                        >Presenters</a
                     >
                     <a
                         href="#invited-artists"
                         class="mobile-nav-link"
                         onclick="closeMobileMenu()"
-                        >Invited Artists</a
+                        >Artists</a
                     >
                     <a
-                        href="#info"
+                        href="#participators"
                         class="mobile-nav-link"
                         onclick="closeMobileMenu()"
-                        >Organizers</a
+                        >Participators</a
                     >
                     <a
-                        href="#sponsors"
+                        href="#credits"
                         class="mobile-nav-link"
                         onclick="closeMobileMenu()"
-                        >Sponsors</a
+                        >Credits</a
                     >
                     <a
                         href="call-for-participation.html"
                         class="mobile-nav-link"
                         onclick="closeMobileMenu()"
-                        >Call for Participation</a
+                        >Participate</a
                     >
                 </div>
             </div>
@@ -492,7 +490,7 @@
                             4:15 - 4:25 pm (With video)
                         </div>
                     </div>
-                    <div class="presenter-card">
+                    <!-- <div class="presenter-card">
                         <div class="presenter-number">03</div>
                         <h3 class="presenter-title">
                             Choreographing Elegance in Quadruped Robots for the
@@ -504,7 +502,7 @@
                         <div class="presenter-schedule">
                             (Video presentation)
                         </div>
-                    </div>
+                    </div> -->
                     <div class="presenter-card">
                         <div class="presenter-number">04</div>
                         <h3 class="presenter-title">K-pop Demon Robots</h3>
@@ -516,12 +514,38 @@
                     </div>
                     <div class="presenter-card">
                         <div class="presenter-number">05</div>
-                        <h3 class="presenter-title">Kintsugi Core</h3>
-                        <p class="presenter-author">Amanda Lim</p>
-                        <div class="presenter-schedule">4:45 - 5:55 pm</div>
+                        <h3 class="presenter-title">
+                            The Mirokaï - people facing humanoid robots powered
+                            by AI
+                        </h3>
+                        <p class="presenter-author">Richard Malterre</p>
+                        <div class="presenter-schedule">4:45 - 4:55 pm</div>
                     </div>
                     <div class="presenter-card">
                         <div class="presenter-number">06</div>
+                        <h3 class="presenter-title">Kangaroo Skywalker</h3>
+                        <p class="presenter-author">
+                            Luca Marchionni, Sai Kishor Kothakota
+                        </p>
+                        <div class="presenter-schedule">5:00 - 5:10 pm</div>
+                    </div>
+
+                    <!-- Video Presentations (No Time Slots) -->
+                    <div class="presenter-card video-presentation">
+                        <div class="presenter-number">V1</div>
+                        <h3 class="presenter-title">
+                            Choreographing Elegance in Quadruped Robots for the
+                            Runway and Beyond
+                        </h3>
+                        <p class="presenter-author">
+                            Gigi Schadrack, Ravieshwar (Ravi) Singh
+                        </p>
+                        <div class="presenter-schedule">
+                            (Video presentation)
+                        </div>
+                    </div>
+                    <div class="presenter-card video-presentation">
+                        <div class="presenter-number">V2</div>
                         <h3 class="presenter-title">
                             Baymax in Reality: A Humanoid System for Non-Contact
                             Health Monitoring and Empathetic Interaction
@@ -530,15 +554,17 @@
                             Taemoon Jeong, Junhyeong Park, Minseo Kwak, Jisoo
                             Kim, Seungbeen Lee, Sungjoon Choi, Youngjae Yu
                         </p>
-                        <div class="presenter-schedule">5:00 - 5:10 pm</div>
+                        <div class="presenter-schedule">
+                            (Video presentation)
+                        </div>
                     </div>
-                    <div class="presenter-card">
-                        <div class="presenter-number">07</div>
-                        <h3 class="presenter-title">Kangaroo Skywalker</h3>
-                        <p class="presenter-author">
-                            Luca Marchionni, Sai Kishor Kothakota
-                        </p>
-                        <div class="presenter-schedule">5:15 - 5:25 pm</div>
+                    <div class="presenter-card video-presentation">
+                        <div class="presenter-number">V3</div>
+                        <h3 class="presenter-title">Kintsugi Core</h3>
+                        <p class="presenter-author">Amanda Lim</p>
+                        <div class="presenter-schedule">
+                            (Video presentation)
+                        </div>
                     </div>
                 </div>
             </div>
@@ -605,49 +631,15 @@
                                 data-current-image="0"
                             >
                                 <img
-                                    src="assets/robot/1-1.jpg"
+                                    src="assets/robot/1-1.png"
                                     alt="On the Birds' Day"
                                     class="work-image"
                                 />
-                                <img
-                                    src="assets/robot/1-2.jpg"
-                                    alt="On the Birds' Day - Detail 1"
-                                    class="work-image"
-                                />
-                                <img
-                                    src="assets/robot/1-3.jpg"
-                                    alt="On the Birds' Day - Detail 2"
-                                    class="work-image"
-                                />
-                            </div>
-                            <button
-                                class="image-nav-btn prev"
-                                aria-label="Previous image"
-                            >
-                                ‹
-                            </button>
-                            <button
-                                class="image-nav-btn next"
-                                aria-label="Next image"
-                            >
-                                ›
-                            </button>
-                            <div class="image-indicators">
-                                <div
-                                    class="image-indicator active"
-                                    data-index="0"
-                                ></div>
-                                <div
-                                    class="image-indicator"
-                                    data-index="1"
-                                ></div>
-                                <div
-                                    class="image-indicator"
-                                    data-index="2"
-                                ></div>
                             </div>
                         </div>
-                        <p class="work-title">On the Birds' Day (2024)</p>
+                        <p class="work-title">
+                            Nael Performing the Fan Dance (2021)
+                        </p>
                     </div>
 
                     <div class="artist-description">
@@ -1577,6 +1569,190 @@
             </div>
         </section>
 
+        <!-- Artist 7: HKASON -->
+        <section id="artist-7" class="artist-showcase" data-artist="7">
+            <div class="showcase-background">
+                <img
+                    src="assets/robot/7-1.png"
+                    alt="HKASON 작품 배경"
+                    class="background-work"
+                    loading="lazy"
+                />
+                <div class="background-overlay"></div>
+            </div>
+            <div class="showcase-content">
+                <div class="artist-profile">
+                    <img
+                        src="assets/artist/7.png"
+                        alt="HKASON"
+                        class="profile-image"
+                    />
+                    <div class="profile-info">
+                        <h3 class="artist-name">
+                            <span>HKASON</span>
+                        </h3>
+                        <p class="artist-career">Fashion Designer & Artist</p>
+                        <div class="artist-achievements">
+                            <p class="artist-achievement">
+                                Innovative fashion designer exploring the
+                                intersection of technology and wearable art
+                            </p>
+                            <p class="artist-achievement">
+                                Specializing in experimental materials and
+                                futuristic design concepts
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="artist-details">
+                    <div class="work-showcase">
+                        <div class="work-images-container">
+                            <div
+                                class="work-images-slider"
+                                data-current-image="0"
+                            >
+                                <img
+                                    src="assets/robot/7-1.png"
+                                    alt="Fin Shield Membrane for Mirokaï"
+                                    class="work-image"
+                                />
+                                <img
+                                    src="assets/robot/7-2.png"
+                                    alt="Fin Shield Membrane for Mirokaï - Detail 1"
+                                    class="work-image"
+                                />
+                                <img
+                                    src="assets/robot/7-3.png"
+                                    alt="Fin Shield Membrane for Mirokaï - Detail 2"
+                                    class="work-image"
+                                />
+                            </div>
+                            <button
+                                class="image-nav-btn prev"
+                                aria-label="Previous image"
+                            >
+                                ‹
+                            </button>
+                            <button
+                                class="image-nav-btn next"
+                                aria-label="Next image"
+                            >
+                                ›
+                            </button>
+                            <div class="image-indicators">
+                                <div
+                                    class="image-indicator active"
+                                    data-index="0"
+                                ></div>
+                                <div
+                                    class="image-indicator"
+                                    data-index="1"
+                                ></div>
+                                <div
+                                    class="image-indicator"
+                                    data-index="2"
+                                ></div>
+                            </div>
+                        </div>
+                        <p class="work-title">
+                            Fin Shield Membrane for Mirokaï (2024)
+                        </p>
+                    </div>
+
+                    <div class="artist-description">
+                        <p class="artist-specialty">
+                            Fashion designer exploring innovative materials and
+                            futuristic design concepts, creating protective and
+                            aesthetic solutions for robotic applications.
+                        </p>
+
+                        <div class="artist-links">
+                            <a
+                                href="mailto:dehanhkason@gmail.com"
+                                target="_blank"
+                                class="profile-icon-btn"
+                                title="Email Contact"
+                            >
+                                <svg
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                >
+                                    <path
+                                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                    <polyline
+                                        points="22,6 12,13 2,6"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                            </a>
+                            <a
+                                href="https://www.hkason.com"
+                                target="_blank"
+                                class="profile-icon-btn"
+                                title="Website"
+                            >
+                                <svg
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                >
+                                    <circle
+                                        cx="12"
+                                        cy="12"
+                                        r="10"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                    />
+                                    <line
+                                        x1="2"
+                                        y1="12"
+                                        x2="22"
+                                        y2="12"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                    />
+                                    <path
+                                        d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                    />
+                                </svg>
+                            </a>
+                            <a
+                                href="https://www.instagram.com/dehanhkason"
+                                target="_blank"
+                                class="instagram-icon-btn"
+                                title="Instagram"
+                            >
+                                <svg
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                >
+                                    <path
+                                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                                    />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Artist 6: Ganit Goldstein -->
         <!-- <section id="artist-6" class="artist-showcase" data-artist="6">
             <div class="showcase-background">
@@ -1675,103 +1851,6 @@
             </div>
         </section> -->
 
-        <!-- Info Section -->
-        <section id="info" class="info-section">
-            <div class="container">
-                <h2 class="section-title">Organizers</h2>
-                <div class="info-grid">
-                    <!-- <div class="info-card organizer-card">
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A1.5 1.5 0 0 0 18.54 8H16c-.8 0-1.54.37-2.01.99L12 11l-1.99-2.01A2.5 2.5 0 0 0 8 8H5.46c-.8 0-1.51.37-1.96.99L1 16.5H3.5V22h5v-6h2v6h5zM12.5 11.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5S11 9.17 11 10s.67 1.5 1.5 1.5z"
-                                />
-                            </svg>
-                        </div>
-                        <h3>Organizers</h3>
-                        <p class="primary-info">
-                            Jean Oh, Hyunwoo Park, Jeffrey Ichnowski, Huichan Seo
-                        </p>
-                    </div> -->
-                    <div class="info-card">
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm1-13h-2v6l5.25 3.15.77-1.28-4.02-2.37V7z"
-                                />
-                            </svg>
-                        </div>
-                        <h3>Co-organizer</h3>
-                        <p class="primary-info">
-                            IEEE RAS Humanoids'25 X University of Seoul Startup
-                            Support Foundation
-                        </p>
-                        <p class="secondary-info">
-                            Seoul Startup Support Foundation
-                        </p>
-                    </div>
-                    <div class="info-card">
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
-                                />
-                            </svg>
-                        </div>
-                        <h3>Creative Director</h3>
-                        <p class="primary-info">Jean Oh X Jie-Eun Hwang</p>
-                    </div>
-                    <div class="info-card">
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H7v-2h5v2zm5-4H7v-2h10v2zm0-4H7V7h10v2z"
-                                />
-                            </svg>
-                        </div>
-                        <h3>Art Director</h3>
-                        <p class="primary-info">Hyun Parke X Hana Yun</p>
-                    </div>
-                    <div class="info-card">
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
-                                />
-                            </svg>
-                        </div>
-                        <h3>Webmaster</h3>
-                        <p class="primary-info">Chan Seo</p>
-                    </div>
-                    <div class="info-card contact-card">
-                        <div class="contact-avatar">
-                            <!-- <div class="avatar-circle">
-                                <img
-                                    src="assets/jeanoh.jpg"
-                                    alt="Jean Oh"
-                                    style="
-                                        width: 100%;
-                                        height: 100%;
-                                        object-fit: cover;
-                                        border-radius: 50%;
-                                    "
-                                    onerror="this.style.display='none'; this.parentNode.innerHTML='JO';"
-                                />
-                            </div> -->
-                        </div>
-                        <h3>Contact</h3>
-                        <p class="contact-name">Hyunwoo Park</p>
-                        <a
-                            href="mailto:hpark3@andrew.cmu.edu?subject=[RoboFashion25] Question"
-                            class="contact-email"
-                        >
-                            hpark3@andrew.cmu.edu
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Sponsors Section -->
         <section id="sponsors" class="sponsors-section">
             <div class="container">
@@ -1807,6 +1886,194 @@
                                 style="max-width: 12rem; max-height: 12rem"
                             />
                         </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Participators Section -->
+        <section id="participators" class="participators-section">
+            <div class="container">
+                <h2 class="section-title">Participators</h2>
+
+                <div class="participators-grid">
+                    <!-- Performers -->
+                    <div class="participator-category performers">
+                        <h3 class="participator-category-title">Performers</h3>
+                        <div class="participator-item">
+                            <h4>LDP Dance Company</h4>
+                            <p><strong>Choreography:</strong> Nara Yun</p>
+                            <p>
+                                <strong>Dancers:</strong> Jihee Park, Seokhyeon
+                                Kim
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Robotic Collaborations -->
+                    <div class="participator-category robots">
+                        <h3 class="participator-category-title">
+                            Robotic Collaborations
+                        </h3>
+
+                        <div class="robot-grid">
+                            <div class="robot-item">
+                                <h4>MOMO</h4>
+                                <p>Korea University RILAB + DGIST IRLAB</p>
+                                <small
+                                    >Operation: Taemoon Jeong, Chanwoo
+                                    Kim</small
+                                >
+                            </div>
+
+                            <div class="robot-item">
+                                <h4>Go2, G1</h4>
+                                <p>Unitree (China) — ROAS</p>
+                                <small
+                                    >Operation: Michael Huang, Hyunseung
+                                    Kang</small
+                                >
+                            </div>
+
+                            <div class="robot-item">
+                                <h4>Mirokaï</h4>
+                                <p>Enchanted Tools (France)</p>
+                                <small>11-person international team</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Credits Section -->
+        <section id="credits" class="credits-section">
+            <div class="container">
+                <h2 class="section-title">Credits</h2>
+
+                <div class="credits-grid">
+                    <!-- Organizers & Hosts -->
+                    <div class="credits-category">
+                        <h3 class="credits-category-title">
+                            Organizers & Hosts
+                        </h3>
+                        <div class="credits-item">
+                            <h4>Co-hosted by</h4>
+                            <p>
+                                IEEE RAS Humanoids'25 X University of Seoul
+                                Startup Support Foundation, Campus Town
+                            </p>
+                        </div>
+                        <div class="credits-item">
+                            <h4>Organized by</h4>
+                            <p>Borderless Terrace</p>
+                        </div>
+                        <div class="credits-item">
+                            <h4>Supported by</h4>
+                            <p>
+                                Art Collider Lab of Korea National University of
+                                Arts
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Artistic Direction -->
+                    <div class="credits-category">
+                        <h3 class="credits-category-title">
+                            Artistic Direction
+                        </h3>
+                        <div class="credits-item">
+                            <h4>Creative Director</h4>
+                            <p>Jean Oh X Jie-Eun Hwang</p>
+                        </div>
+                        <div class="credits-item">
+                            <h4>Art Director</h4>
+                            <p>Hyun Parke X Hana Yun</p>
+                        </div>
+                        <div class="credits-item">
+                            <h4>Design</h4>
+                            <p>Studio Hongbaksa</p>
+                        </div>
+                        <div class="credits-item">
+                            <h4>Coordinator</h4>
+                            <p>Hye Young Cho</p>
+                        </div>
+                    </div>
+
+                    <!-- Production -->
+                    <div class="credits-category">
+                        <h3 class="credits-category-title">Production</h3>
+                        <div class="credits-item">
+                            <h4>Stage Director</h4>
+                            <p>Garam Choi</p>
+                        </div>
+                        <div class="credits-item">
+                            <h4>Lighting Director</h4>
+                            <p>Yohan Kim</p>
+                        </div>
+                        <div class="credits-item">
+                            <h4>Music Director</h4>
+                            <p>Noddy Woo</p>
+                        </div>
+                        <div class="credits-item">
+                            <h4>Audio Director</h4>
+                            <p>Dream Scape</p>
+                        </div>
+                        <div class="credits-item">
+                            <h4>Media Production</h4>
+                            <p>
+                                Seven Cloud<br /><small
+                                    >(VJ · Live Streaming · Photography ·
+                                    Videography)</small
+                                >
+                            </p>
+                        </div>
+                        <div class="credits-item">
+                            <h4>Media Installation</h4>
+                            <p>Pet and Mass</p>
+                        </div>
+                        <div class="credits-item">
+                            <h4>3D Scenography</h4>
+                            <p>Jung Won Yoon</p>
+                        </div>
+                    </div>
+
+                    <!-- University of Seoul Team -->
+                    <div class="credits-category">
+                        <h3 class="credits-category-title">
+                            University of Seoul Startup Support Foundation
+                        </h3>
+                        <div class="credits-item">
+                            <p>
+                                Woo Jin Choi, SuKyung Kim (김수경), Jae Ho Kim
+                                (김재호), Yoon Sun Hwang (황윤선), Hae Min Jung
+                                (정해민), Han Mi Lee (이한미), Sung Rae Kim
+                                (김성래)
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Website -->
+                    <div class="credits-category">
+                        <h3 class="credits-category-title">Website</h3>
+                        <div class="credits-item">
+                            <h4>Webmaster</h4>
+                            <p>Chan Seo</p>
+                        </div>
+                    </div>
+
+                    <!-- Contact -->
+                    <div class="credits-category">
+                        <h3 class="credits-category-title">Contact</h3>
+                        <div class="credits-item">
+                            <p>Hyunwoo Park</p>
+                            <a
+                                href="mailto:hpark3@andrew.cmu.edu?subject=[RoboFashion25] Question"
+                                class="contact-email"
+                            >
+                                hpark3@andrew.cmu.edu
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
