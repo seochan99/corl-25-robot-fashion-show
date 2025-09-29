@@ -47,6 +47,58 @@
         padding: 0 15px;
     }
 
+    .hero-timeline-grid {
+        margin: 1.5rem 0;
+    }
+
+    .hero-timeline-grid .timeline-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .hero-timeline-grid .timeline-row.first-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .hero-timeline-grid .timeline-row.second-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .hero-timeline-grid .timeline-row.second-row-full {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .hero-timeline-grid .oct2-event-container {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0.8rem;
+    }
+
+    .hero-timeline-grid .timeline-item {
+        min-height: 75px;
+        padding: 0.7rem;
+    }
+
+    .hero-timeline-grid .timeline-sublabel {
+        font-size: 0.65rem;
+    }
+
+    .hero-timeline-grid .transportation-title {
+        font-size: 0.75rem;
+    }
+
+    .hero-timeline-grid .transportation-detail {
+        font-size: 0.7rem;
+        line-height: 1.2;
+    }
+
+    .hero-timeline-grid .oct2-transportation {
+        padding: 0.5rem;
+    }
+
     .hero-actions {
         flex-direction: column;
         gap: 15px;

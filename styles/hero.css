@@ -106,7 +106,7 @@
 
 .hero-title {
     font-family: "Playfair Display", serif;
-    font-size: clamp(3rem, 7vw, 6.5rem);
+    font-size: clamp(2.2rem, 5vw, 4.5rem);
     font-weight: 600;
     margin-bottom: 0px;
     line-height: 1.1;
@@ -115,7 +115,7 @@
     text-transform: uppercase;
     position: relative;
     opacity: 0;
-    transform: translateY(50px) scale(0.8);
+    transform: translateY(30px) scale(0.9);
     animation: dramaticTitleEntrance 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)
         0.5s forwards;
     text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
