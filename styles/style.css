@@ -742,11 +742,15 @@ section {
     background: rgba(255, 255, 255, 0.05);
     border: 2px solid rgba(255, 255, 255, 0.1);
     border-radius: 16px;
-    padding: 40px 30px;
+    padding: 30px;
     text-align: center;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 
 .director-card::before {
@@ -776,20 +780,52 @@ section {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
+.director-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.director-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.director-card:hover .director-image {
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+}
+
+.director-info {
+    text-align: center;
+}
+
 .director-card h4 {
     color: #ffffff;
     font-size: 1.4rem;
     font-weight: 600;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
-.director-card p {
-    color: #cccccc;
+.director-title {
+    color: #ffffff;
     font-size: 1rem;
-    margin-bottom: 20px;
+    margin-bottom: 8px;
     font-weight: 500;
+}
+
+.director-affiliation {
+    color: #cccccc;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    font-weight: 400;
+    line-height: 1.4;
 }
 
 .linkedin-link {
@@ -850,6 +886,53 @@ section {
 .credits-item small {
     color: #cccccc;
     font-size: 0.85rem;
+}
+
+/* Contact Section Styling */
+.contact-section {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 20px;
+}
+
+.contact-section h4 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.contact-section p {
+    color: #ffffff;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.contact-email {
+    display: inline-block;
+    color: #0077b5;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 12px 24px;
+    border: 2px solid #0077b5;
+    border-radius: 25px;
+    background: rgba(0, 119, 181, 0.1);
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.contact-email:hover {
+    background: #0077b5;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 119, 181, 0.3);
 }
 
 /* Responsive Design for organizers */

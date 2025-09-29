@@ -278,7 +278,7 @@
         initImageSliders();
         initEventTracking();
 
-        console.log("Robot Fashion Show 2025 initialized");
+        ("Robot Fashion Show 2025 initialized");
     }
 
     // Initialize sections data for better performance
@@ -706,7 +706,7 @@
         // Force start playback
         video.addEventListener("loadeddata", () => {
             video.play().catch(() => {
-                console.log("Autoplay blocked - user interaction required");
+                ("Autoplay blocked - user interaction required");
             });
         });
 
@@ -748,7 +748,7 @@
     // Simple section snapping functionality
     function initSectionSnapping() {
         // Disabled complex section snapping to prevent scroll bugs
-        console.log("Section snapping disabled for better scroll experience");
+        ("Section snapping disabled for better scroll experience");
     }
 
     // Optimized artist animations initialization
@@ -1040,8 +1040,110 @@
         }
     });
 
+    // Copy to clipboard function
+    function copyToClipboard(text) {
+        "Copy function called with text:", text;
+
+        if (navigator.clipboard && window.isSecureContext) {
+            // Modern approach
+            navigator.clipboard
+                .writeText(text)
+                .then(function () {
+                    ("Clipboard write successful");
+                    showCopyNotification();
+                })
+                .catch(function (err) {
+                    "Clipboard write failed, using fallback:", err;
+                    fallbackCopyTextToClipboard(text);
+                });
+        } else {
+            ("Using fallback copy method");
+            // Fallback for older browsers
+            fallbackCopyTextToClipboard(text);
+        }
+    }
+
+    function fallbackCopyTextToClipboard(text) {
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        textArea.style.top = "0";
+        textArea.style.left = "0";
+        textArea.style.position = "fixed";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+
+        try {
+            const successful = document.execCommand("copy");
+            "Fallback copy successful:", successful;
+            if (successful) {
+                showCopyNotification();
+            } else {
+                ("Fallback copy failed");
+                // Show notification anyway for user feedback
+                showCopyNotification();
+            }
+        } catch (err) {
+            console.error("Fallback: Could not copy text: ", err);
+            // Show notification anyway for user feedback
+            showCopyNotification();
+        }
+
+        document.body.removeChild(textArea);
+    }
+
+    function showCopyNotification() {
+        ("Showing copy notification");
+
+        // Remove any existing notification
+        const existingNotification =
+            document.getElementById("copy-notification");
+        if (existingNotification) {
+            existingNotification.remove();
+        }
+
+        // Create notification element
+        const notification = document.createElement("div");
+        notification.id = "copy-notification";
+        notification.textContent = "📧 Email copied to clipboard!";
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #28a745;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            z-index: 99999;
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+            border: 2px solid #20c997;
+            transform: translateX(0);
+            opacity: 1;
+            transition: all 0.3s ease;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            pointer-events: none;
+        `;
+
+        document.body.appendChild(notification);
+        ("Notification added to DOM");
+
+        // Remove notification after 4 seconds
+        setTimeout(() => {
+            notification.style.transform = "translateX(100%)";
+            notification.style.opacity = "0";
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 300);
+        }, 4000);
+    }
+
     // Export functions globally
     window.toggleParticipationDetails = toggleParticipationDetails;
     window.toggleMobileMenu = toggleMobileMenu;
     window.closeMobileMenu = closeMobileMenu;
+    window.copyToClipboard = copyToClipboard;
 })();
