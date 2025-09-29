@@ -274,7 +274,6 @@
         initScrollEffects();
         initArtistShowcase();
         initHeroVideo();
-        initSectionSnapping();
         initArtistAnimations();
         initImageSliders();
         initEventTracking();
@@ -696,18 +695,18 @@
         if (!video) return;
 
         // Force high quality and continuous playback
-        video.setAttribute('webkit-playsinline', 'true');
-        video.setAttribute('x-webkit-airplay', 'allow');
-        
+        video.setAttribute("webkit-playsinline", "true");
+        video.setAttribute("x-webkit-airplay", "allow");
+
         // Ensure loop and autoplay
         video.loop = true;
         video.muted = true;
         video.autoplay = true;
-        
+
         // Force start playback
-        video.addEventListener('loadeddata', () => {
+        video.addEventListener("loadeddata", () => {
             video.play().catch(() => {
-                console.log('Autoplay blocked - user interaction required');
+                console.log("Autoplay blocked - user interaction required");
             });
         });
 
@@ -726,277 +725,30 @@
                     // Never pause - let it loop continuously
                 });
             },
-            { 
+            {
                 threshold: 0.1,
-                rootMargin: "0px"
+                rootMargin: "0px",
             }
         );
 
         videoObserver.observe(video);
-        
+
         // Force play on any user interaction
-        document.addEventListener('click', () => {
-            if (video.paused) {
-                video.play();
-            }
-        }, { once: true });
+        document.addEventListener(
+            "click",
+            () => {
+                if (video.paused) {
+                    video.play();
+                }
+            },
+            { once: true }
+        );
     }
 
-    // Enhanced section snapping functionality with Intersection Observer
+    // Simple section snapping functionality
     function initSectionSnapping() {
-        if (sections.length === 0) return;
-
-        let isSnapping = false;
-        let lastScrollTime = 0;
-        let currentVisibleSection = 0;
-
-        // Optimized Intersection Observer for fast section detection
-        const sectionObserver = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting && entry.intersectionRatio > 0.2) {
-                        const sectionIndex = sections.indexOf(entry.target);
-                        if (sectionIndex !== -1) {
-                            currentVisibleSection = sectionIndex;
-                        }
-                    }
-                });
-            },
-            {
-                root: null,
-                rootMargin: "0px",
-                threshold: [0.2, 0.5],
-            }
-        );
-
-        // Observe all sections
-        sections.forEach((section) => sectionObserver.observe(section));
-
-        // Enhanced smooth scroll to section with scroll completion detection
-        function scrollToSection(index) {
-            if (index < 0 || index >= sections.length || isSnapping) return;
-
-            isSnapping = true;
-            const targetSection = sections[index];
-            const targetPosition = targetSection.offsetTop;
-            const startPosition = window.scrollY;
-            const distance = targetPosition - startPosition;
-            const duration = 400; // Fast and snappy scrolling
-            let startTime = null;
-
-            // Optimized easing function for faster response
-            function easeOutQuart(t) {
-                return 1 - Math.pow(1 - t, 4);
-            }
-
-            function animation(currentTime) {
-                if (startTime === null) startTime = currentTime;
-                const timeElapsed = currentTime - startTime;
-                const progress = Math.min(timeElapsed / duration, 1);
-                
-                const easeProgress = easeOutQuart(progress);
-                window.scrollTo(0, startPosition + distance * easeProgress);
-
-                if (progress < 1) {
-                    requestAnimationFrame(animation);
-                } else {
-                    // Scroll complete
-                    isSnapping = false;
-                    currentSection = index;
-                    currentVisibleSection = index;
-                }
-            }
-
-            requestAnimationFrame(animation);
-        }
-
-        // Simplified and fast wheel event handling
-        function handleWheel(e) {
-            const now = Date.now();
-            const timeDiff = now - lastScrollTime;
-
-            // Ultra-fast response for smooth scrolling
-            if (timeDiff < 200) {
-                e.preventDefault();
-                return;
-            }
-
-            // Use Intersection Observer result for current section
-            const currentIndex = currentVisibleSection;
-            const currentSection = sections[currentIndex];
-
-            // Allow free scrolling in specific sections
-            if (
-                currentSection &&
-                (currentSection.classList.contains("info-section") ||
-                    currentSection.classList.contains(
-                        "participation-info-section"
-                    ))
-            ) {
-                return;
-            }
-
-            if (isSnapping) {
-                e.preventDefault();
-                return;
-            }
-
-            // Instant direction detection - no delay
-            const direction = e.deltaY > 0 ? 1 : -1;
-            const nextIndex = currentIndex + direction;
-
-            // Immediate execution
-            if (nextIndex >= 0 && nextIndex < sections.length) {
-                lastScrollTime = now;
-                e.preventDefault();
-                scrollToSection(nextIndex);
-            }
-        }
-
-        // Enhanced touch handling with better swipe detection
-        let touchStartY = 0;
-        let isTouching = false;
-        let touchStartTime = 0;
-
-        function handleTouchStart(e) {
-            if (isSnapping) return;
-
-            touchStartY = e.touches[0].clientY;
-            touchStartTime = Date.now();
-            isTouching = true;
-        }
-
-        function handleTouchEnd(e) {
-            if (!isTouching || isSnapping) {
-                isTouching = false;
-                return;
-            }
-
-            const now = Date.now();
-            const timeDiff = now - lastScrollTime;
-            const touchDuration = now - touchStartTime;
-
-            // Fast touch response
-            if (timeDiff < 200) {
-                isTouching = false;
-                return;
-            }
-
-            // Ignore very quick touches (likely accidental)
-            if (touchDuration < 50) {
-                isTouching = false;
-                return;
-            }
-
-            // Use Intersection Observer result for current section
-            const currentIndex = currentVisibleSection;
-            const currentSection = sections[currentIndex];
-            const touchEndY = e.changedTouches[0].clientY;
-            const touchDiff = touchStartY - touchEndY;
-            const minSwipeDistance = 50; // Reduced for faster response
-
-            // Allow free scrolling in specific sections
-            if (
-                currentSection &&
-                currentSection.classList.contains("participation-info-section")
-            ) {
-                isTouching = false;
-                return;
-            }
-
-            if (Math.abs(touchDiff) > minSwipeDistance) {
-                lastScrollTime = now;
-                const direction = touchDiff > 0 ? 1 : -1;
-                const nextIndex = currentIndex + direction;
-
-                if (nextIndex >= 0 && nextIndex < sections.length) {
-                    scrollToSection(nextIndex);
-                }
-            }
-
-            isTouching = false;
-        }
-
-        // Enhanced keyboard navigation with better debouncing
-        function handleKeydown(e) {
-            if (isSnapping) return;
-
-            const now = Date.now();
-            const timeDiff = now - lastScrollTime;
-
-            // Instant keyboard response
-            if (timeDiff < 150) {
-                e.preventDefault();
-                return;
-            }
-
-            // Use Intersection Observer result for current section
-            const currentIndex = currentVisibleSection;
-            const currentSection = sections[currentIndex];
-
-            // Allow free scrolling in specific sections
-            if (
-                currentSection &&
-                currentSection.classList.contains("participation-info-section")
-            ) {
-                return;
-            }
-
-            let nextIndex = currentIndex;
-
-            switch (e.key) {
-                case "ArrowDown":
-                case "PageDown":
-                case " ": // Space key
-                    e.preventDefault();
-                    nextIndex = currentIndex + 1;
-                    break;
-                case "ArrowUp":
-                case "PageUp":
-                    e.preventDefault();
-                    nextIndex = currentIndex - 1;
-                    break;
-                case "Home":
-                    e.preventDefault();
-                    nextIndex = 0;
-                    break;
-                case "End":
-                    e.preventDefault();
-                    nextIndex = sections.length - 1;
-                    break;
-            }
-
-            if (
-                nextIndex !== currentIndex &&
-                nextIndex >= 0 &&
-                nextIndex < sections.length
-            ) {
-                lastScrollTime = now;
-                scrollToSection(nextIndex);
-            }
-        }
-
-        // Initialize current section
-        currentSection = currentVisibleSection;
-
-        // Add event listeners
-        window.addEventListener("wheel", handleWheel, { passive: false });
-        window.addEventListener("touchstart", handleTouchStart, {
-            passive: true,
-        });
-        window.addEventListener("touchend", handleTouchEnd, { passive: true });
-        window.addEventListener("keydown", handleKeydown, { passive: false });
-
-        // Handle browser back/forward navigation
-        window.addEventListener("popstate", () => {
-            currentSection = getCurrentSectionIndex();
-        });
-
-        console.log(
-            "Section snapping initialized with",
-            sections.length,
-            "sections"
-        );
+        // Disabled complex section snapping to prevent scroll bugs
+        console.log("Section snapping disabled for better scroll experience");
     }
 
     // Optimized artist animations initialization
@@ -1203,29 +955,29 @@
 
     // Toggle Participation Details Function
     function toggleParticipationDetails() {
-        const details = document.getElementById('participation-details');
-        const toggleBtn = document.querySelector('.details-toggle');
-        const toggleText = toggleBtn.querySelector('.toggle-text');
-        const toggleIcon = toggleBtn.querySelector('.toggle-icon');
-        
-        if (details.classList.contains('collapsed')) {
+        const details = document.getElementById("participation-details");
+        const toggleBtn = document.querySelector(".details-toggle");
+        const toggleText = toggleBtn.querySelector(".toggle-text");
+        const toggleIcon = toggleBtn.querySelector(".toggle-icon");
+
+        if (details.classList.contains("collapsed")) {
             // Expand details
-            details.classList.remove('collapsed');
-            details.classList.add('expanded');
-            toggleText.textContent = 'Hide Details';
-            toggleIcon.textContent = '▲';
-            
+            details.classList.remove("collapsed");
+            details.classList.add("expanded");
+            toggleText.textContent = "Hide Details";
+            toggleIcon.textContent = "▲";
+
             // Track event
-            trackEvent('Participation', 'toggle', 'expanded');
+            trackEvent("Participation", "toggle", "expanded");
         } else {
             // Collapse details
-            details.classList.remove('expanded');
-            details.classList.add('collapsed');
-            toggleText.textContent = 'Show Details';
-            toggleIcon.textContent = '▼';
-            
+            details.classList.remove("expanded");
+            details.classList.add("collapsed");
+            toggleText.textContent = "Show Details";
+            toggleIcon.textContent = "▼";
+
             // Track event
-            trackEvent('Participation', 'toggle', 'collapsed');
+            trackEvent("Participation", "toggle", "collapsed");
         }
     }
 
@@ -1236,51 +988,54 @@
         resumeAutoSlide,
         initImageSliders,
     };
-    
+
     // Mobile Menu Functions
     function toggleMobileMenu() {
-        const overlay = document.getElementById('mobile-menu-overlay');
-        const hamburgerBtn = document.querySelector('.mobile-menu-btn');
-        
-        if (overlay.classList.contains('active')) {
+        const overlay = document.getElementById("mobile-menu-overlay");
+        const hamburgerBtn = document.querySelector(".mobile-menu-btn");
+
+        if (overlay.classList.contains("active")) {
             closeMobileMenu();
         } else {
             openMobileMenu();
         }
     }
-    
+
     function openMobileMenu() {
-        const overlay = document.getElementById('mobile-menu-overlay');
-        const hamburgerBtn = document.querySelector('.mobile-menu-btn');
-        
-        overlay.classList.add('active');
-        hamburgerBtn.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevent body scroll
-        
+        const overlay = document.getElementById("mobile-menu-overlay");
+        const hamburgerBtn = document.querySelector(".mobile-menu-btn");
+
+        overlay.classList.add("active");
+        hamburgerBtn.classList.add("active");
+        document.body.style.overflow = "hidden"; // Prevent body scroll
+
         // Track event
-        trackEvent('Navigation', 'mobile_menu', 'opened');
+        trackEvent("Navigation", "mobile_menu", "opened");
     }
-    
+
     function closeMobileMenu() {
-        const overlay = document.getElementById('mobile-menu-overlay');
-        const hamburgerBtn = document.querySelector('.mobile-menu-btn');
-        
-        overlay.classList.remove('active');
-        hamburgerBtn.classList.remove('active');
-        document.body.style.overflow = ''; // Restore body scroll
-        
+        const overlay = document.getElementById("mobile-menu-overlay");
+        const hamburgerBtn = document.querySelector(".mobile-menu-btn");
+
+        overlay.classList.remove("active");
+        hamburgerBtn.classList.remove("active");
+        document.body.style.overflow = ""; // Restore body scroll
+
         // Track event
-        trackEvent('Navigation', 'mobile_menu', 'closed');
+        trackEvent("Navigation", "mobile_menu", "closed");
     }
-    
+
     // Close mobile menu when clicking outside
-    document.addEventListener('click', function(e) {
-        const overlay = document.getElementById('mobile-menu-overlay');
-        const hamburgerBtn = document.querySelector('.mobile-menu-btn');
-        
-        if (overlay && overlay.classList.contains('active') && 
-            !overlay.contains(e.target) && 
-            !hamburgerBtn.contains(e.target)) {
+    document.addEventListener("click", function (e) {
+        const overlay = document.getElementById("mobile-menu-overlay");
+        const hamburgerBtn = document.querySelector(".mobile-menu-btn");
+
+        if (
+            overlay &&
+            overlay.classList.contains("active") &&
+            !overlay.contains(e.target) &&
+            !hamburgerBtn.contains(e.target)
+        ) {
             closeMobileMenu();
         }
     });
