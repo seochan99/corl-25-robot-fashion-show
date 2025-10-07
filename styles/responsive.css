@@ -164,17 +164,20 @@
     }
 
     /* Performer Card Mobile Styles */
-    .performers-row {
+    .performer-card {
+        padding: 20px;
+        max-width: 100%;
+    }
+
+    .performers-grid {
         flex-direction: column;
         gap: 20px;
         align-items: center;
     }
 
-    .performer-card {
-        padding: 20px;
-        gap: 15px;
-        max-width: 100%;
+    .performer-item {
         min-width: auto;
+        max-width: 100%;
         width: 100%;
     }
 
@@ -187,8 +190,8 @@
         font-size: 1.1rem;
     }
 
-    .performer-card p {
-        font-size: 0.9rem;
+    .performer-item .performer-info p {
+        font-size: 0.8rem;
     }
 
     .hero-timeline-grid .oct2-event-container {
