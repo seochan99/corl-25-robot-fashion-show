@@ -163,6 +163,34 @@
         margin-top: 8px;
     }
 
+    /* Performer Card Mobile Styles */
+    .performers-row {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .performer-card {
+        padding: 20px;
+        gap: 15px;
+        max-width: 100%;
+        min-width: auto;
+        width: 100%;
+    }
+
+    .performer-image {
+        width: 80px;
+        height: 80px;
+    }
+
+    .performer-card h4 {
+        font-size: 1.1rem;
+    }
+
+    .performer-card p {
+        font-size: 0.9rem;
+    }
+
     .hero-timeline-grid .oct2-event-container {
         flex-direction: column;
         align-items: center;
