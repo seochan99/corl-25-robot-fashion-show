@@ -1,0 +1,373 @@
+/* Interviews Page Styles */
+
+/* Hero Section */
+.interviews-hero {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+    padding: 6rem 0 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+}
+
+.interviews-hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+            circle at 20% 50%,
+            rgba(120, 119, 198, 0.3) 0%,
+            transparent 50%
+        ),
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(255, 119, 198, 0.3) 0%,
+            transparent 50%
+        ),
+        radial-gradient(
+            circle at 40% 80%,
+            rgba(119, 198, 255, 0.3) 0%,
+            transparent 50%
+        );
+    animation: gradientShift 8s ease-in-out infinite;
+    z-index: 1;
+}
+
+@keyframes gradientShift {
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
+.interviews-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 10;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.interviews-subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+    position: relative;
+    z-index: 10;
+}
+
+/* Interviews Section */
+.interviews-section {
+    padding: 4rem 0;
+    background: #0a0a0a;
+}
+
+.highlights-section {
+    padding: 4rem 0;
+    background: #111111;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Interviews Grid */
+.interviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.interview-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.interview-thumbnail-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.interview-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.interview-thumbnail {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.artist-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.interview-card:hover .artist-photo {
+    transform: scale(1.05);
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 0, 0, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.play-button svg {
+    width: 24px;
+    height: 24px;
+    color: #ffffff;
+    margin-left: 3px;
+}
+
+.interview-card:hover .play-button {
+    background: #ff0000;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.interview-info {
+    padding: 1.5rem;
+}
+
+.interview-info h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.interview-info p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.watch-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: rgba(255, 0, 0, 0.1);
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    border-radius: 6px;
+    color: #ff0000;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.watch-button:hover {
+    background: rgba(255, 0, 0, 0.2);
+    border-color: rgba(255, 0, 0, 0.5);
+    transform: translateY(-1px);
+}
+
+/* Highlights Grid */
+.highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.highlight-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.highlight-thumbnail-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.highlight-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.highlight-thumbnail {
+    position: relative;
+    height: 120px;
+    overflow: hidden;
+}
+
+.highlight-thumbnail .artist-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.play-button.small {
+    width: 40px;
+    height: 40px;
+}
+
+.play-button.small svg {
+    width: 16px;
+    height: 16px;
+}
+
+.highlight-info {
+    padding: 1rem;
+}
+
+.highlight-info h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.watch-highlight {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.watch-highlight:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+/* Navigation Active State */
+.nav-link.active {
+    color: #87b375;
+    position: relative;
+}
+
+.nav-link.active::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #87b375;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .interviews-title {
+        font-size: 2.5rem;
+    }
+
+    .interviews-subtitle {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .interviews-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .highlights-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+
+    .interview-thumbnail {
+        height: 150px;
+    }
+
+    .highlight-thumbnail {
+        height: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .interviews-hero {
+        padding: 4rem 0 3rem;
+    }
+
+    .interviews-title {
+        font-size: 2rem;
+    }
+
+    .interviews-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .interviews-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .highlights-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}

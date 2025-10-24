@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Robot Fashion Show 2025 - Interviews</title>
+        <meta
+            name="description"
+            content="Watch exclusive interviews with the artists and researchers from Robot Fashion Show 2025. Full interviews and 2-minute highlights available."
+        />
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta
+            property="og:url"
+            content="https://robotfashion.show/interviews"
+        />
+        <meta
+            property="og:title"
+            content="Robot Fashion Show 2025 - Interviews"
+        />
+        <meta
+            property="og:description"
+            content="Watch exclusive interviews with the artists and researchers from Robot Fashion Show 2025."
+        />
+        <meta
+            property="og:image"
+            content="https://robotfashion.show/assets/logo.png"
+        />
+
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta
+            property="twitter:url"
+            content="https://robotfashion.show/interviews"
+        />
+        <meta
+            property="twitter:title"
+            content="Robot Fashion Show 2025 - Interviews"
+        />
+        <meta
+            property="twitter:description"
+            content="Watch exclusive interviews with the artists and researchers from Robot Fashion Show 2025."
+        />
+        <meta
+            property="twitter:image"
+            content="https://robotfashion.show/assets/logo.png"
+        />
+
+        <!-- Favicon -->
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="assets/favicon/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="assets/favicon/favicon-16x16.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="assets/favicon/apple-icon-180x180.png"
+        />
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="styles/base.css" />
+        <link rel="stylesheet" href="styles/style.css" />
+        <link rel="stylesheet" href="styles/responsive.css" />
+        <link rel="stylesheet" href="styles/interviews.css" />
+
+        <!-- Google Analytics -->
+        <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-69TBPT8PNK"
+        ></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+            gtag("config", "G-69TBPT8PNK");
+        </script>
+    </head>
+    <body>
+        <!-- Navigation -->
+        <nav class="nav" role="navigation" aria-label="Main navigation">
+            <div class="nav-container">
+                <!-- Desktop navigation -->
+                <div class="nav-links desktop-nav">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="index.html#accepted-presenters" class="nav-link"
+                        >Presenters</a
+                    >
+                    <a href="index.html#invited-artists" class="nav-link"
+                        >Artists</a
+                    >
+                    <a href="index.html#models" class="nav-link">Models</a>
+                    <a href="index.html#organizers" class="nav-link"
+                        >Organizers</a
+                    >
+                    <a href="interviews.html" class="nav-link active"
+                        >Interviews</a
+                    >
+                    <a href="call-for-participation.html" class="nav-link"
+                        >Participate</a
+                    >
+                </div>
+
+                <div class="nav-badge">
+                    <a
+                        href="https://2025humanoids.org/"
+                        target="_blank"
+                        class="humanoids-badge"
+                        >2025 IEEE-RAS Humanoids'25</a
+                    >
+                </div>
+
+                <!-- Mobile hamburger button -->
+                <button
+                    class="mobile-menu-btn"
+                    onclick="toggleMobileMenu()"
+                    aria-label="Toggle mobile menu"
+                >
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+
+            <!-- Mobile menu overlay -->
+            <div class="mobile-menu-overlay" id="mobile-menu-overlay">
+                <div class="mobile-menu-content">
+                    <a
+                        href="index.html"
+                        class="mobile-nav-link"
+                        onclick="closeMobileMenu()"
+                        >Home</a
+                    >
+                    <a
+                        href="index.html#accepted-presenters"
+                        class="mobile-nav-link"
+                        onclick="closeMobileMenu()"
+                        >Presenters</a
+                    >
+                    <a
+                        href="index.html#invited-artists"
+                        class="mobile-nav-link"
+                        onclick="closeMobileMenu()"
+                        >Artists</a
+                    >
+                    <a
+                        href="index.html#models"
+                        class="mobile-nav-link"
+                        onclick="closeMobileMenu()"
+                        >Models</a
+                    >
+                    <a
+                        href="index.html#organizers"
+                        class="mobile-nav-link"
+                        onclick="closeMobileMenu()"
+                        >Organizers</a
+                    >
+                    <a
+                        href="interviews.html"
+                        class="mobile-nav-link"
+                        onclick="closeMobileMenu()"
+                        >Interviews</a
+                    >
+                    <a
+                        href="call-for-participation.html"
+                        class="mobile-nav-link"
+                        onclick="closeMobileMenu()"
+                        >Participate</a
+                    >
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="interviews-hero">
+            <div class="container">
+                <h1 class="interviews-title">Robot Fashion Show Interviews</h1>
+                <p class="interviews-subtitle">
+                    Exclusive conversations with the pioneering artists and
+                    researchers who brought the first-ever cross-species haute
+                    couture experience to life.
+                </p>
+            </div>
+        </section>
+
+        <!-- Full Interviews Section -->
+        <section class="interviews-section">
+            <div class="container">
+                <h2 class="section-title">Full Interviews</h2>
+                <p class="section-subtitle">
+                    In-depth conversations with our featured artists and
+                    researchers
+                </p>
+
+                <div class="interviews-grid">
+                    <!-- Junhee Cho -->
+                    <div class="interview-card">
+                        <a
+                            href="https://youtu.be/cuNxXYlFPI4?si=Oo7iisfJgaNtHVzh"
+                            target="_blank"
+                            class="interview-thumbnail-link"
+                        >
+                            <div class="interview-thumbnail">
+                                <img
+                                    src="assets/artist/6.png"
+                                    alt="Junhee Cho"
+                                    class="artist-photo"
+                                />
+                                <div class="play-button">
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                    >
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="interview-info">
+                            <h3>Junhee Cho</h3>
+                            <p>Professor at University of Seoul</p>
+                            <a
+                                href="https://youtu.be/cuNxXYlFPI4?si=Oo7iisfJgaNtHVzh"
+                                target="_blank"
+                                class="watch-button"
+                            >
+                                Watch Full Interview →
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- HKASON -->
+                    <div class="interview-card">
+                        <a
+                            href="https://www.youtube.com/watch?v=oQYdQCVpKvc&t=3s"
+                            target="_blank"
+                            class="interview-thumbnail-link"
+                        >
+                            <div class="interview-thumbnail">
+                                <img
+                                    src="assets/artist/7.png"
+                                    alt="HKASON"
+                                    class="artist-photo"
+                                />
+                                <div class="play-button">
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                    >
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="interview-info">
+                            <h3>HKASON</h3>
+                            <p>Fashion-Media Artist</p>
+                            <a
+                                href="https://www.youtube.com/watch?v=oQYdQCVpKvc&t=3s"
+                                target="_blank"
+                                class="watch-button"
+                            >
+                                Watch Full Interview →
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Hyun Parke -->
+                    <div class="interview-card">
+                        <a
+                            href="https://www.youtube.com/watch?v=WojXewpTX7c&t=17s"
+                            target="_blank"
+                            class="interview-thumbnail-link"
+                        >
+                            <div class="interview-thumbnail">
+                                <img
+                                    src="assets/artist/2.png"
+                                    alt="Hyun Parke"
+                                    class="artist-photo"
+                                />
+                                <div class="play-button">
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                    >
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="interview-info">
+                            <h3>Hyun Parke</h3>
+                            <p>
+                                Research Associate at Carnegie Mellon University
+                            </p>
+                            <a
+                                href="https://www.youtube.com/watch?v=WojXewpTX7c&t=17s"
+                                target="_blank"
+                                class="watch-button"
+                            >
+                                Watch Full Interview →
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Young Ah Seong -->
+                    <div class="interview-card">
+                        <a
+                            href="https://www.youtube.com/watch?v=8WNHQTEhQX4"
+                            target="_blank"
+                            class="interview-thumbnail-link"
+                        >
+                            <div class="interview-thumbnail">
+                                <img
+                                    src="assets/artist/3.png"
+                                    alt="Young Ah Seong"
+                                    class="artist-photo"
+                                />
+                                <div class="play-button">
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                    >
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="interview-info">
+                            <h3>Young Ah Seong</h3>
+                            <p>Associate Professor at Hosei University</p>
+                            <a
+                                href="https://www.youtube.com/watch?v=8WNHQTEhQX4"
+                                target="_blank"
+                                class="watch-button"
+                            >
+                                Watch Full Interview →
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Byungjun Kwon -->
+                    <div class="interview-card">
+                        <a
+                            href="https://www.youtube.com/watch?v=Uczf-bgxY-s"
+                            target="_blank"
+                            class="interview-thumbnail-link"
+                        >
+                            <div class="interview-thumbnail">
+                                <img
+                                    src="assets/artist/1.png"
+                                    alt="Byungjun Kwon"
+                                    class="artist-photo"
+                                />
+                                <div class="play-button">
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                    >
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="interview-info">
+                            <h3>Byungjun Kwon</h3>
+                            <p>Korea Artist Prize 2023 Winner</p>
+                            <a
+                                href="https://www.youtube.com/watch?v=Uczf-bgxY-s"
+                                target="_blank"
+                                class="watch-button"
+                            >
+                                Watch Full Interview →
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Yang Minha -->
+                    <div class="interview-card">
+                        <a
+                            href="https://www.youtube.com/watch?v=3Nu8vTa3SUA"
+                            target="_blank"
+                            class="interview-thumbnail-link"
+                        >
+                            <div class="interview-thumbnail">
+                                <img
+                                    src="assets/artist/4.png"
+                                    alt="Yang Minha"
+                                    class="artist-photo"
+                                />
+                                <div class="play-button">
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                    >
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="interview-info">
+                            <h3>Yang Minha</h3>
+                            <p>
+                                Professor at University of Seoul Graduate School
+                                of Design
+                            </p>
+                            <a
+                                href="https://www.youtube.com/watch?v=3Nu8vTa3SUA"
+                                target="_blank"
+                                class="watch-button"
+                            >
+                                Watch Full Interview →
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Dennis Hong -->
+                    <div class="interview-card">
+                        <a
+                            href="https://www.youtube.com/watch?v=7VoYtQKYR5E"
+                            target="_blank"
+                            class="interview-thumbnail-link"
+                        >
+                            <div class="interview-thumbnail">
+                                <img
+                                    src="assets/artist/5.png"
+                                    alt="Dennis Hong"
+                                    class="artist-photo"
+                                />
+                                <div class="play-button">
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                    >
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="interview-info">
+                            <h3>Dennis Hong</h3>
+                            <p>
+                                Professor & Founding Director of RoMeLa at UCLA
+                            </p>
+                            <a
+                                href="https://www.youtube.com/watch?v=7VoYtQKYR5E"
+                                target="_blank"
+                                class="watch-button"
+                            >
+                                Watch Full Interview →
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Richard Malterre -->
+                    <div class="interview-card">
+                        <a
+                            href="https://www.youtube.com/watch?v=oQYdQCVpKvc&t=3s"
+                            target="_blank"
+                            class="interview-thumbnail-link"
+                        >
+                            <div class="interview-thumbnail">
+                                <img
+                                    src="assets/models/04. 미로카이_인챈티드 툴스.png"
+                                    alt="Richard Malterre"
+                                    class="artist-photo"
+                                />
+                                <div class="play-button">
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                    >
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="interview-info">
+                            <h3>Richard Malterre</h3>
+                            <p>Enchanted Tools (France)</p>
+                            <a
+                                href="https://www.youtube.com/watch?v=oQYdQCVpKvc&t=3s"
+                                target="_blank"
+                                class="watch-button"
+                            >
+                                Watch Full Interview →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2-Minute Highlights Section -->
+        <section class="highlights-section">
+            <div class="container">
+                <h2 class="section-title">2-Minute Highlights</h2>
+                <p class="section-subtitle">
+                    Quick insights from our featured participants
+                </p>
+
+                <div class="highlights-grid">
+                    <!-- Junhee Cho -->
+                    <div class="highlight-card">
+                        <a
+                            href="https://www.youtube.com/watch?v=jmSXbtsP26w"
+                            target="_blank"
+                            class="highlight-thumbnail-link"
+                        >
+                            <div class="highlight-thumbnail">
+                                <img
+                                    src="assets/artist/6.png"
+                                    alt="Junhee Cho"
+                                    class="artist-photo"
+                                />
+                                <div class="play-button small">
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                    >
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="highlight-info">
+                            <h4>Junhee Cho</h4>
+                            <a
+                                href="https://www.youtube.com/watch?v=jmSXbtsP26w"
+                                target="_blank"
+                                class="watch-highlight"
+                            >
+                                Watch 2-Min Highlights →
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- HKASON -->
+                    <div class="highlight-card">
+                        <a
+                            href="https://www.youtube.com/watch?v=0DW_IQ5F0tQ&t=2s"
+                            target="_blank"
+                            class="highlight-thumbnail-link"
+                        >
+                            <div class="highlight-thumbnail">
+                                <img
+                                    src="assets/artist/7.png"
+                                    alt="HKASON"
+                                    class="artist-photo"
+                                />
+                                <div class="play-button small">
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                    >
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="highlight-info">
+                            <h4>HKASON</h4>
+                            <a
+                                href="https://www.youtube.com/watch?v=0DW_IQ5F0tQ&t=2s"
+                                target="_blank"
+                                class="watch-highlight"
+                            >
+                                Watch 2-Min Highlights →
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Hyun Parke -->
+                    <div class="highlight-card">
+                        <a
+                            href="https://www.youtube.com/watch?v=MRO2oaJdkx4"
+                            target="_blank"
+                            class="highlight-thumbnail-link"
+                        >
+                            <div class="highlight-thumbnail">
+                                <img
+                                    src="assets/artist/2.png"
+                                    alt="Hyun Parke"
+                                    class="artist-photo"
+                                />
+                                <div class="play-button small">
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                    >
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="highlight-info">
+                            <h4>Hyun Parke</h4>
+                            <a
+                                href="https://www.youtube.com/watch?v=MRO2oaJdkx4"
+                                target="_blank"
+                                class="watch-highlight"
+                            >
+                                Watch 2-Min Highlights →
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Young Ah Seong -->
+                    <div class="highlight-card">
+                        <a
+                            href="https://www.youtube.com/watch?v=8-spc9hWi3g"
+                            target="_blank"
+                            class="highlight-thumbnail-link"
+                        >
+                            <div class="highlight-thumbnail">
+                                <img
+                                    src="assets/artist/3.png"
+                                    alt="Young Ah Seong"
+                                    class="artist-photo"
+                                />
+                                <div class="play-button small">
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                    >
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="highlight-info">
+                            <h4>Young Ah Seong</h4>
+                            <a
+                                href="https://www.youtube.com/watch?v=8-spc9hWi3g"
+                                target="_blank"
+                                class="watch-highlight"
+                            >
+                                Watch 2-Min Highlights →
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Byungjun Kwon -->
+                    <div class="highlight-card">
+                        <a
+                            href="https://www.youtube.com/watch?v=fwjqJJopWYY"
+                            target="_blank"
+                            class="highlight-thumbnail-link"
+                        >
+                            <div class="highlight-thumbnail">
+                                <img
+                                    src="assets/artist/1.png"
+                                    alt="Byungjun Kwon"
+                                    class="artist-photo"
+                                />
+                                <div class="play-button small">
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                    >
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="highlight-info">
+                            <h4>Byungjun Kwon</h4>
+                            <a
+                                href="https://www.youtube.com/watch?v=fwjqJJopWYY"
+                                target="_blank"
+                                class="watch-highlight"
+                            >
+                                Watch 2-Min Highlights →
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Yang Minha -->
+                    <div class="highlight-card">
+                        <a
+                            href="https://www.youtube.com/watch?v=0h5Kst2OtBg"
+                            target="_blank"
+                            class="highlight-thumbnail-link"
+                        >
+                            <div class="highlight-thumbnail">
+                                <img
+                                    src="assets/artist/4.png"
+                                    alt="Yang Minha"
+                                    class="artist-photo"
+                                />
+                                <div class="play-button small">
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                    >
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="highlight-info">
+                            <h4>Yang Minha</h4>
+                            <a
+                                href="https://www.youtube.com/watch?v=0h5Kst2OtBg"
+                                target="_blank"
+                                class="watch-highlight"
+                            >
+                                Watch 2-Min Highlights →
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Dennis Hong -->
+                    <div class="highlight-card">
+                        <a
+                            href="https://www.youtube.com/watch?v=wVdI4Xq-HNA"
+                            target="_blank"
+                            class="highlight-thumbnail-link"
+                        >
+                            <div class="highlight-thumbnail">
+                                <img
+                                    src="assets/artist/5.png"
+                                    alt="Dennis Hong"
+                                    class="artist-photo"
+                                />
+                                <div class="play-button small">
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                    >
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="highlight-info">
+                            <h4>Dennis Hong</h4>
+                            <a
+                                href="https://www.youtube.com/watch?v=wVdI4Xq-HNA"
+                                target="_blank"
+                                class="watch-highlight"
+                            >
+                                Watch 2-Min Highlights →
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Richard Malterre -->
+                    <div class="highlight-card">
+                        <a
+                            href="https://www.youtube.com/watch?v=0DW_IQ5F0tQ&t=2s"
+                            target="_blank"
+                            class="highlight-thumbnail-link"
+                        >
+                            <div class="highlight-thumbnail">
+                                <img
+                                    src="assets/models/04. 미로카이_인챈티드 툴스.png"
+                                    alt="Richard Malterre"
+                                    class="artist-photo"
+                                />
+                                <div class="play-button small">
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                    >
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="highlight-info">
+                            <h4>Richard Malterre</h4>
+                            <a
+                                href="https://www.youtube.com/watch?v=0DW_IQ5F0tQ&t=2s"
+                                target="_blank"
+                                class="watch-highlight"
+                            >
+                                Watch 2-Min Highlights →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h4>Robot Fashion Show 2025</h4>
+                        <p>CoRL 2025 & Humanoids 2025</p>
+                        <p>Seoul, South Korea</p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Contact</h4>
+                        <p>robotfashionshow@gmail.com</p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Follow</h4>
+                        <div class="social-links">
+                            <a href="#" class="social-link">YouTube</a>
+                            <a href="#" class="social-link">Twitter</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Robot Fashion Show. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+        <script src="scripts/script.js"></script>
+        <script>
+            // Mobile menu functions for interviews page
+            function toggleMobileMenu() {
+                const overlay = document.getElementById("mobile-menu-overlay");
+                const hamburgerBtn = document.querySelector(".mobile-menu-btn");
+
+                if (overlay.classList.contains("active")) {
+                    closeMobileMenu();
+                } else {
+                    openMobileMenu();
+                }
+            }
+
+            function openMobileMenu() {
+                const overlay = document.getElementById("mobile-menu-overlay");
+                const hamburgerBtn = document.querySelector(".mobile-menu-btn");
+
+                overlay.classList.add("active");
+                hamburgerBtn.classList.add("active");
+                document.body.style.overflow = "hidden";
+            }
+
+            function closeMobileMenu() {
+                const overlay = document.getElementById("mobile-menu-overlay");
+                const hamburgerBtn = document.querySelector(".mobile-menu-btn");
+
+                overlay.classList.remove("active");
+                hamburgerBtn.classList.remove("active");
+                document.body.style.overflow = "";
+            }
+
+            // Close mobile menu when clicking outside
+            document.addEventListener("click", function (e) {
+                const overlay = document.getElementById("mobile-menu-overlay");
+                const hamburgerBtn = document.querySelector(".mobile-menu-btn");
+
+                if (
+                    overlay &&
+                    overlay.classList.contains("active") &&
+                    !overlay.contains(e.target) &&
+                    !hamburgerBtn.contains(e.target)
+                ) {
+                    closeMobileMenu();
+                }
+            });
+        </script>
+    </body>
+</html>
