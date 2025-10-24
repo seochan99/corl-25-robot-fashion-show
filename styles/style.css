@@ -568,6 +568,44 @@ section {
     letter-spacing: 0.5px;
 }
 
+/* Robot Interview Links */
+.robot-interview-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.interview-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.interview-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-1px);
+}
+
+.interview-link .social-icon {
+    width: 16px;
+    height: 16px;
+    color: #ff0000;
+}
+
+.interview-link span {
+    font-weight: 500;
+}
+
 /* Performers Section Styling */
 .participator-category.performers {
     display: flex;

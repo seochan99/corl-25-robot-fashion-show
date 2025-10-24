@@ -381,7 +381,8 @@
 
 .profile-icon-btn,
 .instagram-icon-btn,
-.youtube-icon-btn {
+.youtube-icon-btn,
+.interview-icon-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -397,7 +398,8 @@
 
 .profile-icon-btn:hover,
 .instagram-icon-btn:hover,
-.youtube-icon-btn:hover {
+.youtube-icon-btn:hover,
+.interview-icon-btn:hover {
     background: rgba(255, 255, 255, 0.2);
 }
 
@@ -416,6 +418,50 @@
         #bc1888 100%
     );
     color: white;
+}
+
+/* Interview Icon Button - Different style to distinguish from regular YouTube */
+.interview-icon-btn {
+    background: rgba(135, 179, 117, 0.2);
+    border: 1px solid rgba(135, 179, 117, 0.4);
+    color: #87b375;
+    position: relative;
+}
+
+.interview-icon-btn:hover {
+    background: rgba(135, 179, 117, 0.3);
+    border-color: rgba(135, 179, 117, 0.6);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(135, 179, 117, 0.3);
+}
+
+/* Add a small "Interview" label to distinguish from regular YouTube */
+.interview-icon-btn::after {
+    content: "Interview";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 8px;
+    color: #87b375;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.interview-icon-btn:hover::after {
+    opacity: 1;
+}
+
+/* Full Interview label */
+.interview-icon-btn[title="Full Interview"]::after {
+    content: "Full Interview";
+}
+
+/* 2-Min Highlights label */
+.interview-icon-btn[title="2-Min Highlights"]::after {
+    content: "2-Min Highlights";
 }
 
 /* 초간단 애니메이션 - 최대 성능 */

@@ -14,7 +14,18 @@ export const artistsData = [
         career: "Hardware Engineer at STEIM (Netherlands Electronic Music Research Institute)",
         specialty:
             "Research on sound-related hardware, developing new musical instruments and stage devices to create dramatic scenes that encompass music, theater, and visual arts through new media performance",
-        socialLinks: [],
+        socialLinks: [
+            {
+                type: "youtube",
+                url: "https://www.youtube.com/watch?v=Uczf-bgxY-s",
+                label: "Full Interview →",
+            },
+            {
+                type: "youtube",
+                url: "https://www.youtube.com/watch?v=fwjqJJopWYY",
+                label: "2-Min Highlights →",
+            },
+        ],
     },
     {
         id: 2,
@@ -30,7 +41,18 @@ export const artistsData = [
         career: "Research Associate at Carnegie Mellon University (2024~)",
         specialty:
             "Interdisciplinary artist exploring pneumatic structures, inflatable objects, and dimensional display systems. Known for innovative work in air-reinforced structures and additive manufacturing technologies",
-        socialLinks: [],
+        socialLinks: [
+            {
+                type: "youtube",
+                url: "https://www.youtube.com/watch?v=WojXewpTX7c&t=17s",
+                label: "Full Interview →",
+            },
+            {
+                type: "youtube",
+                url: "https://www.youtube.com/watch?v=MRO2oaJdkx4",
+                label: "2-Min Highlights →",
+            },
+        ],
     },
     {
         id: 3,
@@ -48,8 +70,13 @@ export const artistsData = [
         socialLinks: [
             {
                 type: "youtube",
-                url: "https://www.youtube.com/watch?v=Kpn0joo7luo",
-                label: "Video →",
+                url: "https://www.youtube.com/watch?v=8WNHQTEhQX4",
+                label: "Full Interview →",
+            },
+            {
+                type: "youtube",
+                url: "https://www.youtube.com/watch?v=8-spc9hWi3g",
+                label: "2-Min Highlights →",
             },
         ],
     },
@@ -69,9 +96,14 @@ export const artistsData = [
             "NYC-based fashion designer who conjures a tactile dialogue between body, fabric, and space. Specializing in zero-gravity environment fashion design",
         socialLinks: [
             {
-                type: "instagram",
-                url: "https://www.instagram.com/reel/DE5j5g4Shn8/?utm_source=ig_web_copy_link",
-                label: "Instagram →",
+                type: "youtube",
+                url: "https://www.youtube.com/watch?v=3Nu8vTa3SUA",
+                label: "Full Interview →",
+            },
+            {
+                type: "youtube",
+                url: "https://www.youtube.com/watch?v=0h5Kst2OtBg",
+                label: "2-Min Highlights →",
             },
         ],
     },
@@ -88,7 +120,71 @@ export const artistsData = [
         career: "Professor & Founding Director of RoMeLa at UCLA",
         specialty:
             'Director of RoMeLa (Robotics & Mechanisms Laboratory). Research focuses on robot locomotion and manipulation, autonomous vehicles and humanoid robots. Called "the Leonardo da Vinci of robots" by Washington Post',
-        socialLinks: [],
+        socialLinks: [
+            {
+                type: "youtube",
+                url: "https://www.youtube.com/watch?v=7VoYtQKYR5E",
+                label: "Full Interview →",
+            },
+            {
+                type: "youtube",
+                url: "https://www.youtube.com/watch?v=wVdI4Xq-HNA",
+                label: "2-Min Highlights →",
+            },
+        ],
+    },
+    {
+        id: 6,
+        name: "Junhee Cho",
+        country: "KR",
+        portraitImage: "assets/artist/6.png",
+        workImage: "assets/robot/6.png",
+        workTitle: "Convergence Design Research",
+        profileLink: null,
+        achievement:
+            "Outstanding Work Prize, KISD International Space Design Exhibition",
+        education: "Professor at University of Seoul",
+        career: "Associate Professor, University of Seoul / Director, Convergence Design Lab / Head, Startup Incubation Center",
+        specialty:
+            "Leading researcher in convergence design, focusing on interdisciplinary approaches to technology and design innovation",
+        socialLinks: [
+            {
+                type: "youtube",
+                url: "https://youtu.be/cuNxXYlFPI4?si=Oo7iisfJgaNtHVzh",
+                label: "Full Interview →",
+            },
+            {
+                type: "youtube",
+                url: "https://www.youtube.com/watch?v=jmSXbtsP26w",
+                label: "2-Min Highlights →",
+            },
+        ],
+    },
+    {
+        id: 7,
+        name: "HKASON",
+        country: "KR",
+        portraitImage: "assets/artist/7.png",
+        workImage: "assets/robot/7-1.png",
+        workTitle: "Robotic Wearables & Spatial Installations",
+        profileLink: null,
+        achievement: "Fashion-Media Artist",
+        education: "Fashion-Media Artist",
+        career: "Fashion-Media Artist",
+        specialty:
+            "An innovative fashion and media artist creating robotic wearables and spatial installations at the edge of performance and design",
+        socialLinks: [
+            {
+                type: "youtube",
+                url: "https://www.youtube.com/watch?v=oQYdQCVpKvc&t=3s",
+                label: "Full Interview →",
+            },
+            {
+                type: "youtube",
+                url: "https://www.youtube.com/watch?v=0DW_IQ5F0tQ&t=2s",
+                label: "2-Min Highlights →",
+            },
+        ],
     },
 ];
 
